@@ -56,16 +56,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
                 <span>Orthodox Business Solutions</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
-
-              <a
-                href="https://orthodoxwm.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3.5 bg-neutral-900 text-neutral-200 border border-neutral-800 hover:border-neutral-600 font-medium text-xs uppercase tracking-widest hover:text-white transition-all rounded-xs"
-              >
-                <span>Orthodox Wealth Management</span>
-                <ArrowUpRight className="w-4 h-4 text-neutral-400" />
-              </a>
             </div>
           </div>
         </div>
