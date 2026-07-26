@@ -1,0 +1,6 @@
+{
+  "name": "Orthodox Holdings",
+  "description": "Integrated Solutions & Sustainable Growth — Orthodox Business Solutions & Orthodox Wealth Management private advisory platform and client portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
