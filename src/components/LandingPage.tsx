@@ -46,17 +46,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
             <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed mb-10 max-w-3xl">
               At Orthodox Holding, we believe that sustainable success is achieved through comprehensive and integrated strategies. We unite personal financial planning and business financial solutions into one connected ecosystem, ensuring every financial decision—from business growth and governance to investments, taxation, insurance, estate planning, and asset protection—works together toward a common objective. Built on time-tested orthodox principles, we help individuals, families, and business owners create sustainable growth, preserve lasting prosperity, and build enduring legacies across generations.
             </p>
-
-            {/* Quick Action Navigation Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={onExploreBusiness}
-                className="inline-flex items-center gap-3 px-6 py-3.5 bg-white text-black font-medium text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all rounded-xs shadow-md group"
-              >
-                <span>Orthodox Business Solutions</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
           </div>
         </div>
       </section>
