@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, ShieldCheck, Mail, Phone, Building } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Instagram } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -91,10 +91,29 @@ export const Footer: React.FC = () => {
           <div>
             © {new Date().getFullYear()} Orthodox Holding. All rights reserved.
           </div>
-          <div className="flex items-center gap-4">
-            <a href="#consultation" className="hover:text-white">Private Consultation</a>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <a
+              href="https://www.linkedin.com/company/orthodox-holding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Linkedin className="w-3.5 h-3.5 text-neutral-400" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="https://www.instagram.com/orthodoxholding"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Instagram className="w-3.5 h-3.5 text-neutral-400" />
+              <span>Instagram</span>
+            </a>
             <span>•</span>
-            <a href="https://orthodoxwm.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white">orthodoxwm.com</a>
+            <a href="https://orthodoxwm.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              orthodoxwm.com
+            </a>
           </div>
         </div>
       </div>

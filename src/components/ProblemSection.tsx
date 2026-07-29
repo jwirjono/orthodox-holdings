@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PROBLEM_ITEMS } from '../data/orthodoxData';
 import { ProblemItem } from '../types';
 import { MessageSquare, ArrowRight, Layers, AlertTriangle, RefreshCw, ExternalLink } from 'lucide-react';
@@ -9,10 +9,44 @@ interface ProblemSectionProps {
 
 export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultation }) => {
   const [activeProblem, setActiveProblem] = useState<ProblemItem>(PROBLEM_ITEMS[0]);
+  const [typedMessage, setTypedMessage] = useState<string>('');
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const previewRef = useRef<HTMLDivElement>(null);
+
+  // Typing effect when activeProblem changes
+  useEffect(() => {
+    const fullText = activeProblem.whatsappMessage;
+    setTypedMessage('');
+    setIsTyping(true);
+
+    let currentIndex = 0;
+    const timer = setInterval(() => {
+      if (currentIndex < fullText.length) {
+        setTypedMessage(fullText.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+      }
+    }, 18);
+
+    return () => clearInterval(timer);
+  }, [activeProblem]);
+
+  const handleSelectProblem = (item: ProblemItem) => {
+    setActiveProblem(item);
+
+    // Scroll slightly down to face the conversation preview card
+    setTimeout(() => {
+      if (previewRef.current) {
+        previewRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 50);
+  };
 
   const handleWhatsAppRedirect = (problem: ProblemItem) => {
     const encoded = encodeURIComponent(problem.whatsappMessage);
-    // Standard Orthodox WhatsApp redirect link (customizable or via direct preview modal)
+    // Standard Orthodox WhatsApp redirect link
     window.open(`https://wa.me/?text=${encoded}`, '_blank');
   };
 
@@ -61,7 +95,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
               return (
                 <button
                   key={item.id}
-                  onClick={() => setActiveProblem(item)}
+                  onClick={() => handleSelectProblem(item)}
                   className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full ${
                     isSelected
                       ? 'bg-white text-black border-white shadow-lg'
@@ -81,7 +115,10 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
           </div>
 
           {/* Active Problem Card & Starter Conversation Preview */}
-          <div className="bg-neutral-950 border border-neutral-800 p-6 rounded-xs grid md:grid-cols-3 gap-6">
+          <div
+            ref={previewRef}
+            className="bg-neutral-950 border border-neutral-800 p-6 rounded-xs grid md:grid-cols-3 gap-6 scroll-mt-28"
+          >
             <div className="md:col-span-2 space-y-4">
               <div>
                 <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">
@@ -107,8 +144,13 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
                 <span className="text-[10px] uppercase font-mono text-emerald-400 block mb-1">
                   Starter Conversation Preview:
                 </span>
-                <p className="text-xs text-neutral-300 italic font-mono bg-neutral-950 p-3 border border-neutral-800 rounded-xs">
-                  "{activeProblem.whatsappMessage}"
+                <p className="text-xs text-neutral-300 italic font-mono bg-neutral-950 p-3 border border-neutral-800 rounded-xs min-h-[4.5rem]">
+                  "{typedMessage}"
+                  <span
+                    className={`inline-block w-1.5 h-3.5 ml-1 bg-emerald-400 align-middle ${
+                      isTyping ? 'animate-pulse' : 'opacity-0'
+                    }`}
+                  />
                 </p>
               </div>
 
