@@ -60,14 +60,6 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="w-9 h-9 bg-white text-black flex items-center justify-center font-bold tracking-tighter rounded-xs">
                 <span className="text-sm font-semibold">OH</span>
               </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold tracking-[0.2em] text-white uppercase font-sans">
-                  Orthodox Holdings
-                </span>
-                <span className="text-[10px] text-neutral-400 tracking-wider uppercase font-mono">
-                  {currentView === 'holding' ? 'Integrated Ecosystem' : 'Business Solutions'}
-                </span>
-              </div>
             </button>
             <button
               onClick={() => setMobileMenuOpen(false)}
@@ -91,29 +83,21 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onNavigateView('holding');
                   }}
-                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between ${
-                    currentView === 'holding'
-                      ? 'bg-white text-black font-bold'
-                      : 'text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white'
-                  }`}
+                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between bg-white text-black font-bold`}
                 >
-                  <span>Holdings</span>
-                  {currentView === 'holding' && <span className="text-[10px]">✓</span>}
+                  <span>Business Solutions</span>
+                  <span className="text-[10px]">✓</span>
                 </button>
 
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onNavigateView('business');
+                    window.open('https://orthodoxwm.com/', '_blank');
                   }}
-                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between ${
-                    currentView === 'business'
-                      ? 'bg-white text-black font-bold'
-                      : 'text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white'
-                  }`}
+                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white`}
                 >
-                  <span>Business</span>
-                  {currentView === 'business' && <span className="text-[10px]">✓</span>}
+                  <span>Wealth Management</span>
+                  <ArrowUpRight className="w-4 h-4 text-neutral-400" />
                 </button>
               </div>
             </div>
@@ -222,39 +206,31 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="w-8 h-8 sm:w-9 sm:h-9 bg-white text-black flex items-center justify-center font-bold tracking-tighter transition-transform duration-300 group-hover:bg-neutral-200 rounded-xs shrink-0">
               <span className="text-xs sm:text-sm font-semibold">OH</span>
             </div>
-            <div className="flex flex-col hidden sm:flex">
-              <span className="text-sm sm:text-md font-semibold tracking-[0.2em] text-white uppercase font-sans">
+            <div className="flex flex-col">
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-white uppercase font-sans">
                 Orthodox Holdings
               </span>
-              <span className="text-[10px] text-neutral-400 tracking-wider font-mono uppercase">
+              <span className="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider font-mono uppercase">
                 {currentView === 'holding' ? 'Integrated Ecosystem' : 'Business Solutions'}
               </span>
             </div>
           </button>
 
-          {/* Holdings / Business Solutions Toggle Buttons - Visible on Mobile & Desktop */}
+          {/* Holdings / Business Solutions Toggle Buttons - Hidden on Phone, Visible on Tablet/Desktop */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <nav className="flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
-              <button
-                onClick={() => onNavigateView('holding')}
-                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs ${
-                  currentView === 'holding'
-                    ? 'bg-white text-black font-semibold shadow-xs'
-                    : 'text-neutral-400 hover:text-white'
-                }`}
-              >
-                Holdings
-              </button>
+            <nav className="hidden md:flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
               <button
                 onClick={() => onNavigateView('business')}
-                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs ${
-                  currentView === 'business'
-                    ? 'bg-white text-black font-semibold shadow-xs'
-                    : 'text-neutral-400 hover:text-white'
-                }`}
+                className="px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs bg-white text-black font-semibold shadow-xs"
               >
-                <span className="hidden sm:inline">Business Solutions</span>
-                <span className="sm:hidden">Business</span>
+                Business Solutions
+              </button>
+              <button
+                onClick={() => window.open('https://orthodoxwm.com/', '_blank')}
+                className="px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs text-neutral-400 hover:text-white flex items-center gap-1"
+              >
+                <span>Wealth Management</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
               </button>
             </nav>
 

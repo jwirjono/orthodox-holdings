@@ -44,7 +44,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
 
             {/* Descriptive Body */}
             <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed mb-10 max-w-3xl">
-              At Orthodox Holding, we believe that sustainable success is achieved through comprehensive and integrated strategies. We unite personal financial planning and business financial solutions into one connected ecosystem, ensuring every financial decision—from business growth and governance to investments, taxation, insurance, estate planning, and asset protection—works together toward a common objective. Built on time-tested orthodox principles, we help individuals, families, and business owners create sustainable growth, preserve lasting prosperity, and build enduring legacies across generations.
+              At Orthodox Holding, we believe sustainable success comes from integrated financial strategies. We connect personal wealth management and business financial solutions into one ecosystem, aligning every financial decision to create sustainable growth, protect wealth, and build lasting legacies. 
             </p>
 
           </div>
@@ -57,10 +57,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
           
           <div className="mb-12 text-center max-w-2xl mx-auto">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500">
-              Diagnostic Assessment
+              Let's Build Your Financial Future Together 
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight mt-2">
-              Identify Your Primary Financial Objectives
+              TAKE THE NEXT STEP
             </h2>
           </div>
 
