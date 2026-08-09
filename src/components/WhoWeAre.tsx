@@ -53,32 +53,32 @@ export const WhoWeAre: React.FC = () => {
   const translateX = centerOffset - currentIndex * (cardWidthPercent + gapPercent);
 
   return (
-    <section id="leadership" className="py-24 bg-[#080808] text-white border-b border-neutral-800 overflow-hidden">
+    <section id="whoweare" className="py-24 bg-[#080808] text-white border-b border-neutral-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12 pb-6 border-b border-neutral-800">
           <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
-            Executive Governance
+            Corporate Profile
           </span>
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
-            MEET OUR LEADERSHIP TEAM
+            ABOUT US
           </h2>
           <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl">
-            Experienced professionals bridging corporate strategy, tax advisory, financial audit, and wealth management.
+            A Strategic Partner for Businesses That Intend to Last
           </p>
         </div>
 
         {/* Narrative Copy Block */}
         <div className="bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 mb-16 space-y-6">
-          <h3 className="text-2xl font-light text-white leading-snug">
-            Orthodox Business Solutions was established to help business owners solve increasingly complex challenges through one integrated advisory platform.
-          </h3>
+          <p className="text-base sm:text-lg text-neutral-200 font-light leading-relaxed">
+            Orthodox Business Solutions is the business advisory division of Orthodox Holding, helping entrepreneurs simplify business complexity through integrated finance, accounting, taxation, and strategic advisory.
+          </p>
           <div className="grid md:grid-cols-2 gap-8 text-sm text-neutral-300 font-light leading-relaxed pt-4 border-t border-neutral-800">
             <p>
-              As businesses grow, financial, operational, taxation, governance, financing, and ownership decisions become deeply interconnected. Yet traditional advisory firms often address these challenges independently, leaving business owners to coordinate multiple professionals without a unified strategy.
+              While many firms solve one problem at a time, we believe business challenges are interconnected. That is why we coordinate accounting, tax, finance, corporate structuring, payroll, and business strategy into one cohesive framework.
             </p>
             <p>
-              We believe businesses deserve better. Our approach brings together strategic advisory, finance, taxation, accounting, corporate structuring, funding, and operational improvement into one coordinated framework—ensuring every recommendation supports the broader objectives of the business.
+              Through our sister company, Orthodox Wealth Management, our advisory extends beyond the business—helping owners protect, grow, and transfer the wealth their businesses create. Together, we provide one integrated ecosystem supporting both the business and the people behind it.
             </p>
           </div>
         </div>
@@ -88,36 +88,14 @@ export const WhoWeAre: React.FC = () => {
           {/* Header Row with Nav Controls on the Right */}
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-neutral-800">
             <div className="flex items-center gap-4">
-              <h3 className="text-2xl font-light tracking-tight text-white uppercase font-sans">
-                Leadership Team
+              <h3 className="text-2xl sm:text-3xl font-light tracking-tight text-white uppercase font-sans">
+                Leadership
               </h3>
               <span className="text-xs font-mono text-neutral-500 uppercase hidden sm:inline">
                 Orthodox Holding Partners
               </span>
             </div>
 
-            {/* Nav Controls (Right Side) */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-mono text-neutral-400 mr-2 tracking-wider">
-                0{currentIndex + 1} / 0{LEADERSHIP_PROFILES.length}
-              </span>
-              <button
-                onClick={prevSlide}
-                className="p-2.5 border border-neutral-800 bg-neutral-900 text-neutral-300 hover:text-white hover:bg-neutral-800 hover:border-neutral-500 transition-all rounded-xs shadow-sm"
-                aria-label="Previous leader"
-                title="Previous leader"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-2.5 border border-neutral-800 bg-neutral-900 text-neutral-300 hover:text-white hover:bg-neutral-800 hover:border-neutral-500 transition-all rounded-xs shadow-sm"
-                aria-label="Next leader"
-                title="Next leader"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
           </div>
 
           {/* Carousel Slider with Subtle Previews for Left and Right Cards */}

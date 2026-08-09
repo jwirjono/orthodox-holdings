@@ -3,13 +3,10 @@ import { Header } from './components/Header';
 import { LandingPage } from './components/LandingPage';
 import { HeroSection } from './components/HeroSection';
 import { ProblemSection } from './components/ProblemSection';
-import { IntegratedSystem } from './components/IntegratedSystem';
-import { WhoWeAre } from './components/WhoWeAre';
-import { ExpertiseSection } from './components/ExpertiseSection';
 import { WhyOrthodox } from './components/WhyOrthodox';
+import { WhoWeAre } from './components/WhoWeAre';
 import { ProcessSection } from './components/ProcessSection';
 import { EcosystemSection } from './components/EcosystemSection';
-import { PrinciplesSection } from './components/PrinciplesSection';
 import { ConsultationSection } from './components/ConsultationSection';
 import { TaxCalculator } from './components/TaxCalculator';
 import { ClientDashboard } from './components/ClientDashboard';
@@ -88,31 +85,22 @@ export default function App() {
               onOpenDashboard={() => setDashboardOpen(true)}
             />
 
-            {/* Section 2: Problem We Solve & Diagnostic */}
+            {/* Section 2: How Can We Help You, Frequent Problem To Solve & Our Service */}
             <ProblemSection onOpenConsultation={handleOpenConsultation} />
 
-            {/* Section 3: Integrated Business System */}
-            <IntegratedSystem />
-
-            {/* Section 4: Who We Are & Leadership Team */}
-            <WhoWeAre />
-
-            {/* Section 5: Core Expertise Disciplines */}
-            <ExpertiseSection onOpenConsultation={handleOpenConsultation} />
-
-            {/* Section 6: Why Orthodox */}
+            {/* Section 3: Why Orthodox */}
             <WhyOrthodox />
 
-            {/* Section 7: Strategic Process */}
+            {/* Section 4: About Us & Leadership */}
+            <WhoWeAre />
+
+            {/* Section 5: How We Work (Process) */}
             <ProcessSection onOpenConsultation={handleOpenConsultation} />
 
-            {/* Section 8: Ecosystem Diagram */}
+            {/* Section 6: One Business. One Ecosystem. */}
             <EcosystemSection />
 
-            {/* Section 9: Orthodox Principles */}
-            <PrinciplesSection />
-
-            {/* Section 10: Private Consultation */}
+            {/* Section 7: Private Consultation */}
             <ConsultationSection initialMessage={consultationMessage} />
 
             {/* Diagnostic Sandbox: Tax Calculator */}
@@ -133,4 +121,5 @@ export default function App() {
     </div>
   );
 }
+
 

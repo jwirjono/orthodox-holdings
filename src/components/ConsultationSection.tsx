@@ -36,29 +36,29 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
             Initiate Advisory Engagement
           </span>
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
-            Ready to build a stronger, more profitable business?
+            PRIVATE CONSULTATION
           </h2>
-          <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl">
-            Connect with our team to discuss your tax, accounting, or business strategy.
+          <p className="text-xl sm:text-2xl font-light text-white font-sans">
+            Build a Better Business.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Text Information (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="text-3xl font-light text-white leading-tight">
-              Integrated Solutions. Sustainable Growth. 
-            </h3>
+            <span className="inline-block px-3 py-1 bg-white text-black font-mono text-xs uppercase font-bold tracking-widest">
+              Integrated Solutions. Sustainable Growth.
+            </span>
 
-            <p className="text-sm text-neutral-300 font-light leading-relaxed">
-            The strongest businesses are built through coordinated decisions—not isolated advice.
+            <p className="text-base text-neutral-200 font-normal leading-relaxed">
+              The strongest businesses are built through coordinated decisions—not isolated advice.
             </p>
 
-            <p className="text-sm text-neutral-400 font-light leading-relaxed border-l-2 border-white pl-4">
-            Whether you're improving profitability, restructuring your business, raising capital, planning succession, or preparing for long-term wealth creation, Orthodox Business Solutions provides the integrated expertise to guide every stage of your journey.
+            <p className="text-sm text-neutral-300 font-light leading-relaxed border-l-2 border-white pl-4">
+              Whether you're improving profitability, restructuring your business, raising capital, planning succession, or preparing for long-term wealth creation, Orthodox Business Solutions provides the integrated expertise to guide every stage of your journey.
             </p>
 
-            <p className="text-sm text-neutral-400 font-light leading-relaxed border-l-2 border-white pl-4">
+            <p className="text-sm text-neutral-300 font-light leading-relaxed border-l-2 border-white pl-4">
               Through our ecosystem with Orthodox Wealth Management, your business strategy naturally extends into your personal financial future—ensuring both your company and your wealth are built to last.
             </p>
 
@@ -203,7 +203,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
                     className="flex-1 py-3 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Submit Confidential Request</span>
+                    <span>Request Consultation</span>
                   </button>
 
                   <button

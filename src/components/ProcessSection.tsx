@@ -14,14 +14,11 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenConsultati
         {/* Section Header */}
         <div className="mb-16 pb-6 border-b border-neutral-800">
           <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
-            Structured Execution Roadmap
+            Structured Engagement Protocol
           </span>
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
-            THE ORTHODOX PROCESS
+            HOW WE WORK
           </h2>
-          <p className="text-base sm:text-xl font-light text-neutral-300 font-sans">
-            A simple, structured approach to business growth.
-          </p>
         </div>
 
         {/* 4 Steps Grid */}
