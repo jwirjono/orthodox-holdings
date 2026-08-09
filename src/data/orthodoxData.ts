@@ -8,9 +8,9 @@ import {
   PortfolioAsset,
 } from '../types';
 
-import profileAdriel from '../assets/images/profile_adriel_1784984879215.jpg';
+import profileAdriel from '../assets/images/profile_adriel.jpeg';
 import profileDominicus from '../assets/images/profile_dominicus_1784984892548.jpg';
-import profileBrigitta from '../assets/images/profile_brigitta_1784984906723.jpg';
+import profileBunga from '../assets/images/profile_bunga.jpeg';
 
 export const HERO_DATA = {
   tagline: "Integrated Solutions. Sustainable Growth.",
@@ -124,7 +124,7 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
     name: "Brigitta Bunga, S.Ak",
     title: "Accounting Advisory Director",
     role: "Financial Audit, Risk & Compliance",
-    image: profileBrigitta,
+    image: profileBunga,
     credentials: [
       "S.Ak (Bachelor of Accounting)",
       "4 Years Big 4 External Auditor Experience in Indonesia",
