@@ -11,6 +11,7 @@ import {
 import profileAdriel from '../assets/images/profile_adriel.jpeg';
 import profileDominicus from '../assets/images/profile_dominicus_1784984892548.jpg';
 import profileBunga from '../assets/images/profile_bunga.jpeg';
+import profileSatya from '../assets/images/profile_satya.jpg';
 
 export const HERO_DATA = {
   tagline: "Integrated Solutions. Sustainable Growth.",
@@ -144,7 +145,7 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
     name: "Satya Wana Putera Utama, S.T, MBA",
     title: "Commissioner",
     role: "Strategic Governance & Enterprise Advisory",
-    image: profileAdriel, // fallback portrait or icon styling
+    image: profileSatya, // fallback portrait or icon styling
     credentials: [
       "S.T (Bachelor of Engineering)",
       "MBA (Master of Business Administration)",
