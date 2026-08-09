@@ -14,53 +14,58 @@ import profileBrigitta from '../assets/images/profile_brigitta_1784984906723.jpg
 
 export const HERO_DATA = {
   tagline: "Integrated Solutions. Sustainable Growth.",
-  heading: "Business success is never created by accounting, tax, or strategy alone.",
-  subheading: "It is built when finance, taxation, operations, governance, funding, and ownership structures work together as one integrated business system.",
-  paragraph1: "Orthodox Business Solutions partners with ambitious business owners to build profitable, scalable, and sustainable businesses—connecting every business decision into one coordinated strategy while extending beyond the business through our integrated wealth advisory ecosystem.",
-  paragraph2: "As part of Orthodox Holding, we work alongside Orthodox Wealth Management to provide business owners with one integrated advisory ecosystem—connecting business success with long-term personal wealth.",
+  heading: "All Solved Under One Roof.",
+  paragraph1: "Orthodox Business Solutions helps business owners simplify compliance, improve financial visibility, and build stronger businesses through integrated tax, accounting, and strategic advisory.",
+  paragraph2: "As part of Orthodox Holding, we work alongside Orthodox Wealth Management to help business owners build not only better businesses—but lasting personal wealth.",
   trustIndicators: [
     { value: "100+", label: "Business Engagements" },
     { value: "Multi-Industry", label: "Advisory Experience" },
-    { value: "1 Ecosystem", label: "Integrated Business & Wealth" },
-    { value: "Big 4 & International", label: "Leadership Standard" }
+    { value: "Integrated", label: "Business Ecosystem" }
   ]
 };
 
 export const PROBLEM_ITEMS: ProblemItem[] = [
   {
-    id: "siloed-tax-finance",
-    title: "Siloed Accounting & Tax Decisions",
-    siloDescription: "Accounting focuses purely on backward-looking compliance, while tax advisors reactively manage tax filing without understanding broader corporate strategy.",
-    rippleEffect: "A tax structure designed in isolation often chokes operational cash flow, restricts dividend distributions, and exposes the owner to unnecessary personal liability.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai tantangan integrasi antara Akuntansi & Perpajakan dengan strategi keuangan bisnis saya."
+    id: "tax-reduction",
+    title: "My tax bills keep growing and I have no idea how to reduce them legally",
+    siloDescription: "Tax compliance without proactive tax strategy leads to overpayment, missed deductions, and unexpected tax liabilities.",
+    rippleEffect: "Unnecessary tax drag deprives your business of essential working capital needed for reinvestment and growth.",
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien."
   },
   {
-    id: "capital-debt-structure",
-    title: "Uncoordinated Financing & Bank Debt",
-    siloDescription: "Bankers and brokers focus solely on securing loans, ignoring how debt service ratios strain working capital or alter shareholder equity value.",
-    rippleEffect: "Suboptimal debt covenants limit expansion capacity, increase cost of capital, and negatively impact future valuation during investment rounds or M&A.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai restrukturisasi pendanaan bisnis dan skema perbankan yang lebih efisien."
+    id: "money-leakage",
+    title: "I suspect money is leaking inside my business, but I cannot find where or prove it",
+    siloDescription: "Inadequate internal controls and unverified bookkeeping create dangerous blind spots for financial leakage and internal fraud.",
+    rippleEffect: "Undetected leakages continuously erode profit margins and compromise overall enterprise financial integrity.",
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin melakukan kaji ulang pengendalian internal dan penelusuran kebocoran keuangan/fraud pada bisnis saya."
   },
   {
-    id: "governance-ownership-silos",
-    title: "Fragile Ownership & Succession Structures",
-    siloDescription: "Lawyers draft legal agreements in isolation from tax rules and family wealth preservation goals.",
-    rippleEffect: "Poor ownership design causes internal shareholder friction, tax drag on share transfers, and unpredictable value destruction during business succession.",
-    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan arahan terkait Corporate Structuring, legalitas kepemilikan, dan perencanaaan suksesi bisnis."
+    id: "cashflow-crunch",
+    title: "My revenue keeps going up, but my bank account never seems to have enough in it",
+    siloDescription: "Growing top-line revenue without working capital controls and cash conversion forecasting causes severe liquidity bottlenecks.",
+    rippleEffect: "Rapidly scaling businesses frequently face insolvency traps if cash flow cycles and debt terms are left unmonitored.",
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya."
   },
   {
-    id: "business-to-personal-wealth",
-    title: "Disconnected Business & Personal Wealth",
-    siloDescription: "Most advisory firms stop at the business balance sheet, leaving the owner's personal wealth, estate, and asset protection unaligned.",
-    rippleEffect: "High business profits do not automatically translate into secure family wealth if personal tax planning, estate protection, and dividend strategies are neglected.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai strategi menghubungkan keuntungan bisnis ke dalam perlindungan kekayaan pribadi (Orthodox Wealth Management)."
+    id: "gut-feel-decisions",
+    title: "I make major business decisions on gut feel because I do not have reliable financial data",
+    siloDescription: "Delayed or unverified financial reports force leadership to navigate growth without clear unit economics or margin visibility.",
+    rippleEffect: "Gut-feel decision making increases strategic operational risk and complicates debt or equity financing efforts.",
+    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat."
   },
   {
-    id: "tax-dispute-audit",
-    title: "Corporate Tax Disputes & Audit Exposure",
-    siloDescription: "Standard accounting teams lack audit litigation experience, treating tax audits as routine administrative queries rather than existential risks.",
-    rippleEffect: "Unresolved tax audit findings lead to heavy penalties, cash drain, prolonged litigation, and reputational damage.",
-    whatsappMessage: "Halo Orthodox Holdings, kami membutuhkan pendampingan profesional untuk Corporate Tax Dispute Resolution dan mitigasi pemeriksaan pajak."
+    id: "tax-audit-dispute",
+    title: "My business is facing a tax audit or dispute and I do not know where to begin",
+    siloDescription: "Navigating a corporate tax audit without technical defense and dispute representation leaves companies vulnerable to arbitrary findings.",
+    rippleEffect: "Unresolved tax disputes result in heavy penalties, frozen liquidity, and prolonged operational uncertainty.",
+    whatsappMessage: "Halo Orthodox Holdings, kami membutuhkan pendampingan profesional untuk penanganan pemeriksaan dan sengketa pajak (Tax Audit & Dispute)."
+  },
+  {
+    id: "protecting-wealth",
+    title: "My business is doing well, but I have not figured out how to protect the wealth I have built",
+    siloDescription: "Failing to ring-fence personal assets from operating enterprise liabilities puts accumulated family wealth at risk.",
+    rippleEffect: "Without integrated estate planning and asset protection, business volatility can destabilize personal family prosperity.",
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai perlindungan aset dan suksesi kekayaan pribadi melalui Orthodox Wealth Management."
   }
 ];
 
@@ -87,7 +92,7 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
       "Cross-border experience across Australia & Indonesia"
     ],
     philosophy: "Every financial and business decision should strengthen the next.",
-    bio: "With professional experience across Australia and Indonesia, Adriel specialises in integrating business strategy with financial architecture. His philosophy remains consistent across both Orthodox Business Solutions and Orthodox Wealth Management: Rather than viewing businesses and personal wealth separately, he helps entrepreneurs build a complete financial ecosystem where business success ultimately translates into long-term family wealth.",
+    bio: "With professional experience across Australia and Indonesia, Adriel specialises in integrating business strategy with financial architecture. His philosophy remains consistent across both Orthodox Business Solutions and Orthodox Wealth Management: Every financial and business decision should strengthen the next. Rather than viewing businesses and personal wealth separately, he helps entrepreneurs build a complete financial ecosystem where business success ultimately translates into long-term family wealth.",
     highlights: [
       "Cross-border financial architecture across Australia & Indonesia",
       "Specialist in bridging corporate strategy with personal estate planning",
@@ -107,7 +112,7 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
       "Entrepreneur & Practitioner Background"
     ],
     philosophy: "Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go.",
-    bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richi brings a practitioner's lens to tax and business advisory. Having built and run his own businesses before entering professional services, he understands firsthand the decisions entrepreneurs face at every stage of growth. Specialising in tax, accounting, finance, and legal administration, Richi helps clients navigate complexity with solutions that are grounded in integrity.",
+    bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richi brings a practitioner's lens to tax and business advisory. Having built and run his own businesses before entering professional services, he understands firsthand the decisions entrepreneurs face at every stage of growth — not just in theory, but in practice. His philosophy is simple: Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go. Specialising in tax, accounting, finance, and legal administration, Richi helps clients navigate complexity with solutions that are grounded in integrity and oriented toward real, strategic outcomes.",
     highlights: [
       "Licensed Tax Consultant (BKP) with practitioner entrepreneur insight",
       "Deep expertise in corporate tax disputes, tax structuring, and compliance",
@@ -126,12 +131,32 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
       "Financial Audit & Risk Assessment Specialist",
       "Regulatory Compliance Specialist"
     ],
-    philosophy: "Precision in financial visibility is the bedrock of strategic enterprise value.",
-    bio: "Brigitta Bunga is an External Auditor with 4 years of experience at a Big 4 accounting firm in Indonesia, bringing proven expertise in financial audits, financial analysis, risk assessment, and regulatory compliance. She combines expertise in financial audits and risk management to ensure full regulatory compliance and financial accuracy for complex corporate organizations.",
+    philosophy: "Accuracy is not just a standard — it is a process built on clarity, adaptability, and disciplined inquiry at every step.",
+    bio: "With 4 years of experience as an External Auditor at a Big 4 accounting firm in Indonesia, Brigitta brings deep expertise in financial audits, risk assessment, financial analysis, and regulatory compliance — equipping her to deliver precise, high-standard advisory for complex organisations. Her approach is defined by professional scepticism and structured methodology, ensuring every engagement is grounded in rigorous analysis and clear, transparent communication.",
     highlights: [
       "Former Big 4 Senior External Auditor",
       "Expert in internal controls, accounting system implementation, and financial visibility",
       "Ensures audit-readiness and governance standard across client enterprises"
+    ]
+  },
+  {
+    id: "satya-wana",
+    name: "Satya Wana Putera Utama, S.T, MBA",
+    title: "Commissioner",
+    role: "Strategic Governance & Enterprise Advisory",
+    image: profileAdriel, // fallback portrait or icon styling
+    credentials: [
+      "S.T (Bachelor of Engineering)",
+      "MBA (Master of Business Administration)",
+      "Executive Enterprise Governance Specialist",
+      "Strategic Business Advisory"
+    ],
+    philosophy: "Strategic governance and structural clarity drive enterprise durability.",
+    bio: "Satya Wana Putera Utama serves as Commissioner at Orthodox Holding, bringing an interdisciplinary background in engineering and advanced business management (MBA). Satya provides strategic oversight and executive governance across Orthodox Business Solutions and Orthodox Wealth Management, ensuring enterprise strategy remains resilient and aligned with long-term owner value.",
+    highlights: [
+      "Commissioner providing executive oversight for Orthodox Holding",
+      "Engineering & MBA dual perspective on enterprise efficiency and governance",
+      "Strategic advisor on structural expansion and corporate resilience"
     ]
   }
 ];
@@ -198,54 +223,46 @@ export const EXPERTISE_SERVICES: ServiceItem[] = [
 export const WHY_ORTHODOX_POINTS = [
   {
     title: "One Strategic Partner",
-    description: "Instead of managing multiple advisors independently (lawyers, tax agents, accountants, bankers), we coordinate every discipline through one integrated strategy."
+    description: "No more managing multiple accountants, tax consultants, and business advisors independently."
   },
   {
-    title: "One Stop Business Solution",
-    description: "Finance, Accounting, Tax, Payroll, Business Strategy, Funding Recommendation, Corporate Structuring, and Governance — all working seamlessly together."
+    title: "Built Around Business Owners",
+    description: "Every recommendation considers profitability, cash flow, tax efficiency, and long-term business value."
   },
   {
-    title: "Beyond The Business",
-    description: "Your business creates wealth. Our ecosystem ensures that wealth is also protected, managed, and transferred effectively through Orthodox Wealth Management."
-  },
-  {
-    title: "Decisions Built Around Owners",
-    description: "Every recommendation considers not only the business balance sheet, but also the owner's personal objectives, family security, succession, and long-term wealth."
-  },
-  {
-    title: "Independent & Outcome-Driven Advice",
-    description: "Solutions are designed strictly around tangible outcomes — never driven by financial product sales or commission biases."
+    title: "One Advisory Ecosystem",
+    description: "As part of Orthodox Holding, your business strategy naturally connects with Orthodox Wealth Management—allowing you to coordinate both business and personal financial planning under one ecosystem."
   },
   {
     title: "Long-Term Partnership",
-    description: "We remain involved as your business evolves, ensuring today's structural decisions continue supporting tomorrow's growth objectives."
+    description: "Today's bookkeeping becomes tomorrow's business strategy. Today's business success becomes tomorrow's personal wealth."
   }
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: "01",
-    title: "Business Discovery",
-    description: "Understand your business, financial performance, ownership structure, operations, and long-term vision.",
-    actions: ["Deep-dive financial review", "Stakeholder interview", "Ownership & tax audit"]
+    title: "Understand",
+    description: "We learn about your business, financials and objectives.",
+    actions: ["Deep-dive business review", "Financial performance analysis", "Owner objective discovery"]
   },
   {
     number: "02",
-    title: "Integrated Strategic Assessment",
-    description: "Identify opportunities and hidden risks across finance, taxation, operations, governance, financing, and ownership.",
-    actions: ["Silo elimination analysis", "Tax optimization mapping", "Capital structure diagnostic"]
+    title: "Identify",
+    description: "We identify financial, tax and operational opportunities.",
+    actions: ["Tax efficiency diagnostic", "Internal control risk audit", "Operational margin mapping"]
   },
   {
     number: "03",
-    title: "Solution Coordination",
-    description: "Coordinate specialists across multiple disciplines while maintaining one integrated strategy.",
-    actions: ["Unified advisory roadmap", "Restructuring execution", "Policy & system implementation"]
+    title: "Improve",
+    description: "We implement practical solutions.",
+    actions: ["Execution roadmap", "Tax & corporate restructuring", "Reporting & governance setup"]
   },
   {
     number: "04",
-    title: "Continuous Advisory",
-    description: "As your business evolves, we continue refining structures, improving performance, and preparing for future opportunities.",
-    actions: ["Quarterly review cycle", "Wealth transfer sync", "Audit readiness oversight"]
+    title: "Grow",
+    description: "We continue supporting your business as it evolves.",
+    actions: ["Continuous advisory", "Wealth transfer sync", "Expansion support"]
   }
 ];
 

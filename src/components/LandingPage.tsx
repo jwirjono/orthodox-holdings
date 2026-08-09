@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, HelpCircle, CheckCircle2, Building2, UserCheck, ShieldCheck } from 'lucide-react';
+import heroArchitectImg from '../assets/images/hero_architect_bw_1784984866276.jpg';
 
 interface LandingPageProps {
   onExploreBusiness: () => void;
@@ -19,9 +20,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
   ];
 
   const businessChallenges = [
+    'Paying more tax than necessary or struggling with tax compliance and reporting?',
+    'Unreliable bookkeeping, inaccurate financial reports, or concerns about fraud and financial leakages?',
     'Cash flow problems despite growing sales?',
-    'High tax burden due to inefficient business structure?',
-    'Financial reports that don\'t support strategic decisions?',
     'Difficulty obtaining bank financing or investor funding?',
     'Poor budgeting and inaccurate financial forecasting?',
     'Business operations that lack proper financial controls?',
@@ -32,21 +33,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5] font-sans antialiased">
       {/* SECTION 1: HERO & TAGLINE */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 border-b border-neutral-800 bg-gradient-to-b from-neutral-950 via-[#0A0A0A] to-[#0A0A0A]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            {/* Eyebrow */}
+      <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-16 border-b border-neutral-800 overflow-hidden bg-[#0A0A0A]">
+        {/* Subtle Architectural Background Image */}
+        <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity pointer-events-none">
+          <img
+            src={heroArchitectImg}
+            alt="Orthodox Holding Background"
+            className="w-full h-full object-cover object-center filter grayscale contrast-125"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/75 to-[#0A0A0A]/60" />
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+          <div className="max-w-4xl">
             {/* Main Tagline Title */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.15] mb-8 font-sans">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.12] mb-8 font-sans">
               Comprehensive and integrated strategies for sustainable success
             </h1>
 
             {/* Descriptive Body */}
-            <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed mb-10 max-w-3xl">
+            <p className="text-base sm:text-xl text-neutral-300 font-light leading-relaxed max-w-3xl">
               At Orthodox Holding, we believe sustainable success comes from integrated financial strategies. We connect personal wealth management and business financial solutions into one ecosystem, aligning every financial decision to create sustainable growth, protect wealth, and build lasting legacies. 
             </p>
-
           </div>
         </div>
       </section>
@@ -57,10 +66,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
           
           <div className="mb-12 text-center max-w-2xl mx-auto">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500">
-              Let's Build Your Financial Future Together 
+              TAKE THE NEXT STEP
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight mt-2">
-              TAKE THE NEXT STEP
+               Let's Build Your Financial Future Together 
             </h2>
           </div>
 
@@ -73,10 +82,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
                   <Building2 className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-[9px] font-mono uppercase tracking-widest text-neutral-500 block">
-                  Corporate Advisory
+                  Business Advisory
                 </span>
                 <h3 className="text-xs font-medium text-white font-sans tracking-tight mt-1 mb-4 leading-snug">
-                  Facing Business Challenges?
+                  Facing These Business Challenges?
                 </h3>
               </div>
 
@@ -96,10 +105,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
                   <UserCheck className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-[9px] font-mono uppercase tracking-widest text-neutral-500 block">
-                  Private Advisory
+                  Personal Finance Advisory
                 </span>
                 <h3 className="text-xs font-medium text-white font-sans tracking-tight mt-1 mb-4 leading-snug">
-                  Facing Personal Challenges?
+                  Facing These Personal Financial Challenges?
                 </h3>
               </div>
 

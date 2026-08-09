@@ -192,8 +192,8 @@ export const Header: React.FC<HeaderProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-neutral-800/80 py-3'
-          : 'bg-[#0A0A0A]/90 backdrop-blur-xs py-3.5 border-b border-neutral-900'
+          ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-neutral-800/80 py-3.5'
+          : 'bg-[#0A0A0A]/90 backdrop-blur-xs py-4 sm:py-4.5 border-b border-neutral-900'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -218,16 +218,16 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Holdings / Business Solutions Toggle Buttons - Hidden on Phone, Visible on Tablet/Desktop */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <nav className="hidden md:flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
+            <nav className="hidden md:flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 sm:p-1.5 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
               <button
                 onClick={() => onNavigateView('business')}
-                className="px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs bg-white text-black font-semibold shadow-xs"
+                className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs bg-white text-black font-semibold shadow-xs"
               >
                 Business Solutions
               </button>
               <button
                 onClick={() => window.open('https://orthodoxwm.com/', '_blank')}
-                className="px-2.5 sm:px-3 py-1 sm:py-1.5 transition-all rounded-xs text-neutral-400 hover:text-white flex items-center gap-1"
+                className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs text-neutral-400 hover:text-white flex items-center gap-1"
               >
                 <span>Wealth Management</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
@@ -252,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Consultation CTA */}
               <button
                 onClick={() => onOpenConsultation()}
-                className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-black bg-white border border-white hover:bg-neutral-200 transition-all rounded-xs shadow-xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-2.5 text-xs font-semibold uppercase tracking-wider text-black bg-white border border-white hover:bg-neutral-200 transition-all rounded-xs shadow-xs"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>Consultation</span>

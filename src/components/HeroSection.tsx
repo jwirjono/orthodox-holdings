@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, TrendingUp, Layers, ChevronDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HERO_DATA } from '../data/orthodoxData';
 import heroArchitectImg from '../assets/images/hero_architect_bw_1784984866276.jpg';
 
 interface HeroSectionProps {
   onOpenConsultation: (msg?: string) => void;
-  onOpenDashboard: () => void;
+  onOpenDashboard?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -28,23 +28,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12">
         {/* Hero Headline & Copy */}
         <div className="max-w-5xl space-y-6">
-          <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-semibold tracking-[-0.03em] leading-[0.95] text-white">
-            Integrated Solutions. Sustainable Growth.
+          <h1 className="text-5xl sm:text-7xl lg:text-[80px] font-semibold tracking-[-0.03em] leading-[0.95] text-white">
+            Integrated Solutions.<br />
+            <span className="text-neutral-300 font-light">Sustainable Growth.</span>
           </h1>
 
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-snug text-neutral-200">
-            Business success is <span className="font-semibold underline decoration-neutral-600 decoration-1 underline-offset-8">never</span> created by accounting, tax, or strategy alone.
+            {HERO_DATA.heading}
           </h2>
 
           <p className="text-base sm:text-lg text-neutral-300 font-light leading-relaxed max-w-3xl tracking-wide">
-            It is built when <strong className="text-white font-semibold">finance, taxation, operations, governance, funding,</strong> and <strong className="text-white font-semibold">ownership structures</strong> work together as one integrated business system.
+            {HERO_DATA.paragraph1}
           </p>
 
           <div className="pt-2 grid md:grid-cols-2 gap-6 text-sm text-neutral-400 leading-relaxed font-light border-t border-neutral-800/80 pt-6">
-            <p>
-              {HERO_DATA.paragraph1}
-            </p>
-            <p className="border-l border-neutral-800 pl-4 md:pl-6">
+            <p className="text-neutral-300">
               {HERO_DATA.paragraph2}
             </p>
           </div>
@@ -53,17 +51,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="pt-6 flex flex-wrap items-center gap-4">
             <button
               onClick={() => onOpenConsultation()}
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all shadow-md group"
+              className="inline-flex items-center gap-3 px-7 py-3.5 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all shadow-md group rounded-xs"
             >
               <span>Request Consultation</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
-
-            <button
-              onClick={onOpenDashboard}
-              className="inline-flex items-center gap-3 px-6 py-3.5 bg-neutral-900 border border-neutral-700 text-white font-medium text-xs uppercase tracking-widest hover:bg-neutral-800 hover:border-neutral-500 transition-all"
-            >
-              <span>Client Portfolio Dashboard</span>
             </button>
           </div>
         </div>
@@ -74,13 +65,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-4">
           Trust Indicators & Track Record
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {HERO_DATA.trustIndicators.map((item, idx) => (
             <div key={idx} className="border-l border-neutral-800 pl-4 py-1">
               <div className="text-2xl sm:text-3xl font-semibold text-white tracking-tight font-sans">
                 {item.value}
               </div>
-              <div className="text-xs text-neutral-400 font-light mt-0.5">
+              <div className="text-xs sm:text-sm text-neutral-400 font-light mt-0.5">
                 {item.label}
               </div>
             </div>

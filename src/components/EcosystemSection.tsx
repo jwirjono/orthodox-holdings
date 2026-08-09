@@ -13,15 +13,73 @@ export const EcosystemSection: React.FC = () => {
     <section id="ecosystem" className="py-24 bg-[#080808] text-white border-b border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-800">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white mt-2">
-              Our Ecosystem
-            </h2>
-          </div>
-          <p className="text-sm text-neutral-400 font-light max-w-md mt-4 md:mt-0">
-            One Business. One Advisory Ecosystem. Most advisory firms stop at the business — we continue beyond it.
+        <div className="mb-12 pb-6 border-b border-neutral-800">
+          <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
+            Integrated Holding Structure
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
+            THE ORTHODOX ECOSYSTEM
+          </h2>
+          <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl">
+            Connecting business growth with personal wealth creation.
           </p>
+        </div>
+
+        {/* 3 Main Holding Pillars Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {/* Pillar 1: Orthodox Holding */}
+          <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-2">
+                ECOSYSTEM ROOT
+              </span>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Orthodox Holding
+              </h3>
+              <p className="text-xs text-neutral-300 font-light leading-relaxed">
+                Group holding company overseeing integrated business solutions and wealth management advisory.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-neutral-800 text-[10px] font-mono text-neutral-500 uppercase">
+              Parent Governance
+            </div>
+          </div>
+
+          {/* Pillar 2: Orthodox Business Solutions */}
+          <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-2">
+                ENTERPRISE ARM
+              </span>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Orthodox Business Solutions
+              </h3>
+              <p className="text-xs text-neutral-300 font-light leading-relaxed">
+                Helping business owners build stronger, more profitable, and financially disciplined enterprises through integrated tax, accounting, and strategic advisory.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-neutral-800 text-[10px] font-mono text-neutral-500 uppercase">
+              Corporate Strategy
+            </div>
+          </div>
+
+          {/* Pillar 3: Orthodox Wealth Management */}
+          <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-xs flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block mb-2">
+                FAMILY & WEALTH ARM
+              </span>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Orthodox Wealth Management
+              </h3>
+              <p className="text-xs text-neutral-300 font-light leading-relaxed">
+                Helping business owners protect, grow, and transfer personal and family wealth seamlessly across generations.
+              </p>
+            </div>
+            <div className="mt-6 pt-3 border-t border-neutral-800 text-[10px] font-mono text-neutral-500 uppercase">
+              Private Estate & Wealth
+            </div>
+          </div>
         </div>
 
         {/* Interactive Architecture Flowchart */}

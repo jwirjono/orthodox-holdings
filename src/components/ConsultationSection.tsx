@@ -31,14 +31,15 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
     <section id="consultation" className="py-24 bg-[#080808] text-white border-b border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-neutral-800">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white mt-2">
-              Private Consultation
-            </h2>
-          </div>
-          <p className="text-sm text-neutral-400 font-light max-w-md mt-4 md:mt-0">
-            Build a Better Business.
+        <div className="mb-12 pb-6 border-b border-neutral-800">
+          <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
+            Initiate Advisory Engagement
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
+            Ready to build a stronger, more profitable business?
+          </h2>
+          <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl">
+            Connect with our team to discuss your tax, accounting, or business strategy.
           </p>
         </div>
 
