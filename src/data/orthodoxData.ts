@@ -33,12 +33,12 @@ export const HERO_DATA = {
 
 export const PROBLEM_ITEMS: ProblemItem[] = [
   {
-    id: "tax-reduction",
-    title: "My tax bills keep growing and I have no idea how to reduce them legally",
-    siloDescription: "Tax compliance without proactive tax strategy leads to overpayment, missed deductions, and unexpected tax liabilities.",
-    rippleEffect: "Unnecessary tax drag deprives your business of essential working capital needed for reinvestment and growth.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien.",
-    backgroundImage: problemTax
+    id: "gut-feel-decisions",
+    title: "I make major business decisions based on gut feeling because I do not have reliable financial data",
+    siloDescription: "Delayed or unverified financial reports force leadership to navigate growth without clear unit economics or margin visibility.",
+    rippleEffect: "Relying on gut feeling increases strategic operational risk and complicates debt or equity financing efforts.",
+    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat.",
+    backgroundImage: problemDecision
   },
   {
     id: "money-leakage",
@@ -56,13 +56,14 @@ export const PROBLEM_ITEMS: ProblemItem[] = [
     whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya.",
     backgroundImage: problemCash
   },
-  {
-    id: "gut-feel-decisions",
-    title: "I make major business decisions based on gut feeling because I do not have reliable financial data",
-    siloDescription: "Delayed or unverified financial reports force leadership to navigate growth without clear unit economics or margin visibility.",
-    rippleEffect: "Relying on gut feeling increases strategic operational risk and complicates debt or equity financing efforts.",
-    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat.",
-    backgroundImage: problemDecision
+
+    {
+    id: "tax-reduction",
+    title: "My tax bills keep growing and I have no idea how to reduce them legally",
+    siloDescription: "Tax compliance without proactive tax strategy leads to overpayment, missed deductions, and unexpected tax liabilities.",
+    rippleEffect: "Unnecessary tax drag deprives your business of essential working capital needed for reinvestment and growth.",
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien.",
+    backgroundImage: problemTax
   },
   {
     id: "tax-audit-dispute",
