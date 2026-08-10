@@ -204,71 +204,108 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
 
             return (
               <div className="my-6 space-y-4">
-                {/* Row 1: Problems 1-3 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {row1.map((item, idx) => {
+                {/* Desktop View (lg: 3-column rows) */}
+                <div className="hidden lg:block space-y-4">
+                  {/* Row 1: Problems 1-3 */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {row1.map((item, idx) => {
+                      const isSelected = activeProblem.id === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => handleSelectProblem(item)}
+                          className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
+                            isSelected
+                              ? 'bg-white text-black border-white shadow-lg'
+                              : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span
+                              className={`text-[10px] font-mono tracking-wider ${
+                                isSelected ? 'text-neutral-600' : 'text-neutral-500'
+                              }`}
+                            >
+                              PROBLEM // 0{idx + 1}
+                            </span>
+                            {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
+                          </div>
+                          <span className="text-sm font-semibold leading-snug">{item.title}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Diagnostic Overview directly under Row 1 if active item is in Row 1 */}
+                  {isActiveInRow1 && renderDiagnosticPreview()}
+
+                  {/* Row 2: Problems 4-6 */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {row2.map((item, idx) => {
+                      const isSelected = activeProblem.id === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => handleSelectProblem(item)}
+                          className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
+                            isSelected
+                              ? 'bg-white text-black border-white shadow-lg'
+                              : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span
+                              className={`text-[10px] font-mono tracking-wider ${
+                                isSelected ? 'text-neutral-600' : 'text-neutral-500'
+                              }`}
+                            >
+                              PROBLEM // 0{idx + 4}
+                            </span>
+                            {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
+                          </div>
+                          <span className="text-sm font-semibold leading-snug">{item.title}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Diagnostic Overview directly under Row 2 if active item is in Row 2 */}
+                  {isActiveInRow2 && renderDiagnosticPreview()}
+                </div>
+
+                {/* Mobile & Tablet View (< lg: stacked directly under active card) */}
+                <div className="block lg:hidden space-y-3">
+                  {PROBLEM_ITEMS.map((item, idx) => {
                     const isSelected = activeProblem.id === item.id;
                     return (
-                      <button
-                        key={item.id}
-                        onClick={() => handleSelectProblem(item)}
-                        className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
-                          isSelected
-                            ? 'bg-white text-black border-white shadow-lg'
-                            : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <span
-                            className={`text-[10px] font-mono tracking-wider ${
-                              isSelected ? 'text-neutral-600' : 'text-neutral-500'
-                            }`}
-                          >
-                            PROBLEM // 0{idx + 1}
-                          </span>
-                          {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
-                        </div>
-                        <span className="text-sm font-semibold leading-snug">{item.title}</span>
-                      </button>
+                      <React.Fragment key={item.id}>
+                        <button
+                          onClick={() => handleSelectProblem(item)}
+                          className={`w-full p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between rounded-xs ${
+                            isSelected
+                              ? 'bg-white text-black border-white shadow-lg'
+                              : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span
+                              className={`text-[10px] font-mono tracking-wider ${
+                                isSelected ? 'text-neutral-600' : 'text-neutral-500'
+                              }`}
+                            >
+                              PROBLEM // 0{idx + 1}
+                            </span>
+                            {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
+                          </div>
+                          <span className="text-sm font-semibold leading-snug">{item.title}</span>
+                        </button>
+
+                        {/* Render overview directly under the active card on mobile/tablet */}
+                        {isSelected && renderDiagnosticPreview()}
+                      </React.Fragment>
                     );
                   })}
                 </div>
-
-                {/* Diagnostic Overview directly under Row 1 if active item is in Row 1 */}
-                {isActiveInRow1 && renderDiagnosticPreview()}
-
-                {/* Row 2: Problems 4-6 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {row2.map((item, idx) => {
-                    const isSelected = activeProblem.id === item.id;
-                    return (
-                      <button
-                        key={item.id}
-                        onClick={() => handleSelectProblem(item)}
-                        className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
-                          isSelected
-                            ? 'bg-white text-black border-white shadow-lg'
-                            : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <span
-                            className={`text-[10px] font-mono tracking-wider ${
-                              isSelected ? 'text-neutral-600' : 'text-neutral-500'
-                            }`}
-                          >
-                            PROBLEM // 0{idx + 4}
-                          </span>
-                          {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
-                        </div>
-                        <span className="text-sm font-semibold leading-snug">{item.title}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Diagnostic Overview directly under Row 2 if active item is in Row 2 */}
-                {isActiveInRow2 && renderDiagnosticPreview()}
               </div>
             );
           })()}
