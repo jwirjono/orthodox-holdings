@@ -8,9 +8,9 @@ import {
   PortfolioAsset,
 } from '../types';
 
-import profileAdriel from '../assets/images/profile_adriel.jpeg';
+import profileAdriel from '../assets/images/profile_adriel.jpg';
 import profileDominicus from '../assets/images/profile_dominicus_1784984892548.jpg';
-import profileBunga from '../assets/images/profile_bunga.jpeg';
+import profileBunga from '../assets/images/profile_bunga.jpg';
 import profileSatya from '../assets/images/profile_satya.jpg';
 
 export const HERO_DATA = {
