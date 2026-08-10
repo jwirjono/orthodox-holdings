@@ -22,17 +22,6 @@ export const Footer: React.FC = () => {
               Connecting business success with long-term personal wealth through an integrated advisory ecosystem.
             </p>
 
-            <div className="pt-2">
-              <a
-                href="https://orthodoxwm.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-300 hover:text-white hover:border-neutral-600 transition-all"
-              >
-                <span>For more personal assistance in business: orthodoxwm.com</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500" />
-              </a>
-            </div>
           </div>
 
           {/* Nav Col 1 */}

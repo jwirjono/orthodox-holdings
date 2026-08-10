@@ -49,9 +49,9 @@ export const PROBLEM_ITEMS: ProblemItem[] = [
   },
   {
     id: "gut-feel-decisions",
-    title: "I make major business decisions on gut feel because I do not have reliable financial data",
+    title: "I make major business decisions based on gut feeling because I do not have reliable financial data",
     siloDescription: "Delayed or unverified financial reports force leadership to navigate growth without clear unit economics or margin visibility.",
-    rippleEffect: "Gut-feel decision making increases strategic operational risk and complicates debt or equity financing efforts.",
+    rippleEffect: "Relying on gut feeling increases strategic operational risk and complicates debt or equity financing efforts.",
     whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat."
   },
   {

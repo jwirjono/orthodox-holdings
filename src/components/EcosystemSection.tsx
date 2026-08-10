@@ -20,7 +20,7 @@ export const EcosystemSection: React.FC = () => {
     { name: 'Tax', isBridge: false, isWealth: false, num: '03', icon: Receipt },
     { name: 'Finance', isBridge: false, isWealth: false, num: '04', icon: LineChart },
     { name: 'Growth', isBridge: false, isWealth: false, num: '05', icon: TrendingUp },
-    { name: 'Orthodox Wealth Management', isBridge: true, isWealth: false, num: '06', icon: ShieldCheck },
+    { name: 'Orthodox Wealth Management', isBridge: true, isWealth: false, num: '06', icon: ShieldCheck, url: 'https://orthodoxwm.com/' },
     { name: 'Investment', isBridge: false, isWealth: true, num: '07', icon: Briefcase },
     { name: 'Insurance', isBridge: false, isWealth: true, num: '08', icon: Shield },
     { name: 'Estate Planning', isBridge: false, isWealth: true, num: '09', icon: Landmark },
@@ -44,50 +44,67 @@ export const EcosystemSection: React.FC = () => {
         <div className="max-w-lg mx-auto flex flex-col items-center mb-16 space-y-0">
           {flowItems.map((item, index) => {
             const Icon = item.icon;
+            const cardContent = (
+              <>
+                <div className="flex items-center gap-3.5">
+                  <span
+                    className={`text-[10px] font-mono font-bold tracking-widest px-2 py-0.5 rounded-xs border ${
+                      item.isBridge
+                        ? 'bg-black text-white border-black'
+                        : item.isWealth
+                        ? 'bg-emerald-950/80 text-emerald-400 border-emerald-800/80'
+                        : 'bg-neutral-900 text-neutral-400 border-neutral-800'
+                    }`}
+                  >
+                    {item.num}
+                  </span>
+                  <span
+                    className={`text-sm sm:text-base font-semibold uppercase tracking-wider ${
+                      item.isBridge ? 'text-black font-extrabold' : 'text-white'
+                    }`}
+                  >
+                    {item.name}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <Icon
+                    className={`w-4 h-4 transition-transform group-hover:scale-110 ${
+                      item.isBridge
+                        ? 'text-black'
+                        : item.isWealth
+                        ? 'text-emerald-400'
+                        : 'text-neutral-400'
+                    }`}
+                  />
+                </div>
+              </>
+            );
+
+            const cardClasses = `w-full py-4 px-6 rounded-xs transition-all duration-300 flex items-center justify-between gap-4 group ${
+              item.isBridge
+                ? 'bg-white text-black font-bold shadow-[0_0_25px_rgba(255,255,255,0.15)] my-2 border border-white transform hover:-translate-y-0.5'
+                : item.isWealth
+                ? 'bg-neutral-950 text-emerald-200 border border-emerald-900/60 hover:border-emerald-500 hover:bg-neutral-900/80 shadow-sm'
+                : 'bg-neutral-950 text-neutral-200 border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/60 shadow-sm'
+            }`;
+
             return (
               <React.Fragment key={index}>
-                <div
-                  className={`w-full py-4 px-6 rounded-xs transition-all duration-300 flex items-center justify-between gap-4 group ${
-                    item.isBridge
-                      ? 'bg-white text-black font-bold shadow-[0_0_25px_rgba(255,255,255,0.15)] my-2 border border-white transform hover:-translate-y-0.5'
-                      : item.isWealth
-                      ? 'bg-neutral-950 text-emerald-200 border border-emerald-900/60 hover:border-emerald-500 hover:bg-neutral-900/80 shadow-sm'
-                      : 'bg-neutral-950 text-neutral-200 border border-neutral-800 hover:border-neutral-600 hover:bg-neutral-900/60 shadow-sm'
-                  }`}
-                >
-                  <div className="flex items-center gap-3.5">
-                    <span
-                      className={`text-[10px] font-mono font-bold tracking-widest px-2 py-0.5 rounded-xs border ${
-                        item.isBridge
-                          ? 'bg-black text-white border-black'
-                          : item.isWealth
-                          ? 'bg-emerald-950/80 text-emerald-400 border-emerald-800/80'
-                          : 'bg-neutral-900 text-neutral-400 border-neutral-800'
-                      }`}
-                    >
-                      {item.num}
-                    </span>
-                    <span
-                      className={`text-sm sm:text-base font-semibold uppercase tracking-wider ${
-                        item.isBridge ? 'text-black font-extrabold' : 'text-white'
-                      }`}
-                    >
-                      {item.name}
-                    </span>
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClasses}
+                  >
+                    {cardContent}
+                  </a>
+                ) : (
+                  <div className={cardClasses}>
+                    {cardContent}
                   </div>
-
-                  <div className="flex items-center gap-2 shrink-0">
-                    <Icon
-                      className={`w-4 h-4 transition-transform group-hover:scale-110 ${
-                        item.isBridge
-                          ? 'text-black'
-                          : item.isWealth
-                          ? 'text-emerald-400'
-                          : 'text-neutral-400'
-                      }`}
-                    />
-                  </div>
-                </div>
+                )}
 
                 {index < flowItems.length - 1 && (
                   <div className="py-2 flex flex-col items-center justify-center">

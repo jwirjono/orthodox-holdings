@@ -59,7 +59,16 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
             </p>
 
             <p className="text-sm text-neutral-300 font-light leading-relaxed border-l-2 border-white pl-4">
-              Through our ecosystem with Orthodox Wealth Management, your business strategy naturally extends into your personal financial future—ensuring both your company and your wealth are built to last.
+              Through our ecosystem with{' '}
+              <a
+                href="https://orthodoxwm.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white transition-colors"
+              >
+                Orthodox Wealth Management
+              </a>
+              , your business strategy naturally extends into your personal financial future—ensuring both your company and your wealth are built to last.
             </p>
 
             <div className="pt-6 space-y-4 border-t border-neutral-800">

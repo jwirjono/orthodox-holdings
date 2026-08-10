@@ -100,119 +100,167 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
           </p>
         </div>
 
-        {/* FREQUENT PROBLEM TO SOLVE */}
+        {/* FREQUENT PROBLEM TO SOLVE (Dropdown WhatsApp starter as it was) */}
         <div className="bg-neutral-900/90 border border-neutral-800 p-6 sm:p-8 mb-20 rounded-xs">
-          <div className="pb-6 border-b border-neutral-800">
-            <h3 className="text-xl sm:text-2xl font-medium text-white font-sans uppercase">
-              FREQUENT PROBLEM TO SOLVE:
-            </h3>
-            <p className="text-xs text-neutral-400 font-light mt-1">
-              Select your current operational challenge to view the diagnostic overview and launch a direct WhatsApp consultation.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-neutral-800">
+            <div>
+              <span className="inline-block px-2.5 py-0.5 bg-white text-black font-mono text-[10px] uppercase font-bold tracking-widest mb-2">
+                Diagnostic Starter Route
+              </span>
+              <h3 className="text-xl sm:text-2xl font-medium text-white font-sans uppercase">
+                FREQUENT PROBLEM TO SOLVE:
+              </h3>
+              <p className="text-xs text-neutral-400 font-light mt-1">
+                Select your current operational challenge to launch a direct WhatsApp consultation preview.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs font-mono text-neutral-400">Instant Channel:</span>
+              <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2.5 py-1">
+                WhatsApp Direct Advisory
+              </span>
+            </div>
           </div>
 
-          {/* Selector List / Cards with Inline Diagnostic Overview */}
-          <div className="space-y-3 my-6">
-            {PROBLEM_ITEMS.map((item, idx) => {
-              const isSelected = activeProblem.id === item.id;
-              return (
-                <div
-                  key={item.id}
-                  className={`border transition-all rounded-xs overflow-hidden ${
-                    isSelected ? 'border-white bg-neutral-950 shadow-lg' : 'border-neutral-800 bg-neutral-950/60 hover:border-neutral-700'
-                  }`}
-                >
-                  {/* Card Header Button */}
-                  <button
-                    onClick={() => handleSelectProblem(item)}
-                    className={`w-full p-4 sm:p-5 text-left transition-all text-xs font-sans font-medium flex items-center justify-between gap-4 ${
-                      isSelected
-                        ? 'bg-white text-black font-semibold'
-                        : 'bg-neutral-950 text-neutral-300 hover:bg-neutral-900 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={`text-[10px] font-mono tracking-wider shrink-0 px-2 py-0.5 border ${
-                        isSelected ? 'border-black/30 text-neutral-800 font-bold' : 'border-neutral-800 text-neutral-500'
-                      }`}>
-                        PROBLEM // 0{idx + 1}
-                      </span>
-                      <span className="text-sm sm:text-base font-semibold leading-snug">{item.title}</span>
-                    </div>
-                    <div className="shrink-0 flex items-center gap-2">
-                      <span className={`text-[10px] font-mono uppercase tracking-wider hidden sm:inline-block ${
-                        isSelected ? 'text-neutral-700' : 'text-neutral-500'
-                      }`}>
-                        {isSelected ? 'Active Overview' : 'Click to View'}
-                      </span>
-                      <MessageSquare className={`w-4 h-4 ${isSelected ? 'text-black' : 'text-neutral-500'}`} />
-                    </div>
-                  </button>
+          {/* Selector List / Cards divided into row 1 (1-3) and row 2 (4-6) */}
+          {(() => {
+            const row1 = PROBLEM_ITEMS.slice(0, 3);
+            const row2 = PROBLEM_ITEMS.slice(3, 6);
+            const activeIndex = PROBLEM_ITEMS.findIndex((p) => p.id === activeProblem.id);
+            const isActiveInRow1 = activeIndex >= 0 && activeIndex < 3;
+            const isActiveInRow2 = activeIndex >= 3 && activeIndex < 6;
 
-                  {/* Diagnostic Overview Tab Below the Card */}
-                  {isSelected && (
-                    <div
-                      ref={previewRef}
-                      className="border-t border-neutral-800 p-6 grid md:grid-cols-3 gap-6 scroll-mt-28 bg-neutral-950"
-                    >
-                      <div className="md:col-span-2 space-y-4">
-                        <div>
-                          <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 block mb-1">
-                            Diagnostic Overview:
-                          </span>
-                          <p className="text-sm text-neutral-200 font-light leading-relaxed">
-                            {item.siloDescription}
-                          </p>
-                        </div>
+            const renderDiagnosticPreview = () => (
+              <div
+                ref={previewRef}
+                className="bg-neutral-950 border border-neutral-800 p-6 rounded-xs grid md:grid-cols-3 gap-6 scroll-mt-28 my-4"
+              >
+                <div className="md:col-span-2 space-y-4">
+                  <div>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">
+                      Diagnostic Overview:
+                    </span>
+                    <p className="text-sm text-neutral-200 font-light mt-1 leading-relaxed">
+                      {activeProblem.siloDescription}
+                    </p>
+                  </div>
 
-                        <div>
-                          <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 block mb-1">
-                            Business Impact:
-                          </span>
-                          <p className="text-sm text-neutral-300 font-light leading-relaxed border-l-2 border-neutral-700 pl-3">
-                            {item.rippleEffect}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="bg-neutral-900 border border-neutral-800 p-4 flex flex-col justify-between rounded-xs">
-                        <div>
-                          <span className="text-[10px] uppercase font-mono text-emerald-400 block mb-1">
-                            WhatsApp Conversation Starter:
-                          </span>
-                          <p className="text-xs text-neutral-300 italic font-mono bg-neutral-950 p-3 border border-neutral-800 rounded-xs min-h-[4.5rem]">
-                            "{typedMessage}"
-                            <span
-                              className={`inline-block w-1.5 h-3.5 ml-1 bg-emerald-400 align-middle ${
-                                isTyping ? 'animate-pulse' : 'opacity-0'
-                              }`}
-                            />
-                          </p>
-                        </div>
-
-                        <div className="pt-4 flex flex-col gap-2">
-                          <button
-                            onClick={() => handleWhatsAppRedirect(item)}
-                            className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all rounded-xs"
-                          >
-                            <MessageSquare className="w-4 h-4" />
-                            <span>Start on WhatsApp</span>
-                          </button>
-
-                          <button
-                            onClick={() => onOpenConsultation(item.whatsappMessage)}
-                            className="w-full py-2 px-4 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border border-neutral-700 rounded-xs"
-                          >
-                            <span>Book Private Consultation</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <div>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">
+                      Business Impact:
+                    </span>
+                    <p className="text-sm text-neutral-300 font-light mt-1 leading-relaxed border-l-2 border-neutral-700 pl-3">
+                      {activeProblem.rippleEffect}
+                    </p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+
+                <div className="bg-neutral-900 border border-neutral-800 p-4 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[10px] uppercase font-mono text-emerald-400 block mb-1">
+                      WhatsApp Conversation Starter:
+                    </span>
+                    <p className="text-xs text-neutral-300 italic font-mono bg-neutral-950 p-3 border border-neutral-800 rounded-xs min-h-[4.5rem]">
+                      "{typedMessage}"
+                      <span
+                        className={`inline-block w-1.5 h-3.5 ml-1 bg-emerald-400 align-middle ${
+                          isTyping ? 'animate-pulse' : 'opacity-0'
+                        }`}
+                      />
+                    </p>
+                  </div>
+
+                  <div className="pt-4 flex flex-col gap-2">
+                    <button
+                      onClick={() => handleWhatsAppRedirect(activeProblem)}
+                      className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all rounded-xs"
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      <span>Start on WhatsApp</span>
+                    </button>
+
+                    <button
+                      onClick={() => onOpenConsultation(activeProblem.whatsappMessage)}
+                      className="w-full py-2 px-4 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border border-neutral-700 rounded-xs"
+                    >
+                      <span>Book Private Consultation</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+
+            return (
+              <div className="my-6 space-y-4">
+                {/* Row 1: Problems 1-3 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {row1.map((item, idx) => {
+                    const isSelected = activeProblem.id === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => handleSelectProblem(item)}
+                        className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
+                          isSelected
+                            ? 'bg-white text-black border-white shadow-lg'
+                            : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span
+                            className={`text-[10px] font-mono tracking-wider ${
+                              isSelected ? 'text-neutral-600' : 'text-neutral-500'
+                            }`}
+                          >
+                            PROBLEM // 0{idx + 1}
+                          </span>
+                          {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
+                        </div>
+                        <span className="text-sm font-semibold leading-snug">{item.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Diagnostic Overview directly under Row 1 if active item is in Row 1 */}
+                {isActiveInRow1 && renderDiagnosticPreview()}
+
+                {/* Row 2: Problems 4-6 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {row2.map((item, idx) => {
+                    const isSelected = activeProblem.id === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => handleSelectProblem(item)}
+                        className={`p-4 text-left border transition-all text-xs font-sans font-medium flex flex-col justify-between h-full rounded-xs ${
+                          isSelected
+                            ? 'bg-white text-black border-white shadow-lg'
+                            : 'bg-neutral-950 text-neutral-300 border-neutral-800 hover:border-neutral-600 hover:text-white'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span
+                            className={`text-[10px] font-mono tracking-wider ${
+                              isSelected ? 'text-neutral-600' : 'text-neutral-500'
+                            }`}
+                          >
+                            PROBLEM // 0{idx + 4}
+                          </span>
+                          {isSelected && <MessageSquare className="w-3.5 h-3.5 text-black" />}
+                        </div>
+                        <span className="text-sm font-semibold leading-snug">{item.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Diagnostic Overview directly under Row 2 if active item is in Row 2 */}
+                {isActiveInRow2 && renderDiagnosticPreview()}
+              </div>
+            );
+          })()}
         </div>
 
         {/* OUR SERVICE: Side-by-Side Featured Plans */}

@@ -26,8 +26,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness, onO
     'Difficulty obtaining bank financing or investor funding?',
     'Poor budgeting and inaccurate financial forecasting?',
     'Business operations that lack proper financial controls?',
-    'Multiple financial, tax, and compliance issues with no integrated solution?',
-    'Unsure how to scale your business sustainably?',
+    'Unsure where your business is making or losing money?',
+    'Too much time spent managing finances instead of growing your business?',
   ];
 
   return (
