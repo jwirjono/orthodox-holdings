@@ -12,6 +12,12 @@ import profileAdriel from '../assets/images/profile_adriel.jpg';
 import profileDominicus from '../assets/images/profile_dominicus_1784984892548.jpg';
 import profileBunga from '../assets/images/profile_bunga.jpg';
 import profileSatya from '../assets/images/profile_satya.jpg';
+import problemWealth from '../assets/images/problem/problem_wealth.jpeg';
+import problemTax from '../assets/images/problem/problem_tax.jpeg';
+import problemFraud from '../assets/images/problem/problem_fraud.jpeg';
+import problemDecision from '../assets/images/problem/problem_decision.jpeg';
+import problemDispute from '../assets/images/problem/problem_dispute.jpeg';
+import problemCash from '../assets/images/problem/problem_cash.jpeg';
 
 export const HERO_DATA = {
   tagline: "Integrated Solutions. Sustainable Growth.",
@@ -31,42 +37,48 @@ export const PROBLEM_ITEMS: ProblemItem[] = [
     title: "My tax bills keep growing and I have no idea how to reduce them legally",
     siloDescription: "Tax compliance without proactive tax strategy leads to overpayment, missed deductions, and unexpected tax liabilities.",
     rippleEffect: "Unnecessary tax drag deprives your business of essential working capital needed for reinvestment and growth.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien."
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien.",
+    backgroundImage: problemTax
   },
   {
     id: "money-leakage",
     title: "I suspect money is leaking inside my business, but I cannot find where or prove it",
     siloDescription: "Inadequate internal controls and unverified bookkeeping create dangerous blind spots for financial leakage and internal fraud.",
     rippleEffect: "Undetected leakages continuously erode profit margins and compromise overall enterprise financial integrity.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin melakukan kaji ulang pengendalian internal dan penelusuran kebocoran keuangan/fraud pada bisnis saya."
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin melakukan kaji ulang pengendalian internal dan penelusuran kebocoran keuangan/fraud pada bisnis saya.",
+    backgroundImage: problemFraud
   },
   {
     id: "cashflow-crunch",
     title: "My revenue keeps going up, but my bank account never seems to have enough in it",
     siloDescription: "Growing top-line revenue without working capital controls and cash conversion forecasting causes severe liquidity bottlenecks.",
     rippleEffect: "Rapidly scaling businesses frequently face insolvency traps if cash flow cycles and debt terms are left unmonitored.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya."
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya.",
+    backgroundImage: problemCash
   },
   {
     id: "gut-feel-decisions",
     title: "I make major business decisions based on gut feeling because I do not have reliable financial data",
     siloDescription: "Delayed or unverified financial reports force leadership to navigate growth without clear unit economics or margin visibility.",
     rippleEffect: "Relying on gut feeling increases strategic operational risk and complicates debt or equity financing efforts.",
-    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat."
+    whatsappMessage: "Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat.",
+    backgroundImage: problemDecision
   },
   {
     id: "tax-audit-dispute",
     title: "My business is facing a tax audit or dispute and I do not know where to begin",
     siloDescription: "Navigating a corporate tax audit without technical defense and dispute representation leaves companies vulnerable to arbitrary findings.",
     rippleEffect: "Unresolved tax disputes result in heavy penalties, frozen liquidity, and prolonged operational uncertainty.",
-    whatsappMessage: "Halo Orthodox Holdings, kami membutuhkan pendampingan profesional untuk penanganan pemeriksaan dan sengketa pajak (Tax Audit & Dispute)."
+    whatsappMessage: "Halo Orthodox Holdings, kami membutuhkan pendampingan profesional untuk penanganan pemeriksaan dan sengketa pajak (Tax Audit & Dispute).",
+    backgroundImage: problemDispute
   },
   {
     id: "protecting-wealth",
     title: "My business is doing well, but I have not figured out how to protect the wealth I have built",
     siloDescription: "Failing to ring-fence personal assets from operating enterprise liabilities puts accumulated family wealth at risk.",
     rippleEffect: "Without integrated estate planning and asset protection, business volatility can destabilize personal family prosperity.",
-    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai perlindungan aset dan suksesi kekayaan pribadi melalui Orthodox Wealth Management."
+    whatsappMessage: "Halo Orthodox Holdings, saya ingin berkonsultasi mengenai perlindungan aset dan suksesi kekayaan pribadi melalui Orthodox Wealth Management.",
+    backgroundImage: problemWealth
   }
 ];
 

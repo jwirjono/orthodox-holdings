@@ -134,29 +134,40 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
             const renderDiagnosticPreview = () => (
               <div
                 ref={previewRef}
-                className="bg-neutral-950 border border-neutral-800 p-6 rounded-xs grid md:grid-cols-3 gap-6 scroll-mt-28 my-4"
+                className="relative overflow-hidden bg-neutral-950 border border-neutral-700 p-6 sm:p-8 rounded-xs grid md:grid-cols-3 gap-6 scroll-mt-28 my-4 shadow-2xl"
               >
-                <div className="md:col-span-2 space-y-4">
+                {/* Background Image - clearly visible with subtle gradient overlay */}
+                <div className="absolute inset-0 z-0 pointer-events-none">
+                  <img
+                    src={activeProblem.backgroundImage}
+                    alt="Diagnostic Background"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover opacity-75 filter brightness-90 contrast-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-950/80 to-neutral-950/60" />
+                </div>
+
+                <div className="relative z-10 md:col-span-2 space-y-5 p-4 sm:p-5 rounded-xs border border-neutral-800/80 backdrop-blur-xs">
                   <div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-emerald-400 font-semibold block mb-1">
                       Diagnostic Overview:
                     </span>
-                    <p className="text-sm text-neutral-200 font-light mt-1 leading-relaxed">
+                    <p className="text-sm sm:text-base text-white font-normal leading-relaxed">
                       {activeProblem.siloDescription}
                     </p>
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-400 font-semibold block mb-1">
                       Business Impact:
                     </span>
-                    <p className="text-sm text-neutral-300 font-light mt-1 leading-relaxed border-l-2 border-neutral-700 pl-3">
+                    <p className="text-sm text-neutral-200 font-light leading-relaxed border-l-2 border-emerald-500/80 pl-3">
                       {activeProblem.rippleEffect}
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-neutral-900 border border-neutral-800 p-4 flex flex-col justify-between">
+                <div className="relative z-10  backdrop-blur-xs border border-neutral-800 p-4 flex flex-col justify-between">
                   <div>
                     <span className="text-[10px] uppercase font-mono text-emerald-400 block mb-1">
                       WhatsApp Conversation Starter:

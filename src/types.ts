@@ -4,6 +4,7 @@ export interface ProblemItem {
   siloDescription: string;
   rippleEffect: string;
   whatsappMessage: string;
+  backgroundImage: string;
 }
 
 export interface LeadershipProfile {
