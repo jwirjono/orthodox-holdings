@@ -9,7 +9,7 @@ import {
 } from '../types';
 
 import profileAdriel from '../assets/images/profile_adriel.jpg';
-import profileDominicus from '../assets/images/profile_dominicus_1784984892548.jpg';
+import profileDominicus from '../assets/images/profile_richi.jpg';
 import profileBunga from '../assets/images/profile_bunga.jpg';
 import profileSatya from '../assets/images/profile_satya.jpg';
 import problemWealth from '../assets/images/problem/problem_wealth.jpeg';
@@ -126,7 +126,7 @@ export const LEADERSHIP_PROFILES: LeadershipProfile[] = [
       "Entrepreneur & Practitioner Background"
     ],
     philosophy: "Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go.",
-    bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richi brings a practitioner's lens to tax and business advisory. Having built and run his own businesses before entering professional services, he understands firsthand the decisions entrepreneurs face at every stage of growth — not just in theory, but in practice. His philosophy is simple: Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go. Specialising in tax, accounting, finance, and legal administration, Richi helps clients navigate complexity with solutions that are grounded in integrity and oriented toward real, strategic outcomes.",
+    bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richardo brings a practitioner's lens to tax and business advisory. Having built and run his own businesses before entering professional services, he understands firsthand the decisions entrepreneurs face at every stage of growth — not just in theory, but in practice. His philosophy is simple: Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go. Specialising in tax, accounting, finance, and legal administration, Richardo helps clients navigate complexity with solutions that are grounded in integrity and oriented toward real, strategic outcomes.",
     highlights: [
       "Licensed Tax Consultant (BKP) with practitioner entrepreneur insight",
       "Deep expertise in corporate tax disputes, tax structuring, and compliance",
