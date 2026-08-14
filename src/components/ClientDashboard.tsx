@@ -1,18 +1,7 @@
-import React, { useState } from 'react';
-import { MOCK_PORTFOLIO_ASSETS } from '../data/orthodoxData';
-import {
-  X,
-  TrendingUp,
-  ShieldCheck,
-  Download,
-  Building,
-  DollarSign,
-  PieChart,
-  FileText,
-  UserCheck,
-  ArrowUpRight,
-  ExternalLink,
-} from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { getPortfolioAssets } from '../data/orthodoxData';
+import { X } from 'lucide-react';
+import { useTranslation, format } from '../i18n';
 
 interface ClientDashboardProps {
   isOpen: boolean;
@@ -25,13 +14,15 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
   onClose,
   onOpenConsultation,
 }) => {
+  const t = useTranslation();
+  const portfolioAssets = useMemo(() => getPortfolioAssets(t), [t]);
+
   const [currency, setCurrency] = useState<'IDR' | 'USD'>('IDR');
   const [activeTab, setActiveTab] = useState<'overview' | 'assets' | 'tax' | 'reports'>('overview');
 
   if (!isOpen) return null;
 
-  const totalValueIDR = MOCK_PORTFOLIO_ASSETS.reduce((sum, item) => sum + item.valueIDR, 0);
-  const totalValueUSD = totalValueIDR / 15500; // approximate rate
+  const totalValueIDR = portfolioAssets.reduce((sum, item) => sum + item.valueIDR, 0);
 
   const formatCurrency = (valIDR: number) => {
     if (currency === 'USD') {
@@ -48,6 +39,13 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
     }).format(valIDR);
   };
 
+  const tabs = [
+    { id: 'overview' as const, name: t.dashboard.tabs.overview },
+    { id: 'assets' as const, name: t.dashboard.tabs.assets },
+    { id: 'tax' as const, name: t.dashboard.tabs.tax },
+    { id: 'reports' as const, name: t.dashboard.tabs.reports },
+  ];
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
       <div className="bg-[#0A0A0A] border border-neutral-800 text-white w-full max-w-6xl rounded-xs my-auto max-h-[95vh] flex flex-col shadow-2xl overflow-hidden font-sans">
@@ -60,14 +58,14 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-base font-semibold text-white font-sans uppercase tracking-wider">
-                  Orthodox Holdings // Private Client Portal
+                  {t.dashboard.portalTitle}
                 </h3>
                 <span className="px-2 py-0.5 text-[10px] font-mono uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">
-                  Live Portfolio Sync
+                  {t.dashboard.liveSync}
                 </span>
               </div>
               <p className="text-xs text-neutral-400 font-mono">
-                Consolidated Business & Wealth Management System
+                {t.dashboard.portalSubtitle}
               </p>
             </div>
           </div>
@@ -95,6 +93,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
 
             <button
               onClick={onClose}
+              aria-label={t.dashboard.close}
               className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-900 border border-neutral-800 transition-colors"
             >
               <X className="w-5 h-5" />
@@ -105,15 +104,10 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
         {/* Navigation Sub-bar */}
         <div className="px-6 py-3 border-b border-neutral-800 bg-neutral-900/60 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center space-x-2">
-            {[
-              { id: 'overview', name: 'Overview & AUM' },
-              { id: 'assets', name: 'Asset Allocation' },
-              { id: 'tax', name: 'Tax Efficiency' },
-              { id: 'reports', name: 'Advisory Vault' },
-            ].map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id)}
                 className={`px-3.5 py-1.5 text-xs font-mono uppercase tracking-wider transition-all border ${
                   activeTab === tab.id
                     ? 'bg-white text-black border-white font-semibold'
@@ -126,7 +120,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
           </div>
 
           <div className="text-xs font-mono text-neutral-400 hidden sm:block">
-            Client ID: <span className="text-white font-semibold">OH-8829-PRIV</span>
+            {t.dashboard.clientId} <span className="text-white font-semibold">OH-8829-PRIV</span>
           </div>
         </div>
 
@@ -138,49 +132,49 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-6 artistic-card artistic-card-hover">
                   <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-[rgba(255,255,255,0.4)] block mb-2">
-                    Consolidated Portfolio Value
+                    {t.dashboard.metrics.portfolioValue}
                   </span>
                   <div className="text-3xl font-light text-white font-sans tracking-tight mb-1">
                     {formatCurrency(totalValueIDR)}
                   </div>
                   <span className="text-xs font-mono text-[#00FF00] mt-2 block">
-                    ▲ +11.4% Annual Net Growth
+                    {t.dashboard.metrics.portfolioGrowth}
                   </span>
                 </div>
 
                 <div className="p-6 artistic-card artistic-card-hover">
                   <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-[rgba(255,255,255,0.4)] block mb-2">
-                    Blended Yield Return
+                    {t.dashboard.metrics.blendedYield}
                   </span>
                   <div className="text-3xl font-light text-white font-sans tracking-tight mb-1">
                     11.85% p.a.
                   </div>
                   <span className="text-xs font-mono text-neutral-400 mt-2 block">
-                    Integrated Business & Wealth
+                    {t.dashboard.metrics.blendedYieldNote}
                   </span>
                 </div>
 
                 <div className="p-6 artistic-card artistic-card-hover">
                   <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-[rgba(255,255,255,0.4)] block mb-2">
-                    Tax Efficiency Index
+                    {t.dashboard.metrics.taxEfficiency}
                   </span>
                   <div className="text-3xl font-light text-white font-sans tracking-tight mb-1">
                     92 / 100
                   </div>
                   <span className="text-xs font-mono text-[#00FF00] mt-2 block">
-                    Optimal Holding Structure
+                    {t.dashboard.metrics.taxEfficiencyNote}
                   </span>
                 </div>
 
                 <div className="p-6 artistic-card artistic-card-hover">
                   <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-[rgba(255,255,255,0.4)] block mb-2">
-                    Lead Advisory Partners
+                    {t.dashboard.metrics.leadPartners}
                   </span>
                   <div className="text-base font-medium text-white font-sans truncate mb-1">
                     Adriel L., Richi BKP, Brigitta B.
                   </div>
                   <span className="text-xs font-mono text-neutral-400 mt-2 block">
-                    Orthodox Holding Directors
+                    {t.dashboard.metrics.leadPartnersNote}
                   </span>
                 </div>
               </div>
@@ -189,10 +183,10 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
               <div className="artistic-card p-6">
                 <div className="flex items-center justify-between pb-4 mb-4 border-b border-[rgba(255,255,255,0.08)]">
                   <h4 className="text-xs font-mono uppercase tracking-[0.15em] text-white font-semibold">
-                    Asset Allocation Breakdown
+                    {t.dashboard.allocation.title}
                   </h4>
                   <span className="text-xs font-mono text-neutral-400">
-                    5 Asset Categories
+                    {format(t.dashboard.allocation.categoriesCount, { count: portfolioAssets.length })}
                   </span>
                 </div>
 
@@ -200,17 +194,19 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
                   <table className="w-full text-left font-mono text-xs">
                     <thead>
                       <tr className="border-b border-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.4)] uppercase text-[10px] tracking-wider">
-                        <th className="py-2.5 px-3">Asset Holding Name</th>
-                        <th className="py-2.5 px-3">Category</th>
-                        <th className="py-2.5 px-3 text-right">Value ({currency})</th>
-                        <th className="py-2.5 px-3 text-right">Share (%)</th>
-                        <th className="py-2.5 px-3 text-right">Yield p.a.</th>
-                        <th className="py-2.5 px-3">Tax Structuring Status</th>
+                        <th className="py-2.5 px-3">{t.dashboard.allocation.colName}</th>
+                        <th className="py-2.5 px-3">{t.dashboard.allocation.colCategory}</th>
+                        <th className="py-2.5 px-3 text-right">
+                          {format(t.dashboard.allocation.colValue, { currency })}
+                        </th>
+                        <th className="py-2.5 px-3 text-right">{t.dashboard.allocation.colShare}</th>
+                        <th className="py-2.5 px-3 text-right">{t.dashboard.allocation.colYield}</th>
+                        <th className="py-2.5 px-3">{t.dashboard.allocation.colTaxStatus}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[rgba(255,255,255,0.05)] text-neutral-300">
-                      {MOCK_PORTFOLIO_ASSETS.map((asset, i) => (
-                        <tr key={i} className="hover:bg-[rgba(255,255,255,0.03)] transition-colors">
+                      {portfolioAssets.map((asset) => (
+                        <tr key={asset.id} className="hover:bg-[rgba(255,255,255,0.03)] transition-colors">
                           <td className="py-3 px-3 text-white font-medium">{asset.name}</td>
                           <td className="py-3 px-3 text-neutral-400">{asset.category}</td>
                           <td className="py-3 px-3 text-right font-semibold text-white">
@@ -237,12 +233,12 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="p-6 bg-neutral-900 border border-neutral-800 space-y-4">
                   <h4 className="text-sm font-semibold uppercase text-white font-sans">
-                    Business Equity vs Personal Wealth Distribution
+                    {t.dashboard.assetsTab.distributionTitle}
                   </h4>
                   <div className="space-y-3 font-mono text-xs">
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-neutral-400">Operating Enterprise Equity:</span>
+                        <span className="text-neutral-400">{t.dashboard.assetsTab.operatingEquity}</span>
                         <span className="text-white">58.7%</span>
                       </div>
                       <div className="w-full h-2 bg-neutral-950 overflow-hidden">
@@ -252,7 +248,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
 
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-neutral-400">Commercial Real Estate:</span>
+                        <span className="text-neutral-400">{t.dashboard.assetsTab.realEstate}</span>
                         <span className="text-white">16.1%</span>
                       </div>
                       <div className="w-full h-2 bg-neutral-950 overflow-hidden">
@@ -262,7 +258,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
 
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-neutral-400">Corporate Cash Reserves:</span>
+                        <span className="text-neutral-400">{t.dashboard.assetsTab.cashReserves}</span>
                         <span className="text-white">12.8%</span>
                       </div>
                       <div className="w-full h-2 bg-neutral-950 overflow-hidden">
@@ -272,7 +268,7 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
 
                     <div>
                       <div className="flex justify-between mb-1">
-                        <span className="text-neutral-400">Global Wealth Trust:</span>
+                        <span className="text-neutral-400">{t.dashboard.assetsTab.globalTrust}</span>
                         <span className="text-white">9.3%</span>
                       </div>
                       <div className="w-full h-2 bg-neutral-950 overflow-hidden">
@@ -284,17 +280,25 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
 
                 <div className="p-6 bg-neutral-900 border border-neutral-800 space-y-4">
                   <h4 className="text-sm font-semibold uppercase text-white font-sans">
-                    Risk & Liquidity Profile
+                    {t.dashboard.assetsTab.riskTitle}
                   </h4>
                   <div className="space-y-3 font-mono text-xs text-neutral-300">
                     <div className="p-3 bg-neutral-950 border border-neutral-800">
-                      <span className="text-[10px] text-neutral-500 uppercase block">Liquidity Ratio:</span>
-                      <span className="text-white font-semibold">18.2% Liquid Cash & Market Securities</span>
+                      <span className="text-[10px] text-neutral-500 uppercase block">
+                        {t.dashboard.assetsTab.liquidityRatio}
+                      </span>
+                      <span className="text-white font-semibold">
+                        {t.dashboard.assetsTab.liquidityValue}
+                      </span>
                     </div>
 
                     <div className="p-3 bg-neutral-950 border border-neutral-800">
-                      <span className="text-[10px] text-neutral-500 uppercase block">Capital Protection Ring:</span>
-                      <span className="text-white font-semibold">Asset Protection Holding Isolation Active</span>
+                      <span className="text-[10px] text-neutral-500 uppercase block">
+                        {t.dashboard.assetsTab.protectionRing}
+                      </span>
+                      <span className="text-white font-semibold">
+                        {t.dashboard.assetsTab.protectionValue}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -305,33 +309,21 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
           {activeTab === 'tax' && (
             <div className="p-6 bg-neutral-900 border border-neutral-800 space-y-6">
               <h4 className="text-sm font-semibold uppercase text-white font-sans">
-                Tax Audit & Efficiency Audit (Orthodox Standards)
+                {t.dashboard.taxTab.title}
               </h4>
 
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 bg-neutral-950 border border-neutral-800">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase block mb-1">Status: Passed</span>
-                  <h5 className="text-xs font-semibold text-white">PPh Badan Corporate Compliance</h5>
-                  <p className="text-[11px] text-neutral-400 font-light mt-1">
-                    Annual PPh Badan filing reconciled with Big 4 audit standards.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-neutral-950 border border-neutral-800">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase block mb-1">Status: Shielded</span>
-                  <h5 className="text-xs font-semibold text-white">Dividend Tax Reinvestment Shield</h5>
-                  <p className="text-[11px] text-neutral-400 font-light mt-1">
-                    0% PPh Final on domestic dividend distributions via Omnibus Law reinvestment.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-neutral-950 border border-neutral-800">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase block mb-1">Status: Active</span>
-                  <h5 className="text-xs font-semibold text-white">Payroll PPh 21 Withholding</h5>
-                  <p className="text-[11px] text-neutral-400 font-light mt-1">
-                    TER (Tarif Efektif Rata-Rata) withholding compliant across executive payroll.
-                  </p>
-                </div>
+                {t.dashboard.taxTab.cards.map((card, idx) => (
+                  <div key={idx} className="p-4 bg-neutral-950 border border-neutral-800">
+                    <span className="text-[10px] font-mono text-emerald-400 uppercase block mb-1">
+                      {card.status}
+                    </span>
+                    <h5 className="text-xs font-semibold text-white">{card.title}</h5>
+                    <p className="text-[11px] text-neutral-400 font-light mt-1">
+                      {card.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -339,25 +331,25 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
           {activeTab === 'reports' && (
             <div className="p-6 bg-neutral-900 border border-neutral-800 space-y-4">
               <h4 className="text-sm font-semibold uppercase text-white font-sans">
-                Downloadable Advisory Vault & Governance Records
+                {t.dashboard.reportsTab.title}
               </h4>
 
               <div className="space-y-3">
-                {[
-                  { title: "Orthodox Holding — Q2 Consolidated Portfolio Valuation.pdf", date: "July 2026", size: "4.2 MB" },
-                  { title: "Corporate Tax Structuring & Audit Memorandum 2026.pdf", date: "June 2026", size: "2.8 MB" },
-                  { title: "Family Wealth Succession & Estate Plan Charter.pdf", date: "May 2026", size: "3.1 MB" },
-                ].map((doc, idx) => (
+                {t.dashboard.reportsTab.documents.map((doc, idx) => (
                   <div key={idx} className="p-4 bg-neutral-950 border border-neutral-800 flex items-center justify-between">
                     <div>
                       <h5 className="text-xs font-semibold text-white font-mono">{doc.title}</h5>
-                      <span className="text-[10px] font-mono text-neutral-500">Updated: {doc.date} | Size: {doc.size}</span>
+                      <span className="text-[10px] font-mono text-neutral-500">
+                        {t.dashboard.reportsTab.updated} {doc.date} | {t.dashboard.reportsTab.size} {doc.size}
+                      </span>
                     </div>
                     <button
-                      onClick={() => alert(`Downloading ${doc.title}`)}
+                      onClick={() =>
+                        alert(format(t.dashboard.reportsTab.downloadingAlert, { title: doc.title }))
+                      }
                       className="px-3 py-1.5 bg-white text-black text-[11px] font-mono uppercase font-semibold hover:bg-neutral-200"
                     >
-                      Download
+                      {t.dashboard.reportsTab.download}
                     </button>
                   </div>
                 ))}
@@ -369,16 +361,16 @@ export const ClientDashboard: React.FC<ClientDashboardProps> = ({
         {/* Footer Contact Advisor Bar */}
         <div className="p-4 border-t border-neutral-800 bg-neutral-950 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="text-neutral-400">
-            Need bespoke changes to your portfolio structure?
+            {t.dashboard.footerPrompt}
           </div>
           <button
             onClick={() => {
               onClose();
-              onOpenConsultation('Halo Orthodox Holdings, saya ingin mendiskusikan penyesuaian pada Client Portfolio Dashboard.');
+              onOpenConsultation(t.dashboard.scheduleMessage);
             }}
             className="px-4 py-2 bg-white text-black font-semibold uppercase tracking-wider hover:bg-neutral-200"
           >
-            Schedule Partner Sync
+            {t.dashboard.schedulePartnerSync}
           </button>
         </div>
       </div>

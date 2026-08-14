@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, Menu, X, MessageSquare, Linkedin, Instagram } from 'lucide-react';
+import { useTranslation } from '../i18n';
+import { LanguageToggle } from './LanguageToggle';
 
 interface HeaderProps {
   currentView: 'holding' | 'business';
@@ -17,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenTaxCalculator,
   onOpenConsultation,
 }) => {
+  const t = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -40,9 +43,9 @@ export const Header: React.FC<HeaderProps> = ({
   }, [mobileMenuOpen]);
 
   const businessNavLinks = [
-    { name: 'About', href: '#whoweare' },
-    { name: 'Services', href: '#expertise' },
-    { name: 'Contact', href: '#consultation' },
+    { name: t.header.nav.about, href: '#whoweare' },
+    { name: t.header.nav.services, href: '#expertise' },
+    { name: t.header.nav.contact, href: '#consultation' },
   ];
 
   const mobileMenuOverlay = mobileMenuOpen
@@ -64,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 text-neutral-400 hover:text-white focus:outline-none"
-              aria-label="Close menu"
+              aria-label={t.header.closeMenu}
             >
               <X className="w-7 h-7" />
             </button>
@@ -75,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* View Switching Section */}
             <div className="flex flex-col gap-2 pb-5 border-b border-neutral-800">
               <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-                Select View
+                {t.header.selectView}
               </span>
               <div className="grid grid-cols-2 gap-2">
                 <button
@@ -85,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
                   }}
                   className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between bg-white text-black font-bold`}
                 >
-                  <span>Business Solutions</span>
+                  <span>{t.common.businessSolutions}</span>
                   <span className="text-[10px]">✓</span>
                 </button>
 
@@ -96,10 +99,15 @@ export const Header: React.FC<HeaderProps> = ({
                   }}
                   className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white`}
                 >
-                  <span>Wealth Management</span>
+                  <span>{t.common.wealthManagement}</span>
                   <ArrowUpRight className="w-4 h-4 text-neutral-400" />
                 </button>
               </div>
+            </div>
+
+            {/* Language Switcher */}
+            <div className="pb-5 border-b border-neutral-800">
+              <LanguageToggle variant="full" />
             </div>
 
             {/* Navigation links based on current view */}
@@ -108,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <>
                   {businessNavLinks.map((link) => (
                     <a
-                      key={link.name}
+                      key={link.href}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className="py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
@@ -125,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                     className="text-left py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
                   >
-                    Tax Calculator
+                    {t.common.taxCalculator}
                   </button>
                 </>
               )}
@@ -140,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="w-full py-3 px-4 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 rounded-xs shadow-sm"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Request Consultation</span>
+                  <span>{t.common.requestConsultation}</span>
                 </button>
               </div>
             </div>
@@ -154,13 +162,13 @@ export const Header: React.FC<HeaderProps> = ({
               rel="noopener noreferrer"
               className="flex items-center justify-between px-4 py-3 text-xs font-mono border border-neutral-800 text-neutral-300 hover:text-white bg-neutral-900/80 rounded-xs"
             >
-              <span>Orthodox Wealth Management</span>
+              <span>{t.common.orthodoxWealthManagement}</span>
               <ArrowUpRight className="w-4 h-4 text-neutral-400" />
             </a>
 
             {/* Social Links at Bottom */}
             <div className="flex items-center justify-between pt-2 text-xs text-neutral-400 font-mono">
-              <span className="text-neutral-500 text-[11px]">Follow Us</span>
+              <span className="text-neutral-500 text-[11px]">{t.header.followUs}</span>
               <div className="flex items-center gap-4">
                 <a
                   href="https://www.linkedin.com/company/orthodox-holding"
@@ -169,7 +177,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="flex items-center gap-1.5 text-neutral-300 hover:text-white transition-colors"
                 >
                   <Linkedin className="w-4 h-4 text-neutral-400" />
-                  <span>LinkedIn</span>
+                  <span>{t.common.linkedin}</span>
                 </a>
                 <a
                   href="https://www.instagram.com/orthodoxholding"
@@ -178,7 +186,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="flex items-center gap-1.5 text-neutral-300 hover:text-white transition-colors"
                 >
                   <Instagram className="w-4 h-4 text-neutral-400" />
-                  <span>Instagram</span>
+                  <span>{t.common.instagram}</span>
                 </a>
               </div>
             </div>
@@ -208,10 +216,10 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div className="flex flex-col">
               <span className="text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-white uppercase font-sans">
-                Orthodox Holdings
+                {t.common.brandName}
               </span>
               <span className="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider font-mono uppercase">
-                {currentView === 'holding' ? 'Integrated Ecosystem' : 'Business Solutions'}
+                {currentView === 'holding' ? t.header.subtitleHolding : t.header.subtitleBusiness}
               </span>
             </div>
           </button>
@@ -223,16 +231,19 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => onNavigateView('business')}
                 className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs bg-white text-black font-semibold shadow-xs"
               >
-                Business Solutions
+                {t.common.businessSolutions}
               </button>
               <button
                 onClick={() => window.open('https://orthodoxwm.com/', '_blank')}
                 className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs text-neutral-400 hover:text-white flex items-center gap-1"
               >
-                <span>Wealth Management</span>
+                <span>{t.common.wealthManagement}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
               </button>
             </nav>
+
+            {/* Language Switcher — always visible */}
+            <LanguageToggle />
 
             {/* Desktop Nav Links + Consultation CTA */}
             <div className="hidden lg:flex items-center space-x-6">
@@ -240,7 +251,7 @@ export const Header: React.FC<HeaderProps> = ({
                 {currentView === 'business' &&
                   businessNavLinks.map((link) => (
                     <a
-                      key={link.name}
+                      key={link.href}
                       href={link.href}
                       className="hover:text-white transition-colors py-1 hover:border-b hover:border-white"
                     >
@@ -255,7 +266,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-2.5 text-xs font-semibold uppercase tracking-wider text-black bg-white border border-white hover:bg-neutral-200 transition-all rounded-xs shadow-xs"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Consultation</span>
+                <span>{t.common.consultation}</span>
               </button>
             </div>
 
@@ -263,7 +274,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-neutral-300 hover:text-white lg:hidden focus:outline-none"
-              aria-label="Toggle menu"
+              aria-label={t.header.toggleMenu}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

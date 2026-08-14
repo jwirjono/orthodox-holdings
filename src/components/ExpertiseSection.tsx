@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
-import { EXPERTISE_SERVICES } from '../data/orthodoxData';
+import React, { useState, useMemo } from 'react';
+import { getExpertiseServices } from '../data/orthodoxData';
+import { useTranslation } from '../i18n';
 
 interface ExpertiseSectionProps {
   onOpenConsultation: (msg?: string) => void;
 }
 
 export const ExpertiseSection: React.FC<ExpertiseSectionProps> = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const t = useTranslation();
+  const services = useMemo(() => getExpertiseServices(t), [t]);
 
-  const categories = [
-    { id: 'all', name: 'All Disciplines' },
-    { id: 'business', name: 'Finance & Accounting' },
-    { id: 'tax', name: 'Tax & Dispute' },
-    { id: 'structure', name: 'Corporate Structuring' },
-    { id: 'advisory', name: 'Valuation & Strategy' },
-  ];
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const filteredServices =
     activeCategory === 'all'
-      ? EXPERTISE_SERVICES
-      : EXPERTISE_SERVICES.filter((s) => s.category === activeCategory);
+      ? services
+      : services.filter((s) => s.category === activeCategory);
 
   return (
     <section id="expertise" className="py-24 bg-[#0A0A0A] text-white border-b border-neutral-800">
@@ -27,17 +23,17 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = () => {
         {/* Section Header */}
         <div className="mb-12 pb-8 border-b border-neutral-800">
           <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white uppercase font-sans">
-            OUR EXPERTISE
+            {t.expertise.title}
           </h2>
           <div className="mt-4 text-lg sm:text-xl font-light text-neutral-300 font-serif flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-            <p>Every service solves one problem.</p>
-            <p className="text-white font-normal">Together, they solve the business.</p>
+            <p>{t.expertise.leadLine1}</p>
+            <p className="text-white font-normal">{t.expertise.leadLine2}</p>
           </div>
         </div>
 
         {/* Category Filters */}
         <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-neutral-800/80">
-          {categories.map((cat) => (
+          {t.expertise.categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
@@ -84,5 +80,3 @@ export const ExpertiseSection: React.FC<ExpertiseSectionProps> = () => {
     </section>
   );
 };
-
-

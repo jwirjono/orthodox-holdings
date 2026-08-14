@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Calculator, ArrowRight, Info, Percent, Sparkles, MessageSquare, RefreshCw } from 'lucide-react';
+import { Calculator, MessageSquare } from 'lucide-react';
 import { TaxType } from '../types';
+import { useTranslation, format } from '../i18n';
 
 interface TaxCalculatorProps {
   onOpenConsultation: (msg?: string) => void;
@@ -57,6 +58,7 @@ const getTERRate = (monthlyGross: number, table: TERBracket[]): number => {
 };
 
 export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation }) => {
+  const t = useTranslation();
   const [taxType, setTaxType] = useState<TaxType>('corporate');
 
   // Corporate Tax Inputs
@@ -208,6 +210,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
     };
   }, [dividendAmount]);
 
+  // IDR is always formatted with Indonesian conventions regardless of interface language.
   const formatIDR = (val: number) => {
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
@@ -219,11 +222,24 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
   const handleConsultWithCalc = () => {
     let summaryMsg = '';
     if (taxType === 'corporate') {
-      summaryMsg = `Halo Orthodox Holdings, saya mencoba Tax Calculator untuk PPh Badan:\n- Omzet Kotor: ${formatIDR(corpCalculations.gross)}\n- Beban Usaha: ${formatIDR(corpCalculations.expenses)}\n- Labakena Pajak: ${formatIDR(corpCalculations.taxableProfit)}\n- Est. Pajak: ${formatIDR(corpCalculations.estimatedTax)}\n\nSaya ingin berkonsultasi mengenai Tax Optimization & Corporate Structuring.`;
+      summaryMsg = format(t.taxCalculator.whatsapp.corporate, {
+        gross: formatIDR(corpCalculations.gross),
+        expenses: formatIDR(corpCalculations.expenses),
+        taxableProfit: formatIDR(corpCalculations.taxableProfit),
+        estimatedTax: formatIDR(corpCalculations.estimatedTax),
+      });
     } else if (taxType === 'personal') {
-      summaryMsg = `Halo Orthodox Holdings, saya mencoba Tax Calculator untuk PPh 21 Pribadi (TER):\n- Penghasilan Tahunan: ${formatIDR(personalCalculations.gross)}\n- Status PTKP: ${ptkpStatus} (Kategori TER ${personalCalculations.terCategory})\n- Est. PPh 21 Terutang Setahun: ${formatIDR(personalCalculations.annualTax)}\n\nSaya ingin berkonsultasi mengenai Perencanaan Pajak Pribadi & Wealth Management.`;
+      summaryMsg = format(t.taxCalculator.whatsapp.personal, {
+        gross: formatIDR(personalCalculations.gross),
+        ptkp: ptkpStatus,
+        category: personalCalculations.terCategory,
+        annualTax: formatIDR(personalCalculations.annualTax),
+      });
     } else {
-      summaryMsg = `Halo Orthodox Holdings, saya mencoba Tax Calculator Dividen:\n- Nilai Dividen: ${formatIDR(dividendCalculations.amount)}\n- Est. Pajak Dividen Standard (10%): ${formatIDR(dividendCalculations.standardDividendTax)}\n\nSaya ingin berkonsultasi mengenai skema Reinvestasi Holding Company untuk bebas pajak dividen.`;
+      summaryMsg = format(t.taxCalculator.whatsapp.dividend, {
+        amount: formatIDR(dividendCalculations.amount),
+        standardTax: formatIDR(dividendCalculations.standardDividendTax),
+      });
     }
 
     onOpenConsultation(summaryMsg);
@@ -237,14 +253,14 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
           <div>
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-neutral-900 border border-neutral-800 font-mono text-[10px] uppercase text-neutral-400 mb-2">
               <Calculator className="w-3 h-3 text-white" />
-              <span>Diagnostic Sandbox Tool</span>
+              <span>{t.taxCalculator.badge}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-light tracking-tight text-white">
-              Tax Diagnostic Calculator
+              {t.taxCalculator.title}
             </h2>
           </div>
           <p className="text-sm text-neutral-400 font-light max-w-md mt-4 md:mt-0">
-            Rapid tax obligation estimator & Orthodox optimization preview for business owners.
+            {t.taxCalculator.subtitle}
           </p>
         </div>
 
@@ -259,7 +275,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                   : 'bg-neutral-950 text-neutral-400 border-neutral-800 hover:border-neutral-600 hover:text-white'
               }`}
             >
-              01 // Corporate Income Tax (PPh Badan)
+              {t.taxCalculator.tabCorporate}
             </button>
 
             <button
@@ -270,7 +286,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                   : 'bg-neutral-950 text-neutral-400 border-neutral-800 hover:border-neutral-600 hover:text-white'
               }`}
             >
-              02 // Personal Income Tax (PPh 21)
+              {t.taxCalculator.tabPersonal}
             </button>
 
             <button
@@ -281,7 +297,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                   : 'bg-neutral-950 text-neutral-400 border-neutral-800 hover:border-neutral-600 hover:text-white'
               }`}
             >
-              03 // Dividend & Holding Tax Shield
+              {t.taxCalculator.tabDividend}
             </button>
           </div>
 
@@ -292,12 +308,12 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
               {taxType === 'corporate' && (
                 <div className="space-y-4">
                   <div className="text-xs font-mono uppercase text-neutral-400 mb-2">
-                    Corporate Financial Inputs (IDR)
+                    {t.taxCalculator.corporate.inputsTitle}
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Annual Gross Business Revenue (Omzet Brutoo)
+                      {t.taxCalculator.corporate.grossRevenue}
                     </label>
                     <input
                       type="number"
@@ -307,13 +323,13 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
                     <span className="text-[11px] font-mono text-neutral-500 mt-1 block">
-                      Formatted: {formatIDR(corpGrossRevenue)}
+                      {t.taxCalculator.formatted} {formatIDR(corpGrossRevenue)}
                     </span>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Deductible Operational Expenses & COGS (Beban Usaha)
+                      {t.taxCalculator.corporate.expenses}
                     </label>
                     <input
                       type="number"
@@ -323,7 +339,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
                     <span className="text-[11px] font-mono text-neutral-500 mt-1 block">
-                      Formatted: {formatIDR(corpDeductibleExpenses)}
+                      {t.taxCalculator.formatted} {formatIDR(corpDeductibleExpenses)}
                     </span>
                   </div>
 
@@ -336,7 +352,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-4 h-4 bg-neutral-950 border-neutral-800 text-white focus:ring-0"
                     />
                     <label htmlFor="umkm-toggle" className="text-xs text-neutral-300 font-sans cursor-pointer">
-                      Use UMKM Final Rate (0.5% of Gross Revenue if Omzet ≤ Rp 4,8 Miliar)
+                      {t.taxCalculator.corporate.umkmToggle}
                     </label>
                   </div>
                 </div>
@@ -345,12 +361,12 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
               {taxType === 'personal' && (
                 <div className="space-y-4">
                   <div className="text-xs font-mono uppercase text-neutral-400 mb-2">
-                    Personal Income Inputs (IDR)
+                    {t.taxCalculator.personal.inputsTitle}
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Annual Gross Personal Income / Executive Salary
+                      {t.taxCalculator.personal.annualIncome}
                     </label>
                     <input
                       type="number"
@@ -360,33 +376,30 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
                     <span className="text-[11px] font-mono text-neutral-500 mt-1 block">
-                      Formatted: {formatIDR(personalAnnualIncome)}
+                      {t.taxCalculator.formatted} {formatIDR(personalAnnualIncome)}
                     </span>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Non-Taxable Income Status (PTKP Indonesia)
+                      {t.taxCalculator.personal.ptkpStatus}
                     </label>
                     <select
                       value={ptkpStatus}
                       onChange={(e) => setPtkpStatus(e.target.value)}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-xs text-white font-mono focus:outline-none focus:border-white"
                     >
-                      <option value="TK/0">TK/0 — Tidak Kawin, 0 Tanggungan (Rp 54 jt) — TER A</option>
-                      <option value="TK/1">TK/1 — Tidak Kawin, 1 Tanggungan (Rp 58,5 jt) — TER A</option>
-                      <option value="TK/2">TK/2 — Tidak Kawin, 2 Tanggungan (Rp 63 jt) — TER B</option>
-                      <option value="TK/3">TK/3 — Tidak Kawin, 3 Tanggungan (Rp 67,5 jt) — TER B</option>
-                      <option value="K/0">K/0 — Kawin, 0 Tanggungan (Rp 58,5 jt) — TER A</option>
-                      <option value="K/1">K/1 — Kawin, 1 Tanggungan (Rp 63 jt) — TER B</option>
-                      <option value="K/2">K/2 — Kawin, 2 Tanggungan (Rp 67,5 jt) — TER B</option>
-                      <option value="K/3">K/3 — Kawin, 3 Tanggungan (Rp 72 jt) — TER C</option>
+                      {t.taxCalculator.personal.ptkpOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Monthly Pension/JHT Contribution Paid by Employee (Iuran Pensiun)
+                      {t.taxCalculator.personal.pensionContribution}
                     </label>
                     <input
                       type="number"
@@ -396,14 +409,17 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
                     <span className="text-[11px] font-mono text-neutral-500 mt-1 block">
-                      Formatted: {formatIDR(monthlyPensionContribution)} / month — optional, deducted at year-end reconciliation
+                      {t.taxCalculator.formatted} {formatIDR(monthlyPensionContribution)}{' '}
+                      {t.taxCalculator.personal.pensionHint}
                     </span>
                   </div>
 
                   <div className="p-4 bg-neutral-950 border border-neutral-800 text-xs text-neutral-300 space-y-2">
-                    <span className="font-semibold text-white font-sans block">TER Bulanan Note (PP 58/2023 & PMK 168/2023):</span>
+                    <span className="font-semibold text-white font-sans block">
+                      {t.taxCalculator.personal.terNoteTitle}
+                    </span>
                     <p className="font-light leading-relaxed">
-                      Monthly withholding (Jan–Nov) uses the Tarif Efektif Rata-rata applied directly to gross monthly income. The final month (December) reconciles the full year using the progressive Pasal 17 rate on net income after Biaya Jabatan and PTKP.
+                      {t.taxCalculator.personal.terNoteBody}
                     </p>
                   </div>
                 </div>
@@ -412,12 +428,12 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
               {taxType === 'dividend' && (
                 <div className="space-y-4">
                   <div className="text-xs font-mono uppercase text-neutral-400 mb-2">
-                    Dividend Distribution Inputs (IDR)
+                    {t.taxCalculator.dividend.inputsTitle}
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-neutral-300 mb-1">
-                      Gross Dividend Distribution Amount
+                      {t.taxCalculator.dividend.grossDividend}
                     </label>
                     <input
                       type="number"
@@ -427,14 +443,16 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
                     <span className="text-[11px] font-mono text-neutral-500 mt-1 block">
-                      Formatted: {formatIDR(dividendAmount)}
+                      {t.taxCalculator.formatted} {formatIDR(dividendAmount)}
                     </span>
                   </div>
 
                   <div className="p-4 bg-neutral-950 border border-neutral-800 text-xs text-neutral-300 space-y-2">
-                    <span className="font-semibold text-white font-sans block">Omnibus Law Tax Exemption Note:</span>
+                    <span className="font-semibold text-white font-sans block">
+                      {t.taxCalculator.dividend.omnibusNoteTitle}
+                    </span>
                     <p className="font-light leading-relaxed">
-                      Dividends distributed to Indonesian domestic individual shareholders are exempt from 10% Final PPh if reinvested into qualifying domestic assets within 3 years.
+                      {t.taxCalculator.dividend.omnibusNoteBody}
                     </p>
                   </div>
                 </div>
@@ -446,35 +464,40 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
               <div>
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-neutral-800">
                   <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">
-                    Diagnostic Calculation Breakdown
+                    {t.taxCalculator.breakdownTitle}
                   </span>
-                  <span className="text-[10px] font-mono text-emerald-400">Live Formula</span>
+                  <span className="text-[10px] font-mono text-emerald-400">
+                    {t.taxCalculator.liveFormula}
+                  </span>
                 </div>
 
                 {taxType === 'corporate' && (
                   <div className="space-y-3 font-mono text-xs">
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Taxable Net Profit:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.corporate.taxableProfit}</span>
                       <span className="text-white font-semibold">{formatIDR(corpCalculations.taxableProfit)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Applied Tax Rate:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.corporate.appliedRate}</span>
                       <span className="text-white font-semibold">{(corpCalculations.taxRate * 100).toFixed(1)}%</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-amber-400">
-                      <span>Standard Estimated Tax:</span>
+                      <span>{t.taxCalculator.corporate.standardTax}</span>
                       <span className="font-semibold">{formatIDR(corpCalculations.estimatedTax)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-emerald-400 bg-emerald-950/30 px-2">
-                      <span>Orthodox Optimization Potential:</span>
-                      <span className="font-semibold">~ {formatIDR(corpCalculations.potentialSavings)} Savings</span>
+                      <span>{t.taxCalculator.corporate.optimizationPotential}</span>
+                      <span className="font-semibold">
+                        ~ {formatIDR(corpCalculations.potentialSavings)}{' '}
+                        {t.taxCalculator.corporate.savingsSuffix}
+                      </span>
                     </div>
 
                     <div className="flex justify-between py-2 border-t border-neutral-800 text-sm text-white font-bold">
-                      <span>Net Retained Enterprise Profit:</span>
+                      <span>{t.taxCalculator.corporate.netProfit}</span>
                       <span>{formatIDR(corpCalculations.netProfitAfterTax)}</span>
                     </div>
                   </div>
@@ -483,72 +506,76 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                 {taxType === 'personal' && (
                   <div className="space-y-3 font-mono text-xs">
                     <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 block pt-1">
-                      Step 1 — Monthly Withholding (Jan–Nov)
+                      {t.taxCalculator.personal.step1}
                     </span>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Monthly Gross Income:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.monthlyGross}</span>
                       <span className="text-white font-semibold">{formatIDR(personalCalculations.monthlyGross)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">TER Category (by PTKP):</span>
-                      <span className="text-white font-semibold">Kategori {personalCalculations.terCategory}</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.terCategory}</span>
+                      <span className="text-white font-semibold">
+                        {t.taxCalculator.personal.categoryPrefix} {personalCalculations.terCategory}
+                      </span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">TER Bulanan Rate:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.terRate}</span>
                       <span className="text-white font-semibold">{(personalCalculations.terRate * 100).toFixed(2)}%</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-amber-400">
-                      <span>Est. Monthly Withholding:</span>
+                      <span>{t.taxCalculator.personal.monthlyWithholding}</span>
                       <span className="font-semibold">{formatIDR(personalCalculations.monthlyWithholding)}</span>
                     </div>
 
                     <span className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 block pt-3">
-                      Step 2 — Masa Pajak Terakhir (December Reconciliation, Tarif Pasal 17)
+                      {t.taxCalculator.personal.step2}
                     </span>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Biaya Jabatan (5%, max Rp6jt/th):</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.biayaJabatan}</span>
                       <span className="text-white font-semibold">{formatIDR(personalCalculations.biayaJabatan)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Net Annual Income:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.netAnnualIncome}</span>
                       <span className="text-white font-semibold">{formatIDR(personalCalculations.netAnnualIncome)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">PTKP Exemption:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.ptkpExemption}</span>
                       <span className="text-white font-semibold">{formatIDR(personalCalculations.ptkpVal)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Taxable Income (PKP):</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.taxableIncome}</span>
                       <span className="text-white font-semibold">{formatIDR(personalCalculations.taxableIncome)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-amber-400">
-                      <span>PPh 21 Terutang Setahun:</span>
+                      <span>{t.taxCalculator.personal.annualTax}</span>
                       <span className="font-semibold">{formatIDR(personalCalculations.annualTax)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
                       <span className="text-neutral-400">
-                        {personalCalculations.decemberWithholding >= 0 ? 'PPh 21 Dipotong Desember:' : 'Kelebihan Potong (Refund):'}
+                        {personalCalculations.decemberWithholding >= 0
+                          ? t.taxCalculator.personal.decemberWithholding
+                          : t.taxCalculator.personal.refund}
                       </span>
                       <span className="text-white font-semibold">{formatIDR(Math.abs(personalCalculations.decemberWithholding))}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Effective Tax Rate:</span>
+                      <span className="text-neutral-400">{t.taxCalculator.personal.effectiveRate}</span>
                       <span className="text-white font-semibold">{personalCalculations.effectiveRate.toFixed(2)}%</span>
                     </div>
 
                     <div className="flex justify-between py-2 border-t border-neutral-800 text-sm text-white font-bold">
-                      <span>Net Annual Take-Home Pay:</span>
+                      <span>{t.taxCalculator.personal.takeHome}</span>
                       <span>{formatIDR(personalCalculations.takeHomePay)}</span>
                     </div>
                   </div>
@@ -557,17 +584,17 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                 {taxType === 'dividend' && (
                   <div className="space-y-3 font-mono text-xs">
                     <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">Standard Dividend Tax (10% Final):</span>
+                      <span className="text-neutral-400">{t.taxCalculator.dividend.standardTax}</span>
                       <span className="text-amber-400 font-semibold">{formatIDR(dividendCalculations.standardDividendTax)}</span>
                     </div>
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-emerald-400">
-                      <span>Orthodox Holding Reinvestment Shield:</span>
-                      <span className="font-semibold">0% (Rp 0 Tax)</span>
+                      <span>{t.taxCalculator.dividend.shield}</span>
+                      <span className="font-semibold">{t.taxCalculator.dividend.shieldValue}</span>
                     </div>
 
                     <div className="flex justify-between py-2 border-t border-neutral-800 text-sm text-emerald-400 font-bold bg-emerald-950/40 p-2">
-                      <span>Net Tax Shield Savings:</span>
+                      <span>{t.taxCalculator.dividend.netSavings}</span>
                       <span>{formatIDR(dividendCalculations.dividendSavings)}</span>
                     </div>
                   </div>
@@ -581,7 +608,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                   className="w-full py-3 px-4 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Send Tax Diagnostic to WhatsApp</span>
+                  <span>{t.taxCalculator.sendToWhatsapp}</span>
                 </button>
               </div>
             </div>

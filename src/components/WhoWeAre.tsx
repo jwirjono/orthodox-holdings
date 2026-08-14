@@ -1,8 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { LEADERSHIP_PROFILES } from '../data/orthodoxData';
-import { CheckCircle2, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { getLeadershipProfiles } from '../data/orthodoxData';
+import { CheckCircle2, Shield } from 'lucide-react';
+import { useTranslation, format } from '../i18n';
 
 export const WhoWeAre: React.FC = () => {
+  const t = useTranslation();
+  const profiles = useMemo(() => getLeadershipProfiles(t), [t]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState<number>(
     typeof window !== 'undefined' ? window.innerWidth : 1024
@@ -17,11 +21,11 @@ export const WhoWeAre: React.FC = () => {
   }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % LEADERSHIP_PROFILES.length);
+    setCurrentIndex((prev) => (prev + 1) % profiles.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + LEADERSHIP_PROFILES.length) % LEADERSHIP_PROFILES.length);
+    setCurrentIndex((prev) => (prev - 1 + profiles.length) % profiles.length);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -58,28 +62,24 @@ export const WhoWeAre: React.FC = () => {
         {/* Section Header */}
         <div className="mb-12 pb-6 border-b border-neutral-800">
           <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-2">
-            Corporate Profile
+            {t.whoWeAre.eyebrow}
           </span>
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase mb-3">
-            ABOUT US
+            {t.whoWeAre.title}
           </h2>
           <p className="text-sm sm:text-base text-neutral-300 font-light max-w-2xl">
-            A Strategic Partner for Businesses That Intend to Last
+            {t.whoWeAre.subtitle}
           </p>
         </div>
 
         {/* Narrative Copy Block */}
         <div className="bg-neutral-900/60 border border-neutral-800 p-8 sm:p-10 mb-16 space-y-6">
           <p className="text-base sm:text-lg text-neutral-200 font-light leading-relaxed">
-            Orthodox Business Solutions is the business advisory division of Orthodox Holding, helping entrepreneurs simplify business complexity through integrated finance, accounting, taxation, and strategic advisory.
+            {t.whoWeAre.narrative1}
           </p>
           <div className="grid md:grid-cols-2 gap-8 text-sm text-neutral-300 font-light leading-relaxed pt-4 border-t border-neutral-800">
-            <p>
-              While many firms solve one problem at a time, we believe business challenges are interconnected. That is why we coordinate accounting, tax, finance, corporate structuring, payroll, and business strategy into one cohesive framework.
-            </p>
-            <p>
-              Through our sister company, Orthodox Wealth Management, our advisory extends beyond the business—helping owners protect, grow, and transfer the wealth their businesses create. Together, we provide one integrated ecosystem supporting both the business and the people behind it.
-            </p>
+            <p>{t.whoWeAre.narrative2}</p>
+            <p>{t.whoWeAre.narrative3}</p>
           </div>
         </div>
 
@@ -89,10 +89,10 @@ export const WhoWeAre: React.FC = () => {
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-neutral-800">
             <div className="flex items-center gap-4">
               <h3 className="text-2xl sm:text-3xl font-light tracking-tight text-white uppercase font-sans">
-                Leadership
+                {t.whoWeAre.leadershipTitle}
               </h3>
               <span className="text-xs font-mono text-neutral-500 uppercase hidden sm:inline">
-                Orthodox Holding Partners
+                {t.whoWeAre.leadershipEyebrow}
               </span>
             </div>
 
@@ -111,7 +111,7 @@ export const WhoWeAre: React.FC = () => {
                 transform: `translateX(${translateX}%)`,
               }}
             >
-              {LEADERSHIP_PROFILES.map((leader, idx) => {
+              {profiles.map((leader, idx) => {
                 const isActive = idx === currentIndex;
 
                 return (
@@ -170,7 +170,7 @@ export const WhoWeAre: React.FC = () => {
                         {/* Credentials List */}
                         <div className="space-y-2 mb-6">
                           <div className="text-[10px] uppercase font-mono text-neutral-500 tracking-wider">
-                            Qualifications & Track Record
+                            {t.whoWeAre.qualifications}
                           </div>
                           {leader.credentials.map((cred, i) => (
                             <div key={i} className="flex items-start gap-2 text-xs text-neutral-300 font-light">
@@ -187,7 +187,7 @@ export const WhoWeAre: React.FC = () => {
                       </div>
 
                       <div className="mt-6 pt-4 border-t border-neutral-800 text-[10px] font-mono text-neutral-500 uppercase tracking-widest flex items-center justify-between">
-                        <span>Advisory Director</span>
+                        <span>{t.whoWeAre.advisoryDirector}</span>
                         <Shield className="w-3.5 h-3.5 text-neutral-600" />
                       </div>
                     </div>
@@ -199,14 +199,14 @@ export const WhoWeAre: React.FC = () => {
 
           {/* Dots Indicator */}
           <div className="flex justify-center items-center gap-2 mt-6">
-            {LEADERSHIP_PROFILES.map((_, idx) => (
+            {profiles.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
                 className={`h-1.5 transition-all rounded-full ${
                   currentIndex === idx ? 'w-8 bg-white' : 'w-2 bg-neutral-700 hover:bg-neutral-500'
                 }`}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={format(t.whoWeAre.goToSlide, { number: idx + 1 })}
               />
             ))}
           </div>
@@ -215,4 +215,3 @@ export const WhoWeAre: React.FC = () => {
     </section>
   );
 };
-

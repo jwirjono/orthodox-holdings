@@ -12,20 +12,38 @@ import {
   Landmark,
   Lock,
 } from 'lucide-react';
+import { useTranslation } from '../i18n';
+
+/** Presentation config keyed by the flow item ids in the dictionary. */
+const FLOW_CONFIG: Record<
+  string,
+  { isBridge: boolean; isWealth: boolean; num: string; icon: React.ElementType; url?: string }
+> = {
+  business: { isBridge: false, isWealth: false, num: '01', icon: Building2 },
+  accounting: { isBridge: false, isWealth: false, num: '02', icon: Calculator },
+  tax: { isBridge: false, isWealth: false, num: '03', icon: Receipt },
+  finance: { isBridge: false, isWealth: false, num: '04', icon: LineChart },
+  growth: { isBridge: false, isWealth: false, num: '05', icon: TrendingUp },
+  bridge: {
+    isBridge: true,
+    isWealth: false,
+    num: '06',
+    icon: ShieldCheck,
+    url: 'https://orthodoxwm.com/',
+  },
+  investment: { isBridge: false, isWealth: true, num: '07', icon: Briefcase },
+  insurance: { isBridge: false, isWealth: true, num: '08', icon: Shield },
+  estate: { isBridge: false, isWealth: true, num: '09', icon: Landmark },
+  protection: { isBridge: false, isWealth: true, num: '10', icon: Lock },
+};
 
 export const EcosystemSection: React.FC = () => {
-  const flowItems = [
-    { name: 'Business', isBridge: false, isWealth: false, num: '01', icon: Building2 },
-    { name: 'Accounting', isBridge: false, isWealth: false, num: '02', icon: Calculator },
-    { name: 'Tax', isBridge: false, isWealth: false, num: '03', icon: Receipt },
-    { name: 'Finance', isBridge: false, isWealth: false, num: '04', icon: LineChart },
-    { name: 'Growth', isBridge: false, isWealth: false, num: '05', icon: TrendingUp },
-    { name: 'Orthodox Wealth Management', isBridge: true, isWealth: false, num: '06', icon: ShieldCheck, url: 'https://orthodoxwm.com/' },
-    { name: 'Investment', isBridge: false, isWealth: true, num: '07', icon: Briefcase },
-    { name: 'Insurance', isBridge: false, isWealth: true, num: '08', icon: Shield },
-    { name: 'Estate Planning', isBridge: false, isWealth: true, num: '09', icon: Landmark },
-    { name: 'Asset Protection', isBridge: false, isWealth: true, num: '10', icon: Lock },
-  ];
+  const t = useTranslation();
+
+  const flowItems = t.ecosystem.flowItems.map((item) => ({
+    ...item,
+    ...FLOW_CONFIG[item.id],
+  }));
 
   return (
     <section id="ecosystem" className="py-24 bg-[#080808] text-white border-b border-neutral-800">
@@ -33,10 +51,10 @@ export const EcosystemSection: React.FC = () => {
         {/* Section Header */}
         <div className="mb-14">
           <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-3">
-            HOW IT SHOULD WORK
+            {t.ecosystem.eyebrow}
           </span>
           <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase font-sans">
-            ONE BUSINESS. ONE ECOSYSTEM.
+            {t.ecosystem.title}
           </h2>
         </div>
 
@@ -90,7 +108,7 @@ export const EcosystemSection: React.FC = () => {
             }`;
 
             return (
-              <React.Fragment key={index}>
+              <React.Fragment key={item.id}>
                 {item.url ? (
                   <a
                     href={item.url}
@@ -145,15 +163,13 @@ export const EcosystemSection: React.FC = () => {
         {/* Ecosystem Summary */}
         <div className="max-w-2xl mx-auto pt-8 border-t border-neutral-800/80">
           <p className="text-xl sm:text-2xl font-light text-white leading-snug font-sans mb-3">
-            Business owners don't need separate advisors.
+            {t.ecosystem.summaryLead}
           </p>
           <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-            They need one ecosystem where business growth naturally leads to long-term personal wealth.
+            {t.ecosystem.summaryBody}
           </p>
         </div>
       </div>
     </section>
   );
 };
-
-

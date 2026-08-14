@@ -52,6 +52,7 @@ export interface ProcessStep {
 export type TaxType = 'corporate' | 'personal' | 'dividend';
 
 export interface PortfolioAsset {
+  id: string;
   name: string;
   category: string;
   valueIDR: number;
