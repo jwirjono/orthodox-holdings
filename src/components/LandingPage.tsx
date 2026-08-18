@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, HelpCircle, Building2, UserCheck } from 'lucide-react';
-import heroArchitectImg from '../assets/images/hero_architect_bw_1784984866276.jpg';
+import AssetImage01 from '../assets/images/Imagery-01.png';
 import { useTranslation } from '../i18n';
 
 interface LandingPageProps {
@@ -16,9 +16,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness }) =
       {/* SECTION 1: HERO & TAGLINE */}
       <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-16 border-b border-neutral-800 overflow-hidden bg-[#0A0A0A]">
         {/* Subtle Architectural Background Image */}
-        <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none">
           <img
-            src={heroArchitectImg}
+            src={AssetImage01}
             alt={t.hero.imageAlt}
             className="w-full h-full object-cover object-center filter grayscale contrast-125"
             referrerPolicy="no-referrer"

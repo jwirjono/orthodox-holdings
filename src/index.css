@@ -1,15 +1,34 @@
 @import "tailwindcss";
 
+/*
+ * Montserrat v9.000 by Julieta Ulanovsky is the single typeface for the site.
+ * Every Tailwind font utility (font-sans / font-mono / font-serif) is mapped to
+ * it as well, so no element can fall back to a system stack.
+ */
+@theme {
+  --font-sans: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --default-font-family: var(--font-sans);
+}
+
 @layer base {
   :root {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
   }
 
   body {
     background-color: #0A0A0A;
     color: #FFFFFF;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
   }
 }
 
