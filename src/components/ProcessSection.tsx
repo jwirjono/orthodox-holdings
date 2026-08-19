@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import AssetImage04 from '../assets/images/Imagery-04.png';
 import { useTranslation, format } from '../i18n';
 
 interface ProcessSectionProps {
@@ -10,8 +11,19 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenConsultati
   const t = useTranslation();
 
   return (
-    <section id="process" className="py-24 bg-[#080808] text-white border-b border-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" className="relative py-24 bg-[#080808] text-white border-b border-neutral-800 overflow-hidden">
+      {/* Subtle Architectural Background Image */}
+      <div className="absolute inset-0 z-0 opacity-30 mix-blend-luminosity pointer-events-none" aria-hidden="true">
+        <img
+          src={AssetImage04}
+          alt=""
+          className="w-full h-full object-cover object-center filter grayscale contrast-125"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/80 to-[#080808]/60" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
         <div className="mb-16 pb-6 border-b border-neutral-800">
