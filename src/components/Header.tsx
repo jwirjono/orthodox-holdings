@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { ArrowUpRight, Menu, X, MessageSquare, Linkedin, Instagram } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import { LanguageToggle } from './LanguageToggle';
+import businessLogo from '../assets/images/logo/businessOrthodox-trimmed.png';
+import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
 
 interface HeaderProps {
   currentView: 'holding' | 'business';
@@ -42,6 +44,12 @@ export const Header: React.FC<HeaderProps> = ({
     }
   }, [mobileMenuOpen]);
 
+  // The holding view uses the plain ORTHODOX lockup; the business view uses the
+  // ORTHODOX BUSINESS SOLUTIONS lockup. Both PNGs already contain the wordmark,
+  // so no separate brand text is rendered alongside them.
+  const brandLogo = currentView === 'business' ? businessLogo : mainLogo;
+  const brandLogoSize = currentView === 'business' ? 'h-9 sm:h-10' : 'h-7 sm:h-8';
+
   const businessNavLinks = [
     { name: t.header.nav.about, href: '#whoweare' },
     { name: t.header.nav.services, href: '#expertise' },
@@ -58,11 +66,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onNavigateView('holding');
               }}
-              className="flex items-center gap-3 text-left"
+              className="flex items-center text-left"
             >
-              <div className="w-9 h-9 bg-white text-black flex items-center justify-center font-bold tracking-tighter rounded-xs">
-                <span className="text-sm font-semibold">OH</span>
-              </div>
+              <img
+                src={brandLogo}
+                alt={t.common.brandName}
+                className={`${brandLogoSize} w-auto shrink-0`}
+              />
             </button>
             <button
               onClick={() => setMobileMenuOpen(false)}
@@ -206,22 +216,16 @@ export const Header: React.FC<HeaderProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
-          {/* Left: Brand Monogram & Name */}
+          {/* Left: Brand Lockup */}
           <button
             onClick={() => onNavigateView('holding')}
-            className="flex items-center gap-2.5 sm:gap-3 group text-left shrink-0"
+            className="flex items-center group text-left shrink-0"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-white text-black flex items-center justify-center font-bold tracking-tighter transition-transform duration-300 group-hover:bg-neutral-200 rounded-xs shrink-0">
-              <span className="text-xs sm:text-sm font-semibold">OH</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-white uppercase font-sans">
-                {t.common.brandName}
-              </span>
-              <span className="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider font-mono uppercase">
-                {currentView === 'holding' ? t.header.subtitleHolding : t.header.subtitleBusiness}
-              </span>
-            </div>
+            <img
+              src={brandLogo}
+              alt={t.common.brandName}
+              className={`${brandLogoSize} w-auto shrink-0 transition-opacity duration-300 group-hover:opacity-75`}
+            />
           </button>
 
           {/* Holdings / Business Solutions Toggle Buttons - Hidden on Phone, Visible on Tablet/Desktop */}

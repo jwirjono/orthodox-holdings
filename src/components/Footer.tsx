@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linkedin, Instagram } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
+import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
 
 export const Footer: React.FC = () => {
   const t = useTranslation();
@@ -12,13 +13,9 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-neutral-800">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <a href="#" className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-white text-black font-bold flex items-center justify-center text-xs tracking-tighter">
-                OH
-              </div>
-              <span className="text-sm font-semibold tracking-[0.2em] text-white uppercase font-sans">
-                {t.common.brandName}
-              </span>
+            {/* mainOrthodox.png already contains the ORTHODOX wordmark */}
+            <a href="#" className="inline-flex items-center hover:opacity-75 transition-opacity">
+              <img src={mainLogo} alt={t.common.brandName} className="h-8 w-auto" />
             </a>
 
             <p className="text-xs text-neutral-400 font-light leading-relaxed max-w-sm">
