@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Header } from './components/Header';
 import { LandingPage } from './components/LandingPage';
 import { HeroSection } from './components/HeroSection';
@@ -11,115 +11,125 @@ import { ConsultationSection } from './components/ConsultationSection';
 import { TaxCalculator } from './components/TaxCalculator';
 import { ClientDashboard } from './components/ClientDashboard';
 import { Footer } from './components/Footer';
+import { WealthManagementPage } from './components/wealth/WealthManagementPage';
+import { WealthFooter } from './components/wealth/WealthFooter';
+import { NavigationProvider, type View } from './navigation';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'holding' | 'business'>('holding');
+  const [currentView, setCurrentView] = useState<View>('holding');
   const [dashboardOpen, setDashboardOpen] = useState(false);
   const [consultationMessage, setConsultationMessage] = useState<string>('');
 
-  const handleNavigateView = (view: 'holding' | 'business') => {
-    setCurrentView(view);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  /**
+   * Switches the top-level view. When `anchorId` is given the browser scrolls to
+   * that element once the new view has rendered; otherwise it returns to the top.
+   */
+  const navigateView = useCallback(
+    (view: View, anchorId?: string) => {
+      const scrollToAnchor = () => {
+        document.getElementById(anchorId!)?.scrollIntoView({ behavior: 'smooth' });
+      };
 
-  const handleOpenConsultation = (customMsg?: string) => {
-    if (customMsg) {
-      setConsultationMessage(customMsg);
-    }
-    if (currentView !== 'business') {
-      setCurrentView('business');
-      setTimeout(() => {
-        const elem = document.getElementById('consultation');
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const elem = document.getElementById('consultation');
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
+      if (!anchorId) {
+        setCurrentView(view);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
       }
-    }
-  };
 
-  const handleScrollToTaxCalculator = () => {
-    if (currentView !== 'business') {
-      setCurrentView('business');
-      setTimeout(() => {
-        const elem = document.getElementById('tax-calculator');
-        if (elem) {
-          elem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      const elem = document.getElementById('tax-calculator');
-      if (elem) {
-        elem.scrollIntoView({ behavior: 'smooth' });
+      if (view === currentView) {
+        scrollToAnchor();
+      } else {
+        setCurrentView(view);
+        // Let the incoming view mount before looking up the anchor.
+        setTimeout(scrollToAnchor, 100);
       }
-    }
-  };
+    },
+    [currentView]
+  );
+
+  const handleOpenConsultation = useCallback(
+    (customMsg?: string) => {
+      if (customMsg) {
+        setConsultationMessage(customMsg);
+      }
+      navigateView('business', 'consultation');
+    },
+    [navigateView]
+  );
+
+  const handleScrollToTaxCalculator = useCallback(() => {
+    navigateView('business', 'tax-calculator');
+  }, [navigateView]);
+
+  const navigation = useMemo(() => ({ currentView, navigateView }), [currentView, navigateView]);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5] font-sans antialiased selection:bg-white selection:text-black">
-      {/* Fixed Header */}
-      <Header
-        currentView={currentView}
-        onNavigateView={handleNavigateView}
-        onOpenDashboard={() => setDashboardOpen(true)}
-        onOpenTaxCalculator={handleScrollToTaxCalculator}
-        onOpenConsultation={handleOpenConsultation}
-      />
+    <NavigationProvider value={navigation}>
+      <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5] font-sans antialiased selection:bg-white selection:text-black">
+        {/* Fixed Header */}
+        <Header
+          currentView={currentView}
+          onNavigateView={navigateView}
+          onOpenDashboard={() => setDashboardOpen(true)}
+          onOpenTaxCalculator={handleScrollToTaxCalculator}
+          onOpenConsultation={handleOpenConsultation}
+        />
 
-      {/* Main Content Sections */}
-      <main>
-        {currentView === 'holding' ? (
-          <LandingPage
-            onExploreBusiness={() => handleNavigateView('business')}
-            onOpenConsultation={handleOpenConsultation}
-          />
-        ) : (
-          <>
-            {/* Hero Section */}
-            <HeroSection
+        {/* Main Content Sections */}
+        <main>
+          {currentView === 'holding' && (
+            <LandingPage
+              onExploreBusiness={() => navigateView('business')}
+              onExploreWealth={() => navigateView('wealth')}
               onOpenConsultation={handleOpenConsultation}
-              onOpenDashboard={() => setDashboardOpen(true)}
             />
+          )}
 
-            {/* Section 2: How Can We Help You, Frequent Problem To Solve & Our Service */}
-            <ProblemSection onOpenConsultation={handleOpenConsultation} />
+          {currentView === 'business' && (
+            <>
+              {/* Hero Section */}
+              <HeroSection
+                onOpenConsultation={handleOpenConsultation}
+                onOpenDashboard={() => setDashboardOpen(true)}
+              />
 
-            {/* Section 3: Why Orthodox */}
-            <WhyOrthodox />
+              {/* Section 2: How Can We Help You, Frequent Problem To Solve & Our Service */}
+              <ProblemSection onOpenConsultation={handleOpenConsultation} />
 
-            {/* Section 4: About Us & Leadership */}
-            <WhoWeAre />
+              {/* Section 3: Why Orthodox */}
+              <WhyOrthodox />
 
-            {/* Section 5: How We Work (Process) */}
-            <ProcessSection onOpenConsultation={handleOpenConsultation} />
+              {/* Section 4: About Us & Leadership */}
+              <WhoWeAre />
 
-            {/* Section 6: One Business. One Ecosystem. */}
-            <EcosystemSection />
+              {/* Section 5: How We Work (Process) */}
+              <ProcessSection onOpenConsultation={handleOpenConsultation} />
 
-            {/* Section 7: Private Consultation */}
-            <ConsultationSection initialMessage={consultationMessage} />
+              {/* Section 6: One Business. One Ecosystem. */}
+              <EcosystemSection />
 
-            {/* Diagnostic Sandbox: Tax Calculator */}
-            <TaxCalculator onOpenConsultation={handleOpenConsultation} />
-          </>
-        )}
-      </main>
+              {/* Section 7: Private Consultation */}
+              <ConsultationSection initialMessage={consultationMessage} />
 
-      {/* Footer */}
-      <Footer />
+              {/* Diagnostic Sandbox: Tax Calculator */}
+              <TaxCalculator onOpenConsultation={handleOpenConsultation} />
+            </>
+          )}
 
-      {/* Client Portfolio Dashboard Modal */}
-      <ClientDashboard
-        isOpen={dashboardOpen}
-        onClose={() => setDashboardOpen(false)}
-        onOpenConsultation={handleOpenConsultation}
-      />
-    </div>
+          {/* Orthodox Wealth Management — merged in from the standalone site */}
+          {currentView === 'wealth' && <WealthManagementPage />}
+        </main>
+
+        {/* Footer — Wealth Management carries its own entity details */}
+        {currentView === 'wealth' ? <WealthFooter /> : <Footer />}
+
+        {/* Client Portfolio Dashboard Modal */}
+        <ClientDashboard
+          isOpen={dashboardOpen}
+          onClose={() => setDashboardOpen(false)}
+          onOpenConsultation={handleOpenConsultation}
+        />
+      </div>
+    </NavigationProvider>
   );
 }
-
-

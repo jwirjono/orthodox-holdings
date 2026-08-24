@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Swiper powers the testimonial carousel on the Wealth Management page. */
+@import "swiper/css";
+@import "swiper/css/pagination";
+
 /*
  * Montserrat v9.000 by Julieta Ulanovsky is the single typeface for the site.
  * Every Tailwind font utility (font-sans / font-mono / font-serif) is mapped to
@@ -10,6 +14,10 @@
   --font-mono: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --default-font-family: var(--font-sans);
+
+  /* Accent used by the Orthodox Wealth Management page. */
+  --color-gold: #c5a059;
+  --color-gold-dark: #a6854a;
 }
 
 @layer base {
@@ -86,3 +94,49 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------------------------------------------------------------------------
+ * Orthodox Wealth Management page
+ * ------------------------------------------------------------------------ */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #c5a059 0%, #a6854a 100%);
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3) !important;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #c5a059 !important;
+  width: 24px;
+  border-radius: 6px;
+}
+
+/* WhatsApp contact pill in the Wealth Management footer */
+.wa-contact {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #25d366;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.wa-contact:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-2px);
+}

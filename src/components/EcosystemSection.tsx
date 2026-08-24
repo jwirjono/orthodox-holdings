@@ -14,11 +14,12 @@ import {
 } from 'lucide-react';
 import AssetImage05 from '../assets/images/Imagery-05.png';
 import { useTranslation } from '../i18n';
+import { useNavigation } from '../navigation';
 
 /** Presentation config keyed by the flow item ids in the dictionary. */
 const FLOW_CONFIG: Record<
   string,
-  { isBridge: boolean; isWealth: boolean; num: string; icon: React.ElementType; url?: string }
+  { isBridge: boolean; isWealth: boolean; num: string; icon: React.ElementType; linksToWealth?: boolean }
 > = {
   business: { isBridge: false, isWealth: false, num: '01', icon: Building2 },
   accounting: { isBridge: false, isWealth: false, num: '02', icon: Calculator },
@@ -30,7 +31,7 @@ const FLOW_CONFIG: Record<
     isWealth: false,
     num: '06',
     icon: ShieldCheck,
-    url: 'https://orthodoxwm.com/',
+    linksToWealth: true,
   },
   investment: { isBridge: false, isWealth: true, num: '07', icon: Briefcase },
   insurance: { isBridge: false, isWealth: true, num: '08', icon: Shield },
@@ -40,6 +41,7 @@ const FLOW_CONFIG: Record<
 
 export const EcosystemSection: React.FC = () => {
   const t = useTranslation();
+  const { navigateView } = useNavigation();
 
   const flowItems = t.ecosystem.flowItems.map((item) => ({
     ...item,
@@ -121,15 +123,14 @@ export const EcosystemSection: React.FC = () => {
 
             return (
               <React.Fragment key={item.id}>
-                {item.url ? (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {item.linksToWealth ? (
+                  <button
+                    type="button"
+                    onClick={() => navigateView('wealth')}
                     className={cardClasses}
                   >
                     {cardContent}
-                  </a>
+                  </button>
                 ) : (
                   <div className={cardClasses}>
                     {cardContent}

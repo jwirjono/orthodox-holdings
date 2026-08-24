@@ -1,14 +1,18 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, HelpCircle, Building2, UserCheck } from 'lucide-react';
+import { ArrowRight, HelpCircle, Building2, UserCheck } from 'lucide-react';
 import AssetImage01 from '../assets/images/Imagery-01.png';
 import { useTranslation } from '../i18n';
 
 interface LandingPageProps {
   onExploreBusiness: () => void;
+  onExploreWealth: () => void;
   onOpenConsultation?: () => void;
 }
 
-export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness }) => {
+export const LandingPage: React.FC<LandingPageProps> = ({
+  onExploreBusiness,
+  onExploreWealth,
+}) => {
   const t = useTranslation();
 
   return (
@@ -93,15 +97,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness }) =
                 </h3>
               </div>
 
-              <a
-                href="https://orthodoxwm.com/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={onExploreWealth}
                 className="w-full py-2.5 px-2 bg-neutral-900 hover:bg-white text-neutral-200 hover:text-black border border-neutral-700 hover:border-white font-medium text-[10px] uppercase tracking-wider transition-all flex items-center justify-center gap-1 rounded-xs group"
               >
                 <span>{t.landing.personal.ctaMobile}</span>
-                <ArrowUpRight className="w-3 h-3 text-neutral-400 group-hover:text-black shrink-0" />
-              </a>
+                <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 shrink-0" />
+              </button>
             </div>
           </div>
 
@@ -194,15 +196,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onExploreBusiness }) =
                 <p className="text-xs font-mono uppercase tracking-wider text-neutral-400 mb-3">
                   {t.landing.lookingForSolution}
                 </p>
-                <a
-                  href="https://orthodoxwm.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={onExploreWealth}
                   className="w-full py-3.5 px-5 bg-neutral-900 hover:bg-white text-neutral-200 hover:text-black border border-neutral-700 hover:border-white font-medium text-xs uppercase tracking-widest transition-all flex items-center justify-between group rounded-xs"
                 >
                   <span>{t.landing.personal.ctaDesktop}</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </div>
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Linkedin, Instagram } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
+import { useNavigation } from '../navigation';
 import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
 
 export const Footer: React.FC = () => {
   const t = useTranslation();
+  const { navigateView } = useNavigation();
 
   return (
     <footer className="bg-[#050505] text-neutral-400 text-xs font-sans border-t border-neutral-800 py-16">
@@ -72,7 +74,9 @@ export const Footer: React.FC = () => {
           </p>
           <p>
             {t.footer.platformNoticePrefix}
-            <a href="https://orthodoxwm.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">orthodoxwm.com</a>
+            <button type="button" onClick={() => navigateView('wealth')} className="underline hover:text-white">
+              {t.common.orthodoxWealthManagement}
+            </button>
             {t.footer.platformNoticeSuffix}
           </p>
         </div>
@@ -102,9 +106,9 @@ export const Footer: React.FC = () => {
               <span>{t.common.instagram}</span>
             </a>
             <span>•</span>
-            <a href="https://orthodoxwm.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              orthodoxwm.com
-            </a>
+            <button type="button" onClick={() => navigateView('wealth')} className="hover:text-white">
+              {t.common.wealthManagement}
+            </button>
           </div>
         </div>
       </div>

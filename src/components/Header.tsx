@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, Menu, X, MessageSquare, Linkedin, Instagram } from 'lucide-react';
+import { ArrowRight, Menu, X, MessageSquare, Linkedin, Instagram } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import { LanguageToggle } from './LanguageToggle';
+import type { View } from '../navigation';
 import businessLogo from '../assets/images/logo/businessOrthodox-trimmed.png';
 import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
+import wealthLogo from '../assets/images/wealth/owm-main-logo.png';
 
 interface HeaderProps {
-  currentView: 'holding' | 'business';
-  onNavigateView: (view: 'holding' | 'business') => void;
+  currentView: View;
+  onNavigateView: (view: View, anchorId?: string) => void;
   onOpenDashboard: () => void;
   onOpenTaxCalculator: () => void;
   onOpenConsultation: (problemMessage?: string) => void;
@@ -17,7 +19,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentView,
   onNavigateView,
-  onOpenDashboard,
   onOpenTaxCalculator,
   onOpenConsultation,
 }) => {
@@ -44,16 +45,33 @@ export const Header: React.FC<HeaderProps> = ({
     }
   }, [mobileMenuOpen]);
 
-  // The holding view uses the plain ORTHODOX lockup; the business view uses the
-  // ORTHODOX BUSINESS SOLUTIONS lockup. Both PNGs already contain the wordmark,
-  // so no separate brand text is rendered alongside them.
-  const brandLogo = currentView === 'business' ? businessLogo : mainLogo;
-  const brandLogoSize = currentView === 'business' ? 'h-9 sm:h-10' : 'h-7 sm:h-8';
+  // Each view has its own lockup: the plain ORTHODOX wordmark on the holding
+  // page, ORTHODOX BUSINESS SOLUTIONS on the business page and ORTHODOX WEALTH
+  // MANAGEMENT on the wealth page. Every PNG already contains the wordmark, so
+  // no separate brand text is rendered alongside them.
+  const brandLogo =
+    currentView === 'business' ? businessLogo : currentView === 'wealth' ? wealthLogo : mainLogo;
+  const brandLogoSize = currentView === 'holding' ? 'h-7 sm:h-8' : 'h-9 sm:h-10';
 
-  const businessNavLinks = [
-    { name: t.header.nav.about, href: '#whoweare' },
-    { name: t.header.nav.services, href: '#expertise' },
-    { name: t.header.nav.contact, href: '#consultation' },
+  // Section anchors for the view that is currently rendered.
+  const viewNavLinks =
+    currentView === 'business'
+      ? [
+          { name: t.header.nav.about, href: '#whoweare' },
+          { name: t.header.nav.services, href: '#expertise' },
+          { name: t.header.nav.contact, href: '#consultation' },
+        ]
+      : currentView === 'wealth'
+        ? [
+            { name: t.wealth.nav.about, href: '#about' },
+            { name: t.wealth.nav.services, href: '#services' },
+            { name: t.wealth.nav.process, href: '#process' },
+          ]
+        : [];
+
+  const viewToggles: { view: Exclude<View, 'holding'>; label: string }[] = [
+    { view: 'business', label: t.common.businessSolutions },
+    { view: 'wealth', label: t.common.wealthManagement },
   ];
 
   const mobileMenuOverlay = mobileMenuOpen
@@ -91,27 +109,28 @@ export const Header: React.FC<HeaderProps> = ({
                 {t.header.selectView}
               </span>
               <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onNavigateView('holding');
-                  }}
-                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between bg-white text-black font-bold`}
-                >
-                  <span>{t.common.businessSolutions}</span>
-                  <span className="text-[10px]">✓</span>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    window.open('https://orthodoxwm.com/', '_blank');
-                  }}
-                  className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white`}
-                >
-                  <span>{t.common.wealthManagement}</span>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-400" />
-                </button>
+                {viewToggles.map(({ view, label }) => (
+                  <button
+                    key={view}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onNavigateView(view);
+                    }}
+                    aria-current={currentView === view ? 'page' : undefined}
+                    className={`py-2.5 px-3 rounded-xs text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between ${
+                      currentView === view
+                        ? 'bg-white text-black font-bold'
+                        : 'text-neutral-300 bg-neutral-900 border border-neutral-800 hover:text-white'
+                    }`}
+                  >
+                    <span>{label}</span>
+                    {currentView === view ? (
+                      <span className="text-[10px]">✓</span>
+                    ) : (
+                      <ArrowRight className="w-4 h-4 text-neutral-400" />
+                    )}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -122,30 +141,27 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Navigation links based on current view */}
             <div className="flex flex-col space-y-3 pt-2">
-              {currentView === 'business' && (
-                <>
-                  {businessNavLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  ))}
+              {viewNavLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
 
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      if (currentView !== 'business') onNavigateView('business');
-                      setTimeout(() => onOpenTaxCalculator(), 100);
-                    }}
-                    className="text-left py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
-                  >
-                    {t.common.taxCalculator}
-                  </button>
-                </>
+              {currentView === 'business' && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenTaxCalculator();
+                  }}
+                  className="text-left py-2.5 border-b border-neutral-900 text-sm uppercase tracking-widest text-neutral-200 hover:text-white transition-colors"
+                >
+                  {t.common.taxCalculator}
+                </button>
               )}
 
               {/* Consultation CTA inside Burger Menu */}
@@ -153,7 +169,11 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onOpenConsultation();
+                    if (currentView === 'wealth') {
+                      onNavigateView('wealth', 'wealth-contact');
+                    } else {
+                      onOpenConsultation();
+                    }
                   }}
                   className="w-full py-3 px-4 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 rounded-xs shadow-sm"
                 >
@@ -166,15 +186,16 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Bottom Social Links & Wealth Management Link */}
           <div className="pt-6 border-t border-neutral-800 flex flex-col gap-4">
-            <a
-              href="https://orthodoxwm.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigateView('wealth');
+              }}
               className="flex items-center justify-between px-4 py-3 text-xs font-mono border border-neutral-800 text-neutral-300 hover:text-white bg-neutral-900/80 rounded-xs"
             >
               <span>{t.common.orthodoxWealthManagement}</span>
-              <ArrowUpRight className="w-4 h-4 text-neutral-400" />
-            </a>
+              <ArrowRight className="w-4 h-4 text-neutral-400" />
+            </button>
 
             {/* Social Links at Bottom */}
             <div className="flex items-center justify-between pt-2 text-xs text-neutral-400 font-mono">
@@ -228,22 +249,23 @@ export const Header: React.FC<HeaderProps> = ({
             />
           </button>
 
-          {/* Holdings / Business Solutions Toggle Buttons - Hidden on Phone, Visible on Tablet/Desktop */}
+          {/* Business Solutions / Wealth Management Toggle - Hidden on Phone, Visible on Tablet/Desktop */}
           <div className="flex items-center gap-2 sm:gap-4">
             <nav className="hidden md:flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 sm:p-1.5 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
-              <button
-                onClick={() => onNavigateView('business')}
-                className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs bg-white text-black font-semibold shadow-xs"
-              >
-                {t.common.businessSolutions}
-              </button>
-              <button
-                onClick={() => window.open('https://orthodoxwm.com/', '_blank')}
-                className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs text-neutral-400 hover:text-white flex items-center gap-1"
-              >
-                <span>{t.common.wealthManagement}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-neutral-400" />
-              </button>
+              {viewToggles.map(({ view, label }) => (
+                <button
+                  key={view}
+                  onClick={() => onNavigateView(view)}
+                  aria-current={currentView === view ? 'page' : undefined}
+                  className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 transition-all rounded-xs ${
+                    currentView === view
+                      ? 'bg-white text-black font-semibold shadow-xs'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
             </nav>
 
             {/* Language Switcher — always visible */}
@@ -252,21 +274,24 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Desktop Nav Links + Consultation CTA */}
             <div className="hidden lg:flex items-center space-x-6">
               <nav className="flex items-center space-x-6 text-xs font-medium uppercase tracking-wider text-neutral-400">
-                {currentView === 'business' &&
-                  businessNavLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="hover:text-white transition-colors py-1 hover:border-b hover:border-white"
-                    >
-                      {link.name}
-                    </a>
-                  ))}
+                {viewNavLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="hover:text-white transition-colors py-1 hover:border-b hover:border-white"
+                  >
+                    {link.name}
+                  </a>
+                ))}
               </nav>
 
               {/* Consultation CTA */}
               <button
-                onClick={() => onOpenConsultation()}
+                onClick={() =>
+                  currentView === 'wealth'
+                    ? onNavigateView('wealth', 'wealth-contact')
+                    : onOpenConsultation()
+                }
                 className="inline-flex items-center gap-1.5 px-4 py-2 sm:py-2.5 text-xs font-semibold uppercase tracking-wider text-black bg-white border border-white hover:bg-neutral-200 transition-all rounded-xs shadow-xs"
               >
                 <MessageSquare className="w-3.5 h-3.5" />

@@ -1040,6 +1040,289 @@ export const en = {
       description: 'Refinancing, mortgage optimization & personal leverage controls',
     },
   ],
+
+  // Orthodox Wealth Management — the personal financial planning division.
+  // Merged in from the standalone orthodoxwm.com site.
+  wealth: {
+    nav: {
+      about: 'About',
+      services: 'Services',
+      process: 'Process',
+    },
+
+    hero: {
+      titleLine1: 'Building Wealth',
+      titleLine2: 'That Lasts Across Generations',
+      paragraphs: [
+        'We design fully integrated personal financial strategies that align your investments, taxes, insurance, debt structures, retirement goals, estate planning, and asset protection into one cohesive plan.',
+        'Built on time-tested “orthodox” principles, our approach ensures your wealth is not only grown, but also protected, structured efficiently, and sustained across generations.',
+        'As part of Orthodox Holding, we work alongside Orthodox Business Solutions to provide business owners with one integrated financial ecosystem—connecting business success with long-term personal wealth.',
+      ],
+      imageAlt: 'Wall Street Building',
+      stats: [
+        { value: 100, suffix: 'M+', label: 'Assets Under Advisory' },
+        { value: 100, suffix: '+', label: 'Clients Advised' },
+      ],
+    },
+
+    problem: {
+      eyebrow: 'THE PROBLEM WE SOLVE',
+      headingLine1: 'Most financial decisions are made in isolation.',
+      headingLine2: 'That’s where the problem begins.',
+      cards: [
+        {
+          title: 'Integrated Financial Decisions',
+          description:
+            'Investment, tax, insurance, debt, and estate decisions should work together—not against each other. Without alignment, financial opportunities are often missed and unnecessary risks emerge.',
+          cta: 'Plan Your Financial Journey',
+        },
+        {
+          title: 'Inefficient Financial Structure',
+          description:
+            'Poor financial structuring can lead to unnecessary tax costs, higher borrowing expenses, and avoidable financial risk. Small inefficiencies compounded over time can significantly impact long-term wealth.',
+          cta: 'See How Structure Changes Outcomes',
+        },
+        {
+          title: 'Wealth Without a System',
+          description:
+            'Building wealth requires more than earning a high income. Without structure, protection, and long-term planning, wealth can become difficult to sustain and transfer effectively.',
+          cta: 'Learn More About Our System',
+        },
+      ],
+    },
+
+    flow: {
+      eyebrow: 'HOW IT SHOULD WORK',
+      heading: 'A Structured Financial Flow',
+      steps: ['Income', 'Tax', 'Debt', 'Investment', 'Protection', 'Estate'],
+      closing:
+        'When structured correctly, each financial decision strengthens the next—creating a personal wealth system designed for efficiency, protection, and long-term legacy.',
+    },
+
+    about: {
+      eyebrow: 'WHO WE ARE',
+      heading: 'A Foundation of Trust',
+      paragraphs: [
+        'Orthodox Wealth Management is the personal financial planning division of Orthodox Holding founded by Adriel Reynaldo Louis, B.Bus, CFP®, CTM.',
+        'We work with professionals, executives, business owners, and high-net-worth individuals who seek greater clarity, structure, and control over their financial future.',
+        'Our approach is not built around products, but around systems. We integrate investment planning, tax planning, debt management, insurance planning, retirement strategies, estate planning, and asset protection into one coordinated framework.',
+        'Estate Planning and Asset Protection sit at the core of our advisory philosophy because preserving wealth is often more important than simply accumulating it.',
+        'Our philosophy is rooted in “orthodox wealth strategies”—disciplined, time-tested principles used by successful families to build, protect, and transfer wealth across generations.',
+        'Every recommendation is designed to support the next, ensuring your financial decisions work together toward long-term financial security and legacy preservation.',
+      ],
+      imageAlt: 'Client Meeting Logo for Wealth Planning',
+    },
+
+    services: {
+      heading: 'Our Expertise',
+      intro:
+        'Each component is designed individually—but structured to work as one integrated personal financial system.',
+      items: [
+        {
+          title: 'Estate Planning (Core Expertise)',
+          description:
+            'Structure strategies to ensure efficient wealth transfer, family continuity, and legacy preservation across generations.',
+        },
+        {
+          title: 'Asset Protection (Core Expertise)',
+          description:
+            'Protect personal wealth from legal, financial, and unforeseen risks through proactive planning and strategic structuring.',
+        },
+        {
+          title: 'Tax Planning & Optimization',
+          description:
+            'Reduce unnecessary tax leakage through strategic planning designed to improve long-term financial efficiency.',
+        },
+        {
+          title: 'Insurance Planning',
+          description:
+            'Align insurance solutions with your broader financial strategy to ensure appropriate protection while avoiding unnecessary costs.',
+        },
+        {
+          title: 'Retirement Planning',
+          description:
+            'Design sustainable income strategies to support your desired retirement lifestyle and long-term financial independence.',
+        },
+        {
+          title: 'Debt Management & Structuring',
+          description:
+            'Optimize debt and borrowing strategies to improve cash flow, strengthen financial flexibility, and support wealth creation.',
+        },
+        {
+          title: 'Personal Loan Broking',
+          description:
+            'Access lending solutions that align with your broader financial objectives, whether for investment, property acquisition, or debt restructuring.',
+        },
+        {
+          title: 'Investment Planning',
+          description:
+            'Build diversified investment portfolios aligned with your goals, risk profile, cash flow needs, and long-term wealth objectives.',
+        },
+      ],
+      closing:
+        'Every element is interconnected. When structured correctly, each financial decision strengthens the next.',
+    },
+
+    why: {
+      eyebrow: 'WHY ORTHODOX',
+      headingLine1: 'More Than Financial Planning.',
+      headingLine2: 'An Integrated Financial Ecosystem.',
+      items: [
+        {
+          title: 'One Integrated Strategy',
+          description:
+            'Rather than managing investments, tax, insurance, debt, and estate planning independently, we coordinate every financial decision into one cohesive personal wealth strategy.',
+        },
+        {
+          title: 'Expertise Where It Matters Most',
+          description:
+            'Estate Planning and Asset Protection are not additional services. They form the foundation of preserving wealth across generations.',
+        },
+        {
+          title: 'Beyond Personal Finance',
+          description:
+            'For entrepreneurs and business owners, personal wealth is often created through business ownership. Through Orthodox Holding, our ecosystem extends into Orthodox Business Solutions—providing coordinated expertise across business finance, accounting, taxation, corporate structuring, and strategic advisory.',
+        },
+        {
+          title: 'Decisions Built Around Your Life',
+          description:
+            'Every recommendation considers your career, family, lifestyle, business interests, succession plans, and long-term objectives—not just your investment portfolio.',
+        },
+        {
+          title: 'Independent Advice',
+          description: 'Solutions are designed around outcomes—not products or commissions.',
+        },
+        {
+          title: 'Direct High-Touch Advisory',
+          description: 'You work directly with your advisor throughout your financial journey.',
+        },
+        {
+          title: 'Long-Term Partnership',
+          description: 'As your life evolves, your financial strategy evolves alongside it.',
+        },
+      ],
+      closing:
+        'Wealth is not built through isolated decisions. It is built through structure, alignment, and discipline over time.',
+    },
+
+    process: {
+      eyebrow: 'Our strategic process',
+      heading: 'How We Structure Your Financial System',
+      steps: [
+        {
+          title: 'Deep Financial Understanding',
+          description:
+            'We begin with a comprehensive understanding of your financial position, goals, risks, opportunities, liabilities, and long-term objectives.',
+        },
+        {
+          title: 'Integrated Strategy Design',
+          description:
+            'We design a personal financial strategy that aligns your investments, taxes, debt position, insurance planning, retirement objectives, estate planning, and asset protection strategies.',
+        },
+        {
+          title: 'Coordinated Execution',
+          description:
+            'We guide implementation across multiple financial areas, ensuring every recommendation is executed in alignment with your overall strategy.',
+        },
+        {
+          title: 'Continuous Alignment & Refinement',
+          description:
+            'As your life, finances, and priorities evolve, your strategy is continuously reviewed and refined to maintain efficiency, protection, and alignment.',
+        },
+      ],
+      closing:
+        'You do not just receive advice, you gain a structured and long-term strategic partner to building, protecting, and sustaining wealth.',
+    },
+
+    testimonials: [
+      {
+        quote:
+          'Orthodox Wealth Management helped us build a structured retirement strategy that aligned our investments, cashflow, protection, and long-term family goals into one comprehensive plan.',
+        author: 'Hendy & Katherine, Family Business Owner',
+        role: 'Retirement Planning',
+      },
+      {
+        quote:
+          'What stood out was the integrated approach. My investments, cashflow, protection, and long-term goals were all structured into one clear financial strategy.',
+        author: 'Regine, Career Professional',
+        role: 'Personal Financial Planning & Personal Investing',
+      },
+      {
+        quote:
+          'Orthodox Wealth Management helped connect my personal investments and business finances into one aligned strategy, giving me much better clarity and structure overall.',
+        author: 'Satya, Business Owner',
+        role: 'Personal Investment & Corporate Financial Planning',
+      },
+      {
+        quote:
+          'The advice was strategic, comprehensive, and not product-driven. I gained a clearer structure for both my personal wealth and business financial planning.',
+        author: 'Fauker, Entrepreneur',
+        role: 'Personal Investment & Corporate Financial Planning',
+      },
+      {
+        quote:
+          'The combination of corporate structuring and tax planning gave me a much more efficient and organized financial framework for my business.',
+        author: 'Kevin, Architect',
+        role: 'Corporate Structuring & Tax Planning',
+      },
+      {
+        quote:
+          'Orthodox Wealth Management helped turn fragmented financial decisions into one structured plan that aligned my investments, goals, and overall financial direction.',
+        author: 'Joshua, Interior Designer',
+        role: 'Personal Financial Planning & Personal Investing',
+      },
+      {
+        quote:
+          'The advice was highly structured and comprehensive, helping me align tax planning and business structuring with my long-term financial objectives.',
+        author: 'Jevon, IT Professional',
+        role: 'Tax Planning & Corporate Structuring',
+      },
+      {
+        quote:
+          'Adriel approached mortgage planning strategically — focusing not only on financing, but also on cashflow, structure, and long-term financial impact.',
+        author: 'Vincent, Hotelier',
+        role: 'Mortgage Planning',
+      },
+    ],
+
+    contact: {
+      eyebrow: 'Private Consultation',
+      heading: 'Begin a Structured Approach to Your Wealth',
+      introLine1: 'Your financial life should not be managed in isolation.',
+      introLine2:
+        'It requires structure, alignment, and a long-term strategy designed to protect and grow wealth across generations.',
+      brand: 'Orthodox Wealth Management',
+      brandTagline: 'Building Wealth That Lasts Across Generations',
+      form: {
+        firstNameLabel: 'First Name',
+        firstNamePlaceholder: 'Enter your name',
+        emailLabel: 'Email Address',
+        emailPlaceholder: 'email@example.com',
+        phoneLabel: 'Phone Number',
+        phonePlaceholder: '+62 812 0000 0000',
+        preferredMethodLabel: 'Preferred Contact',
+        selectPlaceholder: 'Select option',
+        methodEmail: 'Email',
+        methodWhatsapp: 'WhatsApp',
+        submit: 'Request Consultation',
+        success: 'Thank you. A senior advisor will contact you shortly.',
+        error: 'An error occurred. Please try again or contact us directly.',
+      },
+      corporateNote1:
+        'Looking for Corporate Financial Planning, Business Structuring, Financial Modelling, Cash Flow Strategy, or Strategic Business Advisory?',
+      corporateNote2:
+        'Please contact Orthodox Business Solutions for corporate and business financial consulting services.',
+      corporateNoteCta: 'Explore Orthodox Business Solutions',
+    },
+
+    footer: {
+      logoAlt: 'Orthodox Wealth Management',
+      legalName: 'A trading name of PT. Orthodox Strategi Finansial',
+      copyright: '© {year} PT. Orthodox Strategi Finansial',
+      email: 'info@orthodoxwm.com',
+      whatsappLabel: 'WhatsApp',
+    },
+  },
 };
 
 export type Dictionary = typeof en;

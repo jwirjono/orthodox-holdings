@@ -1,9 +1,11 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import { useNavigation } from '../navigation';
 
 export const IntegratedSystem: React.FC = () => {
   const t = useTranslation();
+  const { navigateView } = useNavigation();
 
   return (
     <section id="system" className="py-24 bg-[#0A0A0A] text-white border-b border-neutral-800">
@@ -72,15 +74,14 @@ export const IntegratedSystem: React.FC = () => {
             <p className="text-sm text-neutral-200 font-light leading-relaxed italic font-serif">
               {t.integratedSystem.continuityQuote}
             </p>
-            <a
-              href="https://orthodoxwm.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => navigateView('wealth')}
               className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-white hover:underline pt-2"
             >
               <span>{t.integratedSystem.exploreLink}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
       </div>

@@ -17,8 +17,8 @@ export const id: Dictionary = {
 
   common: {
     brandName: 'Orthodox Holdings',
-    businessSolutions: 'Solusi Bisnis',
-    wealthManagement: 'Manajemen Kekayaan',
+    businessSolutions: 'Business Solutions',
+    wealthManagement: 'Wealth Management',
     orthodoxWealthManagement: 'Orthodox Wealth Management',
     requestConsultation: 'Ajukan Konsultasi',
     consultation: 'Konsultasi',
@@ -52,11 +52,11 @@ export const id: Dictionary = {
     nextStepTitle: 'Mari Bangun Masa Depan Finansial Anda Bersama',
     lookingForSolution: 'Mencari solusi yang menyeluruh?',
     business: {
-      eyebrowMobile: 'Advisory Bisnis',
-      eyebrowDesktop: 'Advisory Korporasi',
+      eyebrowMobile: 'Advisori Bisnis',
+      eyebrowDesktop: 'Advisori Korporasi',
       title: 'Menghadapi Tantangan Bisnis Ini?',
       prompt: 'Apakah bisnis Anda mengalami...',
-      ctaMobile: 'Solusi Bisnis',
+      ctaMobile: 'Business Solutions',
       ctaDesktop: 'Jelajahi Orthodox Business Solutions',
       challenges: [
         'Membayar pajak lebih besar dari seharusnya atau kesulitan dengan kepatuhan dan pelaporan pajak?',
@@ -70,8 +70,8 @@ export const id: Dictionary = {
       ],
     },
     personal: {
-      eyebrowMobile: 'Advisory Keuangan Pribadi',
-      eyebrowDesktop: 'Advisory Privat',
+      eyebrowMobile: 'Advisori Keuangan Pribadi',
+      eyebrowDesktop: 'Advisori Privat',
       title: 'Menghadapi Tantangan Keuangan Pribadi Ini?',
       prompt: 'Apakah Anda mengalami...',
       ctaMobile: 'Wealth Mgmt',
@@ -100,7 +100,7 @@ export const id: Dictionary = {
     trustIndicatorsLabel: 'Indikator Kepercayaan & Rekam Jejak',
     trustIndicators: [
       { value: '100+', label: 'Penugasan Bisnis' },
-      { value: 'Multi-Industri', label: 'Pengalaman Advisory' },
+      { value: 'Multi-Industri', label: 'Pengalaman Advisori' },
       { value: 'Terintegrasi', label: 'Ekosistem Bisnis' },
     ],
     imageAlt: 'Arsitektur Orthodox Holdings',
@@ -117,7 +117,7 @@ export const id: Dictionary = {
     diagnosticSubtitle:
       'Pilih tantangan operasional Anda saat ini untuk membuka pratinjau konsultasi WhatsApp langsung.',
     instantChannel: 'Kanal Instan:',
-    whatsappDirect: 'Advisory Langsung via WhatsApp',
+    whatsappDirect: 'Advisori Langsung via WhatsApp',
     problemLabel: 'MASALAH',
     diagnosticOverview: 'Ringkasan Diagnostik:',
     businessImpact: 'Dampak Bisnis:',
@@ -220,11 +220,11 @@ export const id: Dictionary = {
     },
 
     narrative: {
-      title: 'Seiring bisnis Anda bertumbuh, advisory Anda pun harus ikut bertumbuh.',
+      title: 'Seiring bisnis Anda bertumbuh, advisori Anda pun harus ikut bertumbuh.',
       body: 'Sebagian besar klien kami memulai dari pajak atau pembukuan. Seiring kami memahami bisnis mereka lebih dalam, kami membantu meningkatkan profitabilitas, arus kas, tata kelola, pendanaan, dan nilai bisnis jangka panjang.',
     },
 
-    advisoryLabel: 'Advisory',
+    advisoryLabel: 'Advisori',
     advisoryEnquiryTemplate: 'Halo Orthodox Holdings, saya ingin berkonsultasi mengenai {topic}.',
     advisoryCards: [
       {
@@ -280,7 +280,7 @@ export const id: Dictionary = {
           'Setiap rekomendasi mempertimbangkan profitabilitas, arus kas, efisiensi pajak, dan nilai bisnis jangka panjang.',
       },
       {
-        title: 'Satu Ekosistem Advisory',
+        title: 'Satu Ekosistem Advisori',
         description:
           'Sebagai bagian dari Orthodox Holding, strategi bisnis Anda terhubung secara alami dengan Orthodox Wealth Management—memungkinkan Anda menyelaraskan perencanaan keuangan bisnis dan pribadi dalam satu ekosistem.',
       },
@@ -302,15 +302,15 @@ export const id: Dictionary = {
     title: 'TENTANG KAMI',
     subtitle: 'Mitra Strategis bagi Bisnis yang Dibangun untuk Bertahan',
     narrative1:
-      'Orthodox Business Solutions adalah divisi advisory bisnis dari Orthodox Holding, membantu pengusaha menyederhanakan kompleksitas bisnis melalui layanan keuangan, akuntansi, perpajakan, dan advisory strategis yang terintegrasi.',
+      'Orthodox Business Solutions adalah divisi advisori bisnis dari Orthodox Holding, membantu pengusaha menyederhanakan kompleksitas bisnis melalui layanan keuangan, akuntansi, perpajakan, dan advisori strategis yang terintegrasi.',
     narrative2:
       'Ketika banyak firma menyelesaikan satu masalah dalam satu waktu, kami percaya tantangan bisnis saling terkait. Karena itu kami mengoordinasikan akuntansi, pajak, keuangan, penataan struktur perusahaan, penggajian, dan strategi bisnis dalam satu kerangka yang menyatu.',
     narrative3:
-      'Melalui perusahaan afiliasi kami, Orthodox Wealth Management, advisory kami melampaui ranah bisnis—membantu pemilik melindungi, menumbuhkan, dan mengalihkan kekayaan yang dihasilkan bisnisnya. Bersama-sama, kami menghadirkan satu ekosistem terintegrasi yang mendukung bisnis sekaligus orang-orang di baliknya.',
+      'Melalui perusahaan afiliasi kami, Orthodox Wealth Management, advisori kami melampaui ranah bisnis—membantu pemilik melindungi, menumbuhkan, dan mengalihkan kekayaan yang dihasilkan bisnisnya. Bersama-sama, kami menghadirkan satu ekosistem terintegrasi yang mendukung bisnis sekaligus orang-orang di baliknya.',
     leadershipTitle: 'Kepemimpinan',
     leadershipEyebrow: 'Para Partner Orthodox Holding',
     qualifications: 'Kualifikasi & Rekam Jejak',
-    advisoryDirector: 'Direktur Advisory',
+    advisoryDirector: 'Direktur Advisori',
     goToSlide: 'Ke slide {number}',
 
     profiles: [
@@ -337,7 +337,7 @@ export const id: Dictionary = {
         id: 'dominicus-richardo',
         name: 'Dominicus Richardo, S.M., BKP',
         title: 'Partner & Direktur Pajak',
-        role: 'Advisory Pajak, Akuntansi & Administrasi Legal',
+        role: 'Advisori Pajak, Akuntansi & Administrasi Legal',
         credentials: [
           'S.M. (Sarjana Manajemen)',
           'BKP (Bersertifikat Konsultan Pajak)',
@@ -346,7 +346,7 @@ export const id: Dictionary = {
         ],
         philosophy:
           'Nasihat yang baik bukan hanya benar secara teknis — tetapi adaptif, tepat waktu, dan disusun sesuai posisi klien saat ini serta ke mana mereka ingin melangkah.',
-        bio: 'Berbekal fondasi kewirausahaan dan pendidikan formal di Prasetiya Mulya — salah satu sekolah bisnis terkemuka di Indonesia — Richardo membawa sudut pandang praktisi ke dalam advisory pajak dan bisnis. Setelah membangun dan menjalankan bisnisnya sendiri sebelum masuk ke dunia jasa profesional, ia memahami langsung keputusan yang dihadapi pengusaha di setiap tahap pertumbuhan — bukan sekadar dalam teori, tetapi dalam praktik. Filosofinya sederhana: Nasihat yang baik bukan hanya benar secara teknis — tetapi adaptif, tepat waktu, dan disusun sesuai posisi klien saat ini serta ke mana mereka ingin melangkah. Berspesialisasi di bidang pajak, akuntansi, keuangan, dan administrasi legal, Richardo membantu klien menavigasi kompleksitas dengan solusi yang berlandaskan integritas dan berorientasi pada hasil strategis yang nyata.',
+        bio: 'Berbekal fondasi kewirausahaan dan pendidikan formal di Prasetiya Mulya — salah satu sekolah bisnis terkemuka di Indonesia — Richardo membawa sudut pandang praktisi ke dalam advisori pajak dan bisnis. Setelah membangun dan menjalankan bisnisnya sendiri sebelum masuk ke dunia jasa profesional, ia memahami langsung keputusan yang dihadapi pengusaha di setiap tahap pertumbuhan — bukan sekadar dalam teori, tetapi dalam praktik. Filosofinya sederhana: Nasihat yang baik bukan hanya benar secara teknis — tetapi adaptif, tepat waktu, dan disusun sesuai posisi klien saat ini serta ke mana mereka ingin melangkah. Berspesialisasi di bidang pajak, akuntansi, keuangan, dan administrasi legal, Richardo membantu klien menavigasi kompleksitas dengan solusi yang berlandaskan integritas dan berorientasi pada hasil strategis yang nyata.',
         highlights: [
           'Konsultan Pajak berlisensi (BKP) dengan wawasan praktisi pengusaha',
           'Keahlian mendalam pada sengketa pajak badan, penataan pajak, dan kepatuhan',
@@ -356,7 +356,7 @@ export const id: Dictionary = {
       {
         id: 'brigitta-bunga',
         name: 'Brigitta Bunga, S.Ak',
-        title: 'Direktur Advisory Akuntansi',
+        title: 'Direktur Advisori Akuntansi',
         role: 'Audit Keuangan, Risiko & Kepatuhan',
         credentials: [
           'S.Ak (Sarjana Akuntansi)',
@@ -366,7 +366,7 @@ export const id: Dictionary = {
         ],
         philosophy:
           'Akurasi bukan sekadar standar — melainkan proses yang dibangun atas kejelasan, adaptabilitas, dan kedisiplinan menelaah di setiap langkah.',
-        bio: 'Dengan 4 tahun pengalaman sebagai External Auditor di firma akuntansi Big 4 di Indonesia, Brigitta membawa keahlian mendalam dalam audit keuangan, penilaian risiko, analisis keuangan, dan kepatuhan regulasi — membekalinya untuk memberikan advisory yang presisi dan berstandar tinggi bagi organisasi yang kompleks. Pendekatannya ditandai oleh skeptisisme profesional dan metodologi yang terstruktur, memastikan setiap penugasan berlandaskan analisis yang ketat serta komunikasi yang jernih dan transparan.',
+        bio: 'Dengan 4 tahun pengalaman sebagai External Auditor di firma akuntansi Big 4 di Indonesia, Brigitta membawa keahlian mendalam dalam audit keuangan, penilaian risiko, analisis keuangan, dan kepatuhan regulasi — membekalinya untuk memberikan advisori yang presisi dan berstandar tinggi bagi organisasi yang kompleks. Pendekatannya ditandai oleh skeptisisme profesional dan metodologi yang terstruktur, memastikan setiap penugasan berlandaskan analisis yang ketat serta komunikasi yang jernih dan transparan.',
         highlights: [
           'Mantan Senior External Auditor Big 4',
           'Ahli dalam pengendalian internal, implementasi sistem akuntansi, dan visibilitas keuangan',
@@ -377,12 +377,12 @@ export const id: Dictionary = {
         id: 'satya-wana',
         name: 'Satya Wana Putera Utama, S.T, MBA',
         title: 'Komisaris',
-        role: 'Tata Kelola Strategis & Advisory Perusahaan',
+        role: 'Tata Kelola Strategis & Advisori Perusahaan',
         credentials: [
           'S.T (Sarjana Teknik)',
           'MBA (Master of Business Administration)',
           'Spesialis Tata Kelola Perusahaan Tingkat Eksekutif',
-          'Advisory Bisnis Strategis',
+          'Advisori Bisnis Strategis',
         ],
         philosophy:
           'Tata kelola strategis dan kejelasan struktur mendorong daya tahan perusahaan.',
@@ -402,7 +402,7 @@ export const id: Dictionary = {
     executionFocus: 'Fokus Eksekusi:',
     phaseLabel: 'Protokol Fase {number}',
     ctaTitle: 'Siap menjalankan proses 4 langkah untuk bisnis Anda?',
-    ctaSubtitle: 'Mulai Fase 01 Understand bersama partner advisory senior Orthodox.',
+    ctaSubtitle: 'Mulai Fase 01 Understand bersama partner advisori senior Orthodox.',
     ctaMessage: 'Halo Orthodox Holdings, saya ingin memulai Phase 01 Understand.',
     steps: [
       {
@@ -440,7 +440,7 @@ export const id: Dictionary = {
         title: 'Bertumbuh',
         description: 'Kami terus mendampingi bisnis Anda seiring perkembangannya.',
         actions: [
-          'Advisory berkelanjutan',
+          'Advisori berkelanjutan',
           'Sinkronisasi pengalihan kekayaan',
           'Dukungan ekspansi',
         ],
@@ -469,7 +469,7 @@ export const id: Dictionary = {
   },
 
   consultation: {
-    eyebrow: 'Mulai Penugasan Advisory',
+    eyebrow: 'Mulai Penugasan Advisori',
     title: 'KONSULTASI PRIVAT',
     subtitle: 'Bangun Bisnis yang Lebih Baik.',
     badge: 'Solusi Terintegrasi. Pertumbuhan Berkelanjutan.',
@@ -480,13 +480,13 @@ export const id: Dictionary = {
     body2Prefix: 'Melalui ekosistem kami bersama ',
     body2Suffix:
       ', strategi bisnis Anda secara alami meluas ke masa depan keuangan pribadi Anda—memastikan perusahaan maupun kekayaan Anda dibangun untuk bertahan.',
-    hqLine: 'Kantor Pusat Orthodox Holding // Kantor Advisory Privat',
+    hqLine: 'Kantor Pusat Orthodox Holding // Kantor Advisori Privat',
     email: 'advisory@orthodoxwm.com',
     phoneLine: 'Meja Partner Langsung (Indonesia & Australia)',
 
     successTitle: 'Permintaan Konsultasi Terkirim',
     successBody:
-      'Seorang Partner Advisory Orthodox (Adriel Louis, Dominicus Richardo, atau Brigitta Bunga) akan meninjau profil perusahaan Anda dan menghubungi Anda dalam 24 jam.',
+      'Seorang Partner Advisori Orthodox (Adriel Louis, Dominicus Richardo, atau Brigitta Bunga) akan meninjau profil perusahaan Anda dan menghubungi Anda dalam 24 jam.',
     alsoSendWhatsapp: 'Kirim Juga via Jalur Instan WhatsApp',
 
     formTitle: 'Formulir Permintaan Klien (Rahasia)',
@@ -624,7 +624,7 @@ export const id: Dictionary = {
       overview: 'Ringkasan & AUM',
       assets: 'Alokasi Aset',
       tax: 'Efisiensi Pajak',
-      reports: 'Arsip Advisory',
+      reports: 'Arsip Advisori',
     },
     metrics: {
       portfolioValue: 'Nilai Portofolio Konsolidasi',
@@ -633,7 +633,7 @@ export const id: Dictionary = {
       blendedYieldNote: 'Bisnis & Kekayaan Terintegrasi',
       taxEfficiency: 'Indeks Efisiensi Pajak',
       taxEfficiencyNote: 'Struktur Holding Optimal',
-      leadPartners: 'Partner Advisory Utama',
+      leadPartners: 'Partner Advisori Utama',
       leadPartnersNote: 'Direktur Orthodox Holding',
     },
     allocation: {
@@ -681,7 +681,7 @@ export const id: Dictionary = {
       ],
     },
     reportsTab: {
-      title: 'Arsip Advisory & Rekaman Tata Kelola yang Dapat Diunduh',
+      title: 'Arsip Advisori & Rekaman Tata Kelola yang Dapat Diunduh',
       updated: 'Diperbarui:',
       size: 'Ukuran:',
       download: 'Unduh',
@@ -745,7 +745,7 @@ export const id: Dictionary = {
 
   footer: {
     tagline:
-      'Menghubungkan kesuksesan bisnis dengan kekayaan pribadi jangka panjang melalui ekosistem advisory yang terintegrasi.',
+      'Menghubungkan kesuksesan bisnis dengan kekayaan pribadi jangka panjang melalui ekosistem advisori yang terintegrasi.',
     ecosystemTitle: 'Ekosistem',
     ecosystemLinks: {
       problem: 'Masalah yang Kami Selesaikan',
@@ -761,14 +761,14 @@ export const id: Dictionary = {
       taxCalculator: 'Kalkulator Pajak',
     },
     hqTitle: 'Kantor Pusat',
-    hqLine1: 'Meja Advisory Privat Orthodox Holding',
+    hqLine1: 'Meja Advisori Privat Orthodox Holding',
     hqLine2: 'Praktik Lintas Negara Indonesia & Australia',
     email: 'advisory@orthodoxwm.com',
     regulatoryLabel: 'Pemberitahuan Regulasi & Entitas:',
     regulatoryBody:
-      'Orthodox Business Solutions dan Orthodox Wealth Management adalah entitas anggota di bawah Orthodox Holding. Seluruh layanan advisory, konsultasi pajak badan, dan penugasan perencanaan keuangan dijalankan berdasarkan standar profesional berlisensi (CFP®, BKP, S.Ak, B.Bus) sesuai yurisdiksi Indonesia dan internasional yang berlaku.',
+      'Orthodox Business Solutions dan Orthodox Wealth Management adalah entitas anggota di bawah Orthodox Holding. Seluruh layanan advisori, konsultasi pajak badan, dan penugasan perencanaan keuangan dijalankan berdasarkan standar profesional berlisensi (CFP®, BKP, S.Ak, B.Bus) sesuai yurisdiksi Indonesia dan internasional yang berlaku.',
     platformNoticePrefix:
-      'Platform ini berfungsi sebagai pratinjau terintegrasi dan portal advisory klien yang terinspirasi standar desain institusional BlackRock serta terhubung langsung dengan Orthodox Wealth Management (',
+      'Platform ini berfungsi sebagai pratinjau terintegrasi dan portal advisori klien yang terinspirasi standar desain institusional BlackRock serta terhubung langsung dengan Orthodox Wealth Management (',
     platformNoticeSuffix: ').',
     copyright: '© {year} Orthodox Holding. Seluruh hak cipta dilindungi.',
   },
@@ -799,7 +799,7 @@ export const id: Dictionary = {
       },
       {
         id: 'acct-advisory',
-        title: 'Akuntansi & Advisory',
+        title: 'Akuntansi & Advisori',
         description:
           'Pelaporan keuangan yang andal, pengendalian internal, implementasi sistem akuntansi, pemanfaatan perangkat akuntansi yang efektif, dan visibilitas keuangan.',
         deliverables: [
@@ -859,7 +859,7 @@ export const id: Dictionary = {
       },
       {
         id: 'biz-advisory',
-        title: 'Advisory Bisnis',
+        title: 'Advisori Bisnis',
         description:
           'Peningkatan profitabilitas, optimalisasi operasional, strategi pertumbuhan, manajemen kinerja, dan transformasi bisnis.',
         deliverables: [
@@ -877,7 +877,7 @@ export const id: Dictionary = {
         deliverables: [
           'Valuasi DCF & Market Multiple',
           'Penilaian Pembelian Saham Pemegang Saham',
-          'Advisory Struktur Transaksi M&A',
+          'Advisori Struktur Transaksi M&A',
           'Laporan Fairness Opinion',
         ],
       },
@@ -886,7 +886,7 @@ export const id: Dictionary = {
 
   principles: {
     title: 'Prinsip Kami',
-    subtitle: 'Prinsip Orthodox yang memandu setiap mandat advisory.',
+    subtitle: 'Prinsip Orthodox yang memandu setiap mandat advisori.',
     cardFooter: 'Prinsip Orthodox yang Tak Tergoyahkan',
     items: [
       {
@@ -1053,4 +1053,287 @@ export const id: Dictionary = {
       description: 'Refinancing, optimalisasi KPR & pengendalian leverage pribadi',
     },
   ],
+
+  // Orthodox Wealth Management — divisi perencanaan keuangan pribadi.
+  wealth: {
+    nav: {
+      about: 'Tentang',
+      services: 'Layanan',
+      process: 'Proses',
+    },
+
+    hero: {
+      titleLine1: 'Membangun Kekayaan',
+      titleLine2: 'yang Bertahan Lintas Generasi',
+      paragraphs: [
+        'Kami merancang strategi keuangan pribadi yang terintegrasi penuh, menyelaraskan investasi, pajak, asuransi, struktur utang, tujuan pensiun, perencanaan warisan, dan perlindungan aset Anda dalam satu rencana yang menyatu.',
+        'Dibangun di atas prinsip “orthodox” yang telah teruji waktu, pendekatan kami memastikan kekayaan Anda tidak hanya bertumbuh, tetapi juga terlindungi, terstruktur secara efisien, dan bertahan lintas generasi.',
+        'Sebagai bagian dari Orthodox Holding, kami bekerja bersama Orthodox Business Solutions untuk memberikan pemilik bisnis satu ekosistem keuangan terintegrasi—menghubungkan kesuksesan bisnis dengan kekayaan pribadi jangka panjang.',
+      ],
+      imageAlt: 'Gedung Wall Street',
+      stats: [
+        { value: 100, suffix: 'M+', label: 'Aset di Bawah Advisori' },
+        { value: 100, suffix: '+', label: 'Klien yang Didampingi' },
+      ],
+    },
+
+    problem: {
+      eyebrow: 'MASALAH YANG KAMI SELESAIKAN',
+      headingLine1: 'Sebagian besar keputusan keuangan dibuat secara terpisah.',
+      headingLine2: 'Di situlah masalah bermula.',
+      cards: [
+        {
+          title: 'Keputusan Keuangan yang Terintegrasi',
+          description:
+            'Keputusan investasi, pajak, asuransi, utang, dan warisan seharusnya bekerja bersama—bukan saling berlawanan. Tanpa keselarasan, peluang finansial sering terlewat dan risiko yang tidak perlu bermunculan.',
+          cta: 'Rencanakan Perjalanan Keuangan Anda',
+        },
+        {
+          title: 'Struktur Keuangan yang Tidak Efisien',
+          description:
+            'Penataan keuangan yang buruk dapat menimbulkan beban pajak yang tidak perlu, biaya pinjaman yang lebih tinggi, dan risiko finansial yang sebenarnya bisa dihindari. Inefisiensi kecil yang menumpuk dari waktu ke waktu dapat sangat memengaruhi kekayaan jangka panjang.',
+          cta: 'Lihat Bagaimana Struktur Mengubah Hasil',
+        },
+        {
+          title: 'Kekayaan Tanpa Sistem',
+          description:
+            'Membangun kekayaan membutuhkan lebih dari sekadar penghasilan tinggi. Tanpa struktur, perlindungan, dan perencanaan jangka panjang, kekayaan menjadi sulit dipertahankan dan diwariskan secara efektif.',
+          cta: 'Pelajari Sistem Kami',
+        },
+      ],
+    },
+
+    flow: {
+      eyebrow: 'BAGAIMANA SEHARUSNYA BEKERJA',
+      heading: 'Alur Keuangan yang Terstruktur',
+      steps: ['Penghasilan', 'Pajak', 'Utang', 'Investasi', 'Perlindungan', 'Warisan'],
+      closing:
+        'Ketika ditata dengan benar, setiap keputusan keuangan memperkuat keputusan berikutnya—menciptakan sistem kekayaan pribadi yang dirancang untuk efisiensi, perlindungan, dan warisan jangka panjang.',
+    },
+
+    about: {
+      eyebrow: 'SIAPA KAMI',
+      heading: 'Fondasi Kepercayaan',
+      paragraphs: [
+        'Orthodox Wealth Management adalah divisi perencanaan keuangan pribadi dari Orthodox Holding yang didirikan oleh Adriel Reynaldo Louis, B.Bus, CFP®, CTM.',
+        'Kami bekerja bersama profesional, eksekutif, pemilik bisnis, dan individu dengan kekayaan tinggi yang menginginkan kejelasan, struktur, dan kendali yang lebih baik atas masa depan finansial mereka.',
+        'Pendekatan kami tidak dibangun di sekitar produk, melainkan di sekitar sistem. Kami mengintegrasikan perencanaan investasi, perencanaan pajak, pengelolaan utang, perencanaan asuransi, strategi pensiun, perencanaan warisan, dan perlindungan aset ke dalam satu kerangka yang terkoordinasi.',
+        'Perencanaan Warisan dan Perlindungan Aset berada di inti filosofi advisori kami, karena menjaga kekayaan sering kali lebih penting daripada sekadar mengumpulkannya.',
+        'Filosofi kami berakar pada “strategi kekayaan orthodox”—prinsip disiplin dan teruji waktu yang digunakan keluarga-keluarga sukses untuk membangun, melindungi, dan mewariskan kekayaan lintas generasi.',
+        'Setiap rekomendasi dirancang untuk mendukung rekomendasi berikutnya, memastikan keputusan keuangan Anda bekerja bersama menuju keamanan finansial jangka panjang dan pelestarian warisan.',
+      ],
+      imageAlt: 'Pertemuan klien untuk perencanaan kekayaan',
+    },
+
+    services: {
+      heading: 'Keahlian Kami',
+      intro:
+        'Setiap komponen dirancang secara individual—namun ditata agar bekerja sebagai satu sistem keuangan pribadi yang terintegrasi.',
+      items: [
+        {
+          title: 'Perencanaan Warisan (Keahlian Inti)',
+          description:
+            'Menata strategi untuk memastikan pengalihan kekayaan yang efisien, kesinambungan keluarga, dan pelestarian warisan lintas generasi.',
+        },
+        {
+          title: 'Perlindungan Aset (Keahlian Inti)',
+          description:
+            'Melindungi kekayaan pribadi dari risiko hukum, finansial, dan hal-hal tak terduga melalui perencanaan proaktif dan penataan yang strategis.',
+        },
+        {
+          title: 'Perencanaan & Optimalisasi Pajak',
+          description:
+            'Mengurangi kebocoran pajak yang tidak perlu melalui perencanaan strategis yang dirancang untuk meningkatkan efisiensi keuangan jangka panjang.',
+        },
+        {
+          title: 'Perencanaan Asuransi',
+          description:
+            'Menyelaraskan solusi asuransi dengan strategi keuangan Anda secara menyeluruh untuk memastikan perlindungan yang tepat tanpa biaya yang tidak perlu.',
+        },
+        {
+          title: 'Perencanaan Pensiun',
+          description:
+            'Merancang strategi penghasilan yang berkelanjutan untuk mendukung gaya hidup pensiun yang Anda inginkan dan kemandirian finansial jangka panjang.',
+        },
+        {
+          title: 'Pengelolaan & Penataan Utang',
+          description:
+            'Mengoptimalkan strategi utang dan pinjaman untuk memperbaiki arus kas, memperkuat fleksibilitas keuangan, dan mendukung penciptaan kekayaan.',
+        },
+        {
+          title: 'Broker Pinjaman Pribadi',
+          description:
+            'Mengakses solusi pembiayaan yang selaras dengan tujuan keuangan Anda secara menyeluruh, baik untuk investasi, pembelian properti, maupun restrukturisasi utang.',
+        },
+        {
+          title: 'Perencanaan Investasi',
+          description:
+            'Membangun portofolio investasi terdiversifikasi yang selaras dengan tujuan, profil risiko, kebutuhan arus kas, dan sasaran kekayaan jangka panjang Anda.',
+        },
+      ],
+      closing:
+        'Setiap elemen saling terhubung. Ketika ditata dengan benar, setiap keputusan keuangan memperkuat keputusan berikutnya.',
+    },
+
+    why: {
+      eyebrow: 'MENGAPA ORTHODOX',
+      headingLine1: 'Lebih dari Sekadar Perencanaan Keuangan.',
+      headingLine2: 'Sebuah Ekosistem Keuangan Terintegrasi.',
+      items: [
+        {
+          title: 'Satu Strategi Terintegrasi',
+          description:
+            'Alih-alih mengelola investasi, pajak, asuransi, utang, dan perencanaan warisan secara terpisah, kami mengoordinasikan setiap keputusan keuangan ke dalam satu strategi kekayaan pribadi yang menyatu.',
+        },
+        {
+          title: 'Keahlian di Bidang yang Paling Menentukan',
+          description:
+            'Perencanaan Warisan dan Perlindungan Aset bukan layanan tambahan. Keduanya adalah fondasi untuk menjaga kekayaan lintas generasi.',
+        },
+        {
+          title: 'Melampaui Keuangan Pribadi',
+          description:
+            'Bagi wirausahawan dan pemilik bisnis, kekayaan pribadi sering tercipta melalui kepemilikan bisnis. Melalui Orthodox Holding, ekosistem kami meluas ke Orthodox Business Solutions—menghadirkan keahlian terkoordinasi di bidang keuangan bisnis, akuntansi, perpajakan, penataan korporasi, dan advisori strategis.',
+        },
+        {
+          title: 'Keputusan yang Dibangun di Sekitar Hidup Anda',
+          description:
+            'Setiap rekomendasi mempertimbangkan karier, keluarga, gaya hidup, kepentingan bisnis, rencana suksesi, dan tujuan jangka panjang Anda—bukan hanya portofolio investasi.',
+        },
+        {
+          title: 'Saran yang Independen',
+          description: 'Solusi dirancang berdasarkan hasil—bukan produk atau komisi.',
+        },
+        {
+          title: 'Advisori Langsung dan Personal',
+          description:
+            'Anda bekerja langsung dengan penasihat Anda sepanjang perjalanan keuangan Anda.',
+        },
+        {
+          title: 'Kemitraan Jangka Panjang',
+          description: 'Seiring hidup Anda berkembang, strategi keuangan Anda ikut berkembang.',
+        },
+      ],
+      closing:
+        'Kekayaan tidak dibangun melalui keputusan yang terpisah-pisah. Kekayaan dibangun melalui struktur, keselarasan, dan disiplin dari waktu ke waktu.',
+    },
+
+    process: {
+      eyebrow: 'Proses strategis kami',
+      heading: 'Bagaimana Kami Menata Sistem Keuangan Anda',
+      steps: [
+        {
+          title: 'Pemahaman Keuangan yang Mendalam',
+          description:
+            'Kami memulai dengan pemahaman menyeluruh atas posisi keuangan, tujuan, risiko, peluang, kewajiban, dan sasaran jangka panjang Anda.',
+        },
+        {
+          title: 'Perancangan Strategi Terintegrasi',
+          description:
+            'Kami merancang strategi keuangan pribadi yang menyelaraskan investasi, pajak, posisi utang, perencanaan asuransi, sasaran pensiun, perencanaan warisan, dan strategi perlindungan aset Anda.',
+        },
+        {
+          title: 'Eksekusi yang Terkoordinasi',
+          description:
+            'Kami mendampingi implementasi di berbagai bidang keuangan, memastikan setiap rekomendasi dijalankan selaras dengan strategi Anda secara keseluruhan.',
+        },
+        {
+          title: 'Penyelarasan & Penyempurnaan Berkelanjutan',
+          description:
+            'Seiring perubahan hidup, keuangan, dan prioritas Anda, strategi Anda terus ditinjau dan disempurnakan untuk menjaga efisiensi, perlindungan, dan keselarasan.',
+        },
+      ],
+      closing:
+        'Anda tidak hanya menerima nasihat, Anda mendapatkan mitra strategis jangka panjang yang terstruktur untuk membangun, melindungi, dan mempertahankan kekayaan.',
+    },
+
+    testimonials: [
+      {
+        quote:
+          'Orthodox Wealth Management membantu kami menyusun strategi pensiun terstruktur yang menyelaraskan investasi, arus kas, perlindungan, dan tujuan keluarga jangka panjang dalam satu rencana yang menyeluruh.',
+        author: 'Hendy & Katherine, Pemilik Bisnis Keluarga',
+        role: 'Perencanaan Pensiun',
+      },
+      {
+        quote:
+          'Yang menonjol adalah pendekatannya yang terintegrasi. Investasi, arus kas, perlindungan, dan tujuan jangka panjang saya semuanya ditata menjadi satu strategi keuangan yang jelas.',
+        author: 'Regine, Profesional Karier',
+        role: 'Perencanaan Keuangan Pribadi & Investasi Pribadi',
+      },
+      {
+        quote:
+          'Orthodox Wealth Management membantu menghubungkan investasi pribadi dan keuangan bisnis saya menjadi satu strategi yang selaras, memberi kejelasan dan struktur yang jauh lebih baik.',
+        author: 'Satya, Pemilik Bisnis',
+        role: 'Investasi Pribadi & Perencanaan Keuangan Korporasi',
+      },
+      {
+        quote:
+          'Sarannya strategis, menyeluruh, dan tidak berorientasi produk. Saya mendapatkan struktur yang lebih jelas untuk kekayaan pribadi maupun perencanaan keuangan bisnis saya.',
+        author: 'Fauker, Wirausahawan',
+        role: 'Investasi Pribadi & Perencanaan Keuangan Korporasi',
+      },
+      {
+        quote:
+          'Kombinasi penataan korporasi dan perencanaan pajak memberi saya kerangka keuangan yang jauh lebih efisien dan tertata untuk bisnis saya.',
+        author: 'Kevin, Arsitek',
+        role: 'Penataan Korporasi & Perencanaan Pajak',
+      },
+      {
+        quote:
+          'Orthodox Wealth Management membantu mengubah keputusan keuangan yang terpisah-pisah menjadi satu rencana terstruktur yang menyelaraskan investasi, tujuan, dan arah keuangan saya.',
+        author: 'Joshua, Desainer Interior',
+        role: 'Perencanaan Keuangan Pribadi & Investasi Pribadi',
+      },
+      {
+        quote:
+          'Sarannya sangat terstruktur dan menyeluruh, membantu saya menyelaraskan perencanaan pajak dan penataan bisnis dengan tujuan keuangan jangka panjang saya.',
+        author: 'Jevon, Profesional TI',
+        role: 'Perencanaan Pajak & Penataan Korporasi',
+      },
+      {
+        quote:
+          'Adriel menangani perencanaan KPR secara strategis — tidak hanya berfokus pada pembiayaan, tetapi juga pada arus kas, struktur, dan dampak keuangan jangka panjang.',
+        author: 'Vincent, Pelaku Usaha Perhotelan',
+        role: 'Perencanaan KPR',
+      },
+    ],
+
+    contact: {
+      eyebrow: 'Konsultasi Privat',
+      heading: 'Mulai Pendekatan yang Terstruktur untuk Kekayaan Anda',
+      introLine1: 'Kehidupan finansial Anda tidak seharusnya dikelola secara terpisah.',
+      introLine2:
+        'Dibutuhkan struktur, keselarasan, dan strategi jangka panjang yang dirancang untuk melindungi dan menumbuhkan kekayaan lintas generasi.',
+      brand: 'Orthodox Wealth Management',
+      brandTagline: 'Membangun Kekayaan yang Bertahan Lintas Generasi',
+      form: {
+        firstNameLabel: 'Nama Depan',
+        firstNamePlaceholder: 'Masukkan nama Anda',
+        emailLabel: 'Alamat Email',
+        emailPlaceholder: 'email@contoh.com',
+        phoneLabel: 'Nomor Telepon',
+        phonePlaceholder: '+62 812 0000 0000',
+        preferredMethodLabel: 'Kontak yang Diutamakan',
+        selectPlaceholder: 'Pilih opsi',
+        methodEmail: 'Email',
+        methodWhatsapp: 'WhatsApp',
+        submit: 'Ajukan Konsultasi',
+        success: 'Terima kasih. Penasihat senior kami akan segera menghubungi Anda.',
+        error: 'Terjadi kesalahan. Silakan coba lagi atau hubungi kami secara langsung.',
+      },
+      corporateNote1:
+        'Mencari Perencanaan Keuangan Korporasi, Penataan Bisnis, Pemodelan Keuangan, Strategi Arus Kas, atau Advisori Bisnis Strategis?',
+      corporateNote2:
+        'Silakan hubungi Orthodox Business Solutions untuk layanan konsultasi keuangan korporasi dan bisnis.',
+      corporateNoteCta: 'Jelajahi Orthodox Business Solutions',
+    },
+
+    footer: {
+      logoAlt: 'Orthodox Wealth Management',
+      legalName: 'Nama dagang dari PT. Orthodox Strategi Finansial',
+      copyright: '© {year} PT. Orthodox Strategi Finansial',
+      email: 'info@orthodoxwm.com',
+      whatsappLabel: 'WhatsApp',
+    },
+  },
 };

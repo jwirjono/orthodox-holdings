@@ -1,10 +1,12 @@
 import React from 'react';
-import { CheckCircle2, Link2, ArrowUpRight } from 'lucide-react';
+import { CheckCircle2, Link2, ArrowRight } from 'lucide-react';
 import AssetImage03 from '../assets/images/Imagery-03.png';
 import { useTranslation } from '../i18n';
+import { useNavigation } from '../navigation';
 
 export const WhyOrthodox: React.FC = () => {
   const t = useTranslation();
+  const { navigateView } = useNavigation();
 
   return (
     <section id="why-us" className="relative py-24 bg-[#080808] text-white border-b border-neutral-800 overflow-hidden">
@@ -71,11 +73,10 @@ export const WhyOrthodox: React.FC = () => {
         </div>
 
         {/* Ecosystem Synergy Banner */}
-        <a
-          href="https://orthodoxwm.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-12 bg-neutral-950 border border-neutral-800 p-8 rounded-xs flex flex-col md:flex-row items-center justify-between gap-6 hover:border-neutral-600 transition-all group block"
+        <button
+          type="button"
+          onClick={() => navigateView('wealth')}
+          className="w-full text-left mt-12 bg-neutral-950 border border-neutral-800 p-8 rounded-xs flex flex-col md:flex-row items-center justify-between gap-6 hover:border-neutral-600 transition-all group"
         >
           <div className="flex items-center gap-4">
             <div className="p-3 bg-neutral-900 border border-neutral-800 shrink-0 group-hover:border-neutral-500 transition-colors">
@@ -84,7 +85,7 @@ export const WhyOrthodox: React.FC = () => {
             <div>
               <h4 className="text-base font-semibold text-white group-hover:text-emerald-300 transition-colors flex items-center gap-2">
                 <span>{t.whyOrthodox.banner.title}</span>
-                <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-emerald-300" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-emerald-300" />
               </h4>
               <p className="text-xs text-neutral-400 font-light mt-0.5">
                 {t.whyOrthodox.banner.description}
@@ -92,10 +93,10 @@ export const WhyOrthodox: React.FC = () => {
             </div>
           </div>
           <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-3 py-1.5 shrink-0 uppercase tracking-wider group-hover:bg-emerald-900/80 transition-colors flex items-center gap-1.5">
-            <span>orthodoxwm.com</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>{t.common.wealthManagement}</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </span>
-        </a>
+        </button>
 
       </div>
     </section>

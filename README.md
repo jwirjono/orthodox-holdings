@@ -18,3 +18,32 @@ View your app in AI Studio: https://ai.studio/apps/e7801218-f4b9-45b7-8a13-5c618
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Site structure
+
+The app is a single-page site with three top-level views, switched from the
+header toggle (see `src/navigation.tsx`):
+
+| View | Component | Notes |
+| --- | --- | --- |
+| `holding` | `src/components/LandingPage.tsx` | Orthodox Holdings landing page |
+| `business` | sections in `src/App.tsx` | Orthodox Business Solutions |
+| `wealth` | `src/components/wealth/` | Orthodox Wealth Management |
+
+Orthodox Wealth Management was previously a separate site (`orthodoxwm.com`,
+repo `orthodox-wealth-management`); it now lives in this repo and every former
+outbound link to it navigates in-app instead.
+
+## Translations
+
+All copy lives in `src/i18n/locales/en.ts` and `src/i18n/locales/id.ts`
+(`id.ts` is typed against `en.ts`, so both stay in sync). Read strings with the
+`useTranslation()` hook. The Wealth Management page uses the `wealth.*` keys.
+
+## Contact form
+
+The Wealth Management private consultation form posts to `POST /api/contact`,
+implemented in [api/contact.ts](api/contact.ts) and served during `npm run dev`
+by a Vite middleware in [vite.config.ts](vite.config.ts). It needs
+`EMAIL_USER`, `EMAIL_PASS`, and `EMAIL_RECIPIENT` in `.env.local` (see
+[.env.example](.env.example)); without them the form reports a send failure.

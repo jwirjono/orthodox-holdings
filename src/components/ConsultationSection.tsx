@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageSquare, Send, Phone, Mail, Building } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import { useNavigation } from '../navigation';
 
 interface ConsultationSectionProps {
   initialMessage?: string;
@@ -8,6 +9,7 @@ interface ConsultationSectionProps {
 
 export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initialMessage }) => {
   const t = useTranslation();
+  const { navigateView } = useNavigation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -68,14 +70,13 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
 
             <p className="text-sm text-neutral-300 font-light leading-relaxed border-l-2 border-white pl-4">
               {t.consultation.body2Prefix}
-              <a
-                href="https://orthodoxwm.com/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => navigateView('wealth')}
                 className="underline hover:text-white transition-colors"
               >
                 {t.common.orthodoxWealthManagement}
-              </a>
+              </button>
               {t.consultation.body2Suffix}
             </p>
 
