@@ -26,12 +26,28 @@ export const Header: React.FC<HeaderProps> = ({
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // The bar is fully transparent over the hero and only materialises once the
+  // page has actually moved. 20px of travel keeps it from flickering on the
+  // small bounce that momentum scrolling produces at the very top.
   useEffect(() => {
-    const handleScroll = () => {
+    let frame = 0;
+
+    const sync = () => {
+      frame = 0;
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(sync);
+    };
+
+    // A reload or a deep link can land mid-page, where the bar must already be solid.
+    sync();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   // Lock body scroll while the mobile menu is open
@@ -52,6 +68,12 @@ export const Header: React.FC<HeaderProps> = ({
   const brandLogo =
     currentView === 'business' ? businessLogo : currentView === 'wealth' ? wealthLogo : mainLogo;
   const brandLogoSize = currentView === 'holding' ? 'h-7 sm:h-8' : 'h-9 sm:h-10';
+
+  // The switcher pills carry their own panel only once the bar itself is solid;
+  // over the hero they float on the artwork with no box around them.
+  const chromeClass = scrolled
+    ? 'bg-neutral-900/90 border-neutral-800'
+    : 'bg-transparent border-transparent';
 
   // Section anchors for the view that is currently rendered.
   const viewNavLinks =
@@ -229,10 +251,10 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ease-out ${
         scrolled
-          ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-b border-neutral-800/80 py-3.5'
-          : 'bg-[#0A0A0A]/90 backdrop-blur-xs py-4 sm:py-4.5 border-b border-neutral-900'
+          ? 'bg-[#0A0A0A]/95 backdrop-blur-md border-neutral-800/80 py-3.5'
+          : 'bg-transparent border-transparent py-5 sm:py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,7 +273,9 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Business Solutions / Wealth Management Toggle - Hidden on Phone, Visible on Tablet/Desktop */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <nav className="hidden md:flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 sm:p-1.5 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider">
+            <nav
+              className={`hidden md:flex items-center gap-1 border p-1 sm:p-1.5 rounded-xs text-[11px] sm:text-xs font-mono uppercase tracking-wider transition-colors duration-300 ${chromeClass}`}
+            >
               {viewToggles.map(({ view, label }) => (
                 <button
                   key={view}
@@ -269,7 +293,7 @@ export const Header: React.FC<HeaderProps> = ({
             </nav>
 
             {/* Language Switcher — always visible */}
-            <LanguageToggle />
+            <LanguageToggle className={`transition-colors duration-300 ${chromeClass}`} />
 
             {/* Desktop Nav Links + Consultation CTA */}
             <div className="hidden lg:flex items-center space-x-6">

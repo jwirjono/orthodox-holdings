@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe } from 'lucide-react';
 import { LANGUAGES, useLanguage, type Language } from '../i18n';
+import { cn } from '../lib/utils';
 
 interface LanguageToggleProps {
   /** `compact` for the header bar, `full` for the mobile menu overlay. */
@@ -46,7 +47,12 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({
 
   return (
     <div
-      className={`flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 sm:p-1.5 rounded-xs ${className}`}
+      // `cn` merges rather than appends, so the header can hand this group a
+      // transparent background/border while it sits over the hero.
+      className={cn(
+        'flex items-center gap-1 bg-neutral-900/90 border border-neutral-800 p-1 sm:p-1.5 rounded-xs',
+        className
+      )}
       role="group"
       aria-label={t.language.label}
     >
