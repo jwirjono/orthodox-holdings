@@ -261,7 +261,7 @@ export const en = {
     lead: 'More Than Tax. More Than Accounting.',
     sub: 'We connect every business decision into one integrated strategy.',
     valuePropositionLabel: 'VALUE PROPOSITION',
-    cardFooter: 'Orthodox Standard Architecture',
+    cardFooter: 'Orthodox Principles',
     points: [
       {
         title: 'One Strategic Partner',
@@ -310,7 +310,7 @@ export const en = {
     profiles: [
       {
         id: 'adriel-louis',
-        name: 'Adriel Reynaldo Louis, B.Bus, CFP®, CTM',
+        name: 'Adriel Reynaldo Louis, B.Bus, MBA, CFP®, CTM',
         title: 'Managing Partner',
         role: 'Business Strategy & Financial Architecture',
         credentials: [
@@ -394,7 +394,7 @@ export const en = {
     title: 'HOW WE WORK',
     executionFocus: 'Execution Focus:',
     phaseLabel: 'Phase {number} Protocol',
-    ctaTitle: 'Ready to execute the 4-step process for your business?',
+    ctaTitle: '',
     ctaSubtitle: 'Start Phase 01 Understand with an Orthodox senior advisory partner.',
     ctaMessage: 'Hello Orthodox Holdings, I would like to start Phase 01 Understand.',
     steps: [
@@ -1071,7 +1071,7 @@ export const en = {
       headingLine2: 'That’s where the problem begins.',
       cards: [
         {
-          title: 'Integrated Financial Decisions',
+          title: 'Disintegrated Financial Decisions',
           description:
             'Investment, tax, insurance, debt, and estate decisions should work together—not against each other. Without alignment, financial opportunities are often missed and unnecessary risks emerge.',
           cta: 'Plan Your Financial Journey',
@@ -1103,10 +1103,9 @@ export const en = {
       eyebrow: 'WHO WE ARE',
       heading: 'A Foundation of Trust',
       paragraphs: [
-        'Orthodox Wealth Management is the personal financial planning division of Orthodox Holding founded by Adriel Reynaldo Louis, B.Bus, CFP®, CTM.',
+        'Orthodox Wealth Management is the personal financial planning division of Orthodox Holding founded by Adriel Reynaldo Louis, B.Bus, MBA, CFP®, CTM.',
         'We work with professionals, executives, business owners, and high-net-worth individuals who seek greater clarity, structure, and control over their financial future.',
         'Our approach is not built around products, but around systems. We integrate investment planning, tax planning, debt management, insurance planning, retirement strategies, estate planning, and asset protection into one coordinated framework.',
-        'Estate Planning and Asset Protection sit at the core of our advisory philosophy because preserving wealth is often more important than simply accumulating it.',
         'Our philosophy is rooted in “orthodox wealth strategies”—disciplined, time-tested principles used by successful families to build, protect, and transfer wealth across generations.',
         'Every recommendation is designed to support the next, ensuring your financial decisions work together toward long-term financial security and legacy preservation.',
       ],
@@ -1173,33 +1172,32 @@ export const en = {
           description:
             'Rather than managing investments, tax, insurance, debt, and estate planning independently, we coordinate every financial decision into one cohesive personal wealth strategy.',
         },
-        {
-          title: 'Expertise Where It Matters Most',
+                {
+          title: 'Decisions Built Around Your Life',
           description:
-            'Estate Planning and Asset Protection are not additional services. They form the foundation of preserving wealth across generations.',
+            'Every recommendation considers your career, family, lifestyle, business interests, succession plans, and long-term objectives—not just your investment portfolio.',
+        },
+                {
+          title: 'Independent Advice',
+          description: 'Solutions are designed around outcomes—not products or commissions.',
+        },
+                {
+          title: 'Direct High-Touch Advisory',
+          description: 'You work directly with your advisor throughout your financial journey.',
+        },
+                {
+          title: 'Long-Term Partnership',
+          description: 'As your life evolves, your financial strategy evolves alongside it.',
         },
         {
           title: 'Beyond Personal Finance',
           description:
             'For entrepreneurs and business owners, personal wealth is often created through business ownership. Through Orthodox Holding, our ecosystem extends into Orthodox Business Solutions—providing coordinated expertise across business finance, accounting, taxation, corporate structuring, and strategic advisory.',
         },
-        {
-          title: 'Decisions Built Around Your Life',
-          description:
-            'Every recommendation considers your career, family, lifestyle, business interests, succession plans, and long-term objectives—not just your investment portfolio.',
-        },
-        {
-          title: 'Independent Advice',
-          description: 'Solutions are designed around outcomes—not products or commissions.',
-        },
-        {
-          title: 'Direct High-Touch Advisory',
-          description: 'You work directly with your advisor throughout your financial journey.',
-        },
-        {
-          title: 'Long-Term Partnership',
-          description: 'As your life evolves, your financial strategy evolves alongside it.',
-        },
+
+
+
+
       ],
       closing:
         'Wealth is not built through isolated decisions. It is built through structure, alignment, and discipline over time.',
