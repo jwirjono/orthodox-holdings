@@ -73,6 +73,68 @@
   border-bottom: 2px solid #000000;
 }
 
+/* ---------------------------------------------------------------------------
+ * Client marquee — three read-only rows that scroll on their own.
+ *
+ * Each track holds the row's cards twice, so translating by exactly half the
+ * track width lands on an identical frame and the loop is seamless. The spacing
+ * between cards is per-item padding rather than a flex `gap`, otherwise the
+ * missing trailing gap would make that halfway point drift on every cycle.
+ * ------------------------------------------------------------------------ */
+
+@keyframes client-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes client-marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation-duration: var(--marquee-duration, 60s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.marquee-track-left {
+  animation-name: client-marquee-left;
+}
+
+.marquee-track-right {
+  animation-name: client-marquee-right;
+}
+
+/* Fades the cards out at both edges instead of cutting them off mid-card. */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 /* Custom minimal scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

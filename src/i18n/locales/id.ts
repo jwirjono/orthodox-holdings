@@ -297,6 +297,30 @@ export const id: Dictionary = {
     },
   },
 
+  ourClients: {
+    eyebrow: 'Portofolio Klien',
+    title: 'KLIEN KAMI',
+    subtitle:
+      '',
+    items: [
+      { name: 'Kelompok Usaha Manufaktur', engagement: 'Penataan Struktur Pajak Badan' },
+      { name: 'Distributor FMCG', engagement: 'Akuntansi & Pelaporan Keuangan' },
+      { name: 'Pengembang Properti', engagement: 'Arus Kas & Modal Kerja' },
+      { name: 'Jaringan Ritel F&B', engagement: 'Implementasi Sistem Keuangan' },
+      { name: 'Logistik & Pelayaran', engagement: 'Kepatuhan & Advisori Pajak' },
+      { name: 'Jaringan Klinik Kesehatan', engagement: 'Penataan Struktur Korporasi' },
+      { name: 'Kontraktor Konstruksi', engagement: 'Penganggaran & Sistem KPI' },
+      { name: 'Teknologi & Layanan Digital', engagement: 'Payroll & Administrasi' },
+      { name: 'Perdagangan Otomotif', engagement: 'Tinjauan Pengendalian Internal' },
+      { name: 'Produsen Agribisnis', engagement: 'Penilaian Bisnis' },
+      { name: 'Firma Jasa Profesional', engagement: 'Financial Modelling' },
+      { name: 'Institusi Pendidikan', engagement: 'Tata Kelola Keuangan' },
+      { name: 'Tekstil & Garmen', engagement: 'Dokumentasi Transfer Pricing' },
+      { name: 'Jasa Penunjang Pertambangan', engagement: 'Penyelesaian Sengketa Pajak' },
+      { name: 'Kelompok Usaha Keluarga', engagement: 'Suksesi & Perencanaan Waris' },
+    ],
+  },
+
   whoWeAre: {
     eyebrow: 'Profil Perusahaan',
     title: 'TENTANG KAMI',

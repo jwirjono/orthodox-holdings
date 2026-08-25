@@ -4,6 +4,7 @@ import { LandingPage } from './components/LandingPage';
 import { HeroSection } from './components/HeroSection';
 import { ProblemSection } from './components/ProblemSection';
 import { WhyOrthodox } from './components/WhyOrthodox';
+import { OurClients } from './components/OurClients';
 import { WhoWeAre } from './components/WhoWeAre';
 import { ProcessSection } from './components/ProcessSection';
 import { EcosystemSection } from './components/EcosystemSection';
@@ -99,16 +100,19 @@ export default function App() {
               {/* Section 3: Why Orthodox */}
               <WhyOrthodox />
 
-              {/* Section 4: About Us & Leadership */}
+              {/* Section 4: Our Clients */}
+              <OurClients />
+
+              {/* Section 5: About Us & Leadership */}
               <WhoWeAre />
 
-              {/* Section 5: How We Work (Process) */}
+              {/* Section 6: How We Work (Process) */}
               <ProcessSection onOpenConsultation={handleOpenConsultation} />
 
-              {/* Section 6: One Business. One Ecosystem. */}
+              {/* Section 7: One Business. One Ecosystem. */}
               <EcosystemSection />
 
-              {/* Section 7: Private Consultation */}
+              {/* Section 8: Private Consultation */}
               <ConsultationSection initialMessage={consultationMessage} />
 
               {/* Diagnostic Sandbox: Tax Calculator */}

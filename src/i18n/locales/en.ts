@@ -291,6 +291,30 @@ export const en = {
     },
   },
 
+  ourClients: {
+    eyebrow: 'Client Portfolio',
+    title: 'OUR CLIENTS',
+    subtitle:
+      '',
+    items: [
+      { name: 'Manufacturing Group', engagement: 'Corporate Tax Restructuring' },
+      { name: 'FMCG Distributor', engagement: 'Accounting & Financial Reporting' },
+      { name: 'Property Developer', engagement: 'Cash Flow & Working Capital' },
+      { name: 'F&B Retail Chain', engagement: 'Financial System Implementation' },
+      { name: 'Logistics & Shipping', engagement: 'Tax Compliance & Advisory' },
+      { name: 'Healthcare Clinic Network', engagement: 'Corporate Structuring' },
+      { name: 'Construction Contractor', engagement: 'Budgeting & KPI Systems' },
+      { name: 'Technology & Digital Services', engagement: 'Payroll & Administration' },
+      { name: 'Automotive Trading', engagement: 'Internal Control Review' },
+      { name: 'Agribusiness Producer', engagement: 'Business Valuation' },
+      { name: 'Professional Services Firm', engagement: 'Financial Modelling' },
+      { name: 'Education Institution', engagement: 'Financial Governance' },
+      { name: 'Textile & Garment', engagement: 'Transfer Pricing Documentation' },
+      { name: 'Mining Support Services', engagement: 'Tax Dispute Resolution' },
+      { name: 'Family Business Group', engagement: 'Succession & Estate Planning' },
+    ],
+  },
+
   whoWeAre: {
     eyebrow: 'Corporate Profile',
     title: 'ABOUT US',
