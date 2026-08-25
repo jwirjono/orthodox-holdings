@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { getLeadershipProfiles } from '../data/orthodoxData';
-import { CheckCircle2, Shield } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
 
 export const WhoWeAre: React.FC = () => {
@@ -162,11 +162,6 @@ export const WhoWeAre: React.FC = () => {
                           {leader.role}
                         </p>
 
-                        {/* Philosophy Quote */}
-                        <div className="p-3 bg-neutral-950 border-l-2 border-white mb-6 text-xs italic font-serif text-neutral-300">
-                          "{leader.philosophy}"
-                        </div>
-
                         {/* Credentials List */}
                         <div className="space-y-2 mb-6">
                           <div className="text-[10px] uppercase font-mono text-neutral-500 tracking-wider">
@@ -184,11 +179,6 @@ export const WhoWeAre: React.FC = () => {
                         <p className="text-xs text-neutral-400 font-light leading-relaxed border-t border-neutral-800 pt-4">
                           {leader.bio}
                         </p>
-                      </div>
-
-                      <div className="mt-6 pt-4 border-t border-neutral-800 text-[10px] font-mono text-neutral-500 uppercase tracking-widest flex items-center justify-between">
-                        <span>{t.whoWeAre.advisoryDirector}</span>
-                        <Shield className="w-3.5 h-3.5 text-neutral-600" />
                       </div>
                     </div>
                   </div>

@@ -14,7 +14,6 @@ export interface LeadershipProfile {
   role: string;
   image: string;
   credentials: string[];
-  philosophy: string;
   bio: string;
   highlights: string[];
 }

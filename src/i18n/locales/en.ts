@@ -304,7 +304,6 @@ export const en = {
     leadershipTitle: 'Leadership',
     leadershipEyebrow: 'Orthodox Holding Partners',
     qualifications: 'Qualifications & Track Record',
-    advisoryDirector: 'Advisory Director',
     goToSlide: 'Go to slide {number}',
 
     profiles: [
@@ -312,15 +311,15 @@ export const en = {
         id: 'adriel-louis',
         name: 'Adriel Reynaldo Louis, B.Bus, MBA, CFP®, CTM',
         title: 'Managing Partner',
-        role: 'Business Strategy & Financial Architecture',
+        role: 'Personal & Business Financial Strategy',
         credentials: [
-          'B.Bus (Bachelor of Business)',
+          'B.Bus (Bachelor of Business in Accounting and Finance, University of Technology Sydney)',
+          'MBA (Master of Business Administration, Institut Teknologi Bandung)',
           'CFP® (Certified Financial Planner)',
-          'CTM (Certified Toastmaster)',
-          'Cross-border experience across Australia & Indonesia',
+          'CTM (Certified Tax Management)',
+          'Multi-company CFO across diverse industries',
         ],
-        philosophy: 'Every financial and business decision should strengthen the next.',
-        bio: 'With professional experience across Australia and Indonesia, Adriel specialises in integrating business strategy with financial architecture. His philosophy remains consistent across both Orthodox Business Solutions and Orthodox Wealth Management: Every financial and business decision should strengthen the next. Rather than viewing businesses and personal wealth separately, he helps entrepreneurs build a complete financial ecosystem where business success ultimately translates into long-term family wealth.',
+        bio: 'With professional experience across Australia and Indonesia, Adriel specialises in integrating personal and business financial strategy. His philosophy remains consistent across both Orthodox Business Solutions and Orthodox Wealth Management: Every personal and business financial decision should strengthen the next. Rather than viewing personal and business finance separately, he helps entrepreneurs build a complete financial ecosystem where business success ultimately translates into long-term family wealth.',
         highlights: [
           'Cross-border financial architecture across Australia & Indonesia',
           'Specialist in bridging corporate strategy with personal estate planning',
@@ -333,14 +332,11 @@ export const en = {
         title: 'Partner & Tax Director',
         role: 'Tax Advisory, Accounting & Legal Administration',
         credentials: [
-          'S.M. (Bachelor of Management)',
+          'S.M. (Bachelor of Management, Universitas Prasetiya Mulya)',
           'BKP (Bersertifikat Konsultan Pajak - Certified Tax Consultant)',
-          'Prasetiya Mulya Business School Alumnus',
           'Entrepreneur & Practitioner Background',
         ],
-        philosophy:
-          "Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go.",
-        bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richardo brings a practitioner's lens to tax and business advisory. Having built and run his own businesses before entering professional services, he understands firsthand the decisions entrepreneurs face at every stage of growth — not just in theory, but in practice. His philosophy is simple: Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go. Specialising in tax, accounting, finance, and legal administration, Richardo helps clients navigate complexity with solutions that are grounded in integrity and oriented toward real, strategic outcomes.",
+        bio: "With a foundation built through entrepreneurship and formal training at Prasetiya Mulya — one of Indonesia's premier business schools — Richardo approaches advisory from the business owner's seat, not the accountant's desk. As the founder of Astari Solusi Consulting Firm, he has advised hundreds of clients across thousands of tax and legal administration cases throughout Indonesia. His philosophy is simple: Good advice isn't just technically correct — it's adaptive, timely, and built around where the client is and where they want to go. Where most advisors stop at compliance, Richardo uses tax structuring and legal administration as instruments to drive real business outcomes — protecting margins, reducing exposure, and positioning businesses to grow on solid ground. Having built and run his own businesses before entering professional services, he understands what is actually at stake in every decision — and that the right technical move only matters when it serves the broader business strategy.",
         highlights: [
           'Licensed Tax Consultant (BKP) with practitioner entrepreneur insight',
           'Deep expertise in corporate tax disputes, tax structuring, and compliance',
@@ -349,18 +345,16 @@ export const en = {
       },
       {
         id: 'brigitta-bunga',
-        name: 'Brigitta Bunga, S.Ak',
+        name: 'Brigitta Bunga, S.Ak.',
         title: 'Accounting Advisory Director',
         role: 'Financial Audit, Risk & Compliance',
         credentials: [
-          'S.Ak (Bachelor of Accounting)',
-          '4 Years Big 4 External Auditor Experience in Indonesia',
+          'S.Ak. (Bachelor of Accounting, Universitas Katolik Parahyangan)',
+          'Four Years Big 4 External Auditor Experience in Indonesia',
           'Financial Audit & Risk Assessment Specialist',
           'Regulatory Compliance Specialist',
         ],
-        philosophy:
-          'Accuracy is not just a standard — it is a process built on clarity, adaptability, and disciplined inquiry at every step.',
-        bio: 'With 4 years of experience as an External Auditor at a Big 4 accounting firm in Indonesia, Brigitta brings deep expertise in financial audits, risk assessment, financial analysis, and regulatory compliance — equipping her to deliver precise, high-standard advisory for complex organisations. Her approach is defined by professional scepticism and structured methodology, ensuring every engagement is grounded in rigorous analysis and clear, transparent communication.',
+        bio: 'With four years of experience as an External Auditor at a Big 4 accounting firm in Indonesia, Brigitta brings deep expertise in financial audits, risk assessment, financial analysis, and regulatory compliance. Her technical background equips her to deliver precise, high-standard advisory for both individual and corporate clients. Recognizing that accurate financial statements provide the foundation for effective decision-making, she combines professional skepticism with a structured methodology to ensure every engagement is grounded in rigorous analysis and clear, transparent communication.',
         highlights: [
           'Former Big 4 Senior External Auditor',
           'Expert in internal controls, accounting system implementation, and financial visibility',
@@ -378,7 +372,6 @@ export const en = {
           'Executive Enterprise Governance Specialist',
           'Strategic Business Advisory',
         ],
-        philosophy: 'Strategic governance and structural clarity drive enterprise durability.',
         bio: 'Satya Wana Putera Utama serves as Commissioner at Orthodox Holding, bringing an interdisciplinary background in engineering and advanced business management (MBA). Satya provides strategic oversight and executive governance across Orthodox Business Solutions and Orthodox Wealth Management, ensuring enterprise strategy remains resilient and aligned with long-term owner value.',
         highlights: [
           'Commissioner providing executive oversight for Orthodox Holding',

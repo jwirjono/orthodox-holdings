@@ -310,7 +310,6 @@ export const id: Dictionary = {
     leadershipTitle: 'Para Partner',
     leadershipEyebrow: 'Para Partner Orthodox Holding',
     qualifications: 'Kualifikasi & Rekam Jejak',
-    advisoryDirector: 'Direktur Advisori',
     goToSlide: 'Ke slide {number}',
 
     profiles: [
@@ -318,15 +317,15 @@ export const id: Dictionary = {
         id: 'adriel-louis',
         name: 'Adriel Reynaldo Louis, B.Bus, MBA, CFP®, CTM',
         title: 'Managing Partner',
-        role: 'Strategi Bisnis & Arsitektur Keuangan',
+        role: 'Personal & Business Financial Strategy',
         credentials: [
-          'B.Bus (Sarjana Bisnis)',
+          'B.Bus (Bachelor of Business in Accounting and Finance, University of Technology Sydney)',
+          'MBA (Master of Business Administration, Institut Teknologi Bandung)',
           'CFP® (Certified Financial Planner)',
-          'CTM (Certified Toastmaster)',
-          'Pengalaman lintas negara di Australia & Indonesia',
+          'CTM (Certified Tax Management)',
+          'CFO di berbagai perusahaan dengan industri berbeda',
         ],
-        philosophy: 'Setiap keputusan keuangan dan bisnis seharusnya memperkuat keputusan berikutnya.',
-        bio: 'Dengan pengalaman profesional di Australia dan Indonesia, Adriel berspesialisasi dalam mengintegrasikan strategi bisnis dengan arsitektur keuangan. Filosofinya konsisten baik di Orthodox Business Solutions maupun Orthodox Wealth Management: Setiap keputusan keuangan dan bisnis seharusnya memperkuat keputusan berikutnya. Alih-alih memandang bisnis dan kekayaan pribadi secara terpisah, ia membantu pengusaha membangun ekosistem keuangan yang utuh, di mana kesuksesan bisnis pada akhirnya berbuah kekayaan keluarga jangka panjang.',
+        bio: 'Dengan pengalaman profesional di Australia dan Indonesia, Adriel berfokus pada integrasi strategi keuangan pribadi dan bisnis. Filosofinya konsisten baik di Orthodox Business Solutions maupun Orthodox Wealth Management: Setiap keputusan keuangan pribadi dan bisnis harus memperkuat keputusan berikutnya. Alih-alih memandang keuangan pribadi dan bisnis secara terpisah, ia membantu pengusaha membangun ekosistem keuangan yang utuh, di mana kesuksesan bisnis pada akhirnya berbuah kekayaan keluarga jangka panjang.',
         highlights: [
           'Arsitektur keuangan lintas negara di Australia & Indonesia',
           'Spesialis dalam menjembatani strategi korporasi dengan perencanaan waris pribadi',
@@ -337,16 +336,13 @@ export const id: Dictionary = {
         id: 'dominicus-richardo',
         name: 'Dominicus Richardo, S.M., BKP',
         title: 'Partner & Direktur Pajak',
-        role: 'Advisori Pajak, Akuntansi & Administrasi Legal',
+        role: 'Tax Advisory, Accounting & Legal Administration',
         credentials: [
-          'S.M. (Sarjana Manajemen)',
+          'S.M. (Sarjana Manajemen, Universitas Prasetiya Mulya)',
           'BKP (Bersertifikat Konsultan Pajak)',
-          'Alumnus Prasetiya Mulya Business School',
           'Berlatar Pengusaha & Praktisi',
         ],
-        philosophy:
-          'Nasihat yang baik bukan hanya benar secara teknis — tetapi adaptif, tepat waktu, dan disusun sesuai posisi klien saat ini serta ke mana mereka ingin melangkah.',
-        bio: 'Berbekal fondasi kewirausahaan dan pendidikan formal di Prasetiya Mulya — salah satu sekolah bisnis terkemuka di Indonesia — Richardo membawa sudut pandang praktisi ke dalam advisori pajak dan bisnis. Setelah membangun dan menjalankan bisnisnya sendiri sebelum masuk ke dunia jasa profesional, ia memahami langsung keputusan yang dihadapi pengusaha di setiap tahap pertumbuhan — bukan sekadar dalam teori, tetapi dalam praktik. Filosofinya sederhana: Nasihat yang baik bukan hanya benar secara teknis — tetapi adaptif, tepat waktu, dan disusun sesuai posisi klien saat ini serta ke mana mereka ingin melangkah. Berspesialisasi di bidang pajak, akuntansi, keuangan, dan administrasi legal, Richardo membantu klien menavigasi kompleksitas dengan solusi yang berlandaskan integritas dan berorientasi pada hasil strategis yang nyata.',
+        bio: 'Berbekal pengalaman berwirausaha serta pendidikan formal di Prasetiya Mulya — salah satu sekolah bisnis terkemuka di Indonesia — Richardo memberikan advisori dari sudut pandang seorang pemilik usaha, bukan sekadar dari balik meja akuntan. Sebagai pendiri firma konsultan Astari Solusi, ia telah mendampingi ratusan klien dalam menangani ribuan kasus administrasi perpajakan dan hukum di seluruh Indonesia. Filosofinya sederhana: saran yang baik tidak hanya benar secara teknis, tetapi juga adaptif, tepat waktu, serta disesuaikan dengan posisi dan tujuan yang ingin dicapai klien. Ketika sebagian besar konsultan hanya berfokus pada kepatuhan, Richardo memanfaatkan penataan struktur pajak dan administrasi hukum sebagai sarana untuk mendorong hasil bisnis yang nyata — menjaga keuntungan, menekan risiko, dan menyiapkan bisnis untuk tumbuh di atas landasan yang kokoh. Pengalamannya mendirikan dan mengelola usahanya sendiri sebelum terjun ke dunia konsultasi profesional memberinya pemahaman mendalam tentang apa yang dipertaruhkan dalam setiap keputusan — dan langkah teknis yang tepat baru akan bermakna jika selaras dengan strategi bisnis yang lebih luas.',
         highlights: [
           'Konsultan Pajak berlisensi (BKP) dengan wawasan praktisi pengusaha',
           'Keahlian mendalam pada sengketa pajak badan, penataan pajak, dan kepatuhan',
@@ -355,18 +351,16 @@ export const id: Dictionary = {
       },
       {
         id: 'brigitta-bunga',
-        name: 'Brigitta Bunga, S.Ak',
+        name: 'Brigitta Bunga, S.Ak.',
         title: 'Direktur Advisori Akuntansi',
-        role: 'Audit Keuangan, Risiko & Kepatuhan',
+        role: 'Financial Audit, Risk & Compliance',
         credentials: [
-          'S.Ak (Sarjana Akuntansi)',
-          '4 tahun pengalaman External Auditor Big 4 di Indonesia',
+          'S.Ak (Sarjana Akuntansi, Universitas Katolik Parahyangan)',
+          'Empat Tahun Pengalaman Auditor Eksternal Big 4 di Indonesia',
           'Spesialis Audit Keuangan & Penilaian Risiko',
           'Spesialis Kepatuhan Regulasi',
         ],
-        philosophy:
-          'Akurasi bukan sekadar standar — melainkan proses yang dibangun atas kejelasan, adaptabilitas, dan kedisiplinan menelaah di setiap langkah.',
-        bio: 'Dengan 4 tahun pengalaman sebagai External Auditor di firma akuntansi Big 4 di Indonesia, Brigitta membawa keahlian mendalam dalam audit keuangan, penilaian risiko, analisis keuangan, dan kepatuhan regulasi — membekalinya untuk memberikan advisori yang presisi dan berstandar tinggi bagi organisasi yang kompleks. Pendekatannya ditandai oleh skeptisisme profesional dan metodologi yang terstruktur, memastikan setiap penugasan berlandaskan analisis yang ketat serta komunikasi yang jernih dan transparan.',
+        bio: 'Dengan pengalaman empat tahun sebagai Auditor Eksternal di firma akuntansi Big 4 di Indonesia, Brigitta membawa keahlian mendalam di bidang audit keuangan, penilaian risiko, analisis keuangan, dan kepatuhan regulasi. Latar belakang teknisnya membekali Brigitta untuk memberikan advisori yang presisi dan berstandar tinggi, baik bagi klien individu maupun korporasi. Memahami bahwa laporan keuangan yang akurat merupakan fondasi bagi pengambilan keputusan yang efektif, ia memadukan skeptisisme profesional dengan metodologi terstruktur untuk memastikan setiap penugasan didasari oleh analisis yang mendalam serta komunikasi yang jelas dan transparan.',
         highlights: [
           'Mantan Senior External Auditor Big 4',
           'Ahli dalam pengendalian internal, implementasi sistem akuntansi, dan visibilitas keuangan',
@@ -377,15 +371,13 @@ export const id: Dictionary = {
         id: 'satya-wana',
         name: 'Satya Wana Putera Utama, S.T, MBA',
         title: 'Komisaris',
-        role: 'Tata Kelola Strategis & Advisori Perusahaan',
+        role: 'Strategic Governance & Enterprise Advisory',
         credentials: [
           'S.T (Sarjana Teknik)',
           'MBA (Master of Business Administration)',
           'Spesialis Tata Kelola Perusahaan Tingkat Eksekutif',
           'Advisori Bisnis Strategis',
         ],
-        philosophy:
-          'Tata kelola strategis dan kejelasan struktur mendorong daya tahan perusahaan.',
         bio: 'Satya Wana Putera Utama menjabat sebagai Komisaris di Orthodox Holding, dengan latar belakang interdisipliner di bidang teknik dan manajemen bisnis lanjutan (MBA). Satya memberikan pengawasan strategis dan tata kelola eksekutif di Orthodox Business Solutions maupun Orthodox Wealth Management, memastikan strategi perusahaan tetap tangguh dan selaras dengan nilai jangka panjang bagi pemilik.',
         highlights: [
           'Komisaris yang memberikan pengawasan eksekutif bagi Orthodox Holding',
