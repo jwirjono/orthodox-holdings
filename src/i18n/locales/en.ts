@@ -1097,6 +1097,9 @@ export const en = {
       steps: ['Income', 'Tax', 'Debt', 'Investment', 'Protection', 'Estate'],
       closing:
         'When structured correctly, each financial decision strengthens the next—creating a personal wealth system designed for efficiency, protection, and long-term legacy.',
+      corporateNote:
+        'For business owners looking for Corporate Financial Planning, Business Structuring, Financial Modelling, Cash Flow Strategy, or Corporate Tax Planning, Orthodox Business Solutions — part of Orthodox Holding — can help you with corporate and business financial consulting services.',
+      corporateNoteCta: 'Explore Orthodox Business Solutions',
     },
 
     about: {
@@ -1306,11 +1309,6 @@ export const en = {
         success: 'Thank you. A senior advisor will contact you shortly.',
         error: 'An error occurred. Please try again or contact us directly.',
       },
-      corporateNote1:
-        'Looking for Corporate Financial Planning, Business Structuring, Financial Modelling, Cash Flow Strategy, or Strategic Business Advisory?',
-      corporateNote2:
-        'Please contact Orthodox Business Solutions for corporate and business financial consulting services.',
-      corporateNoteCta: 'Explore Orthodox Business Solutions',
     },
 
     footer: {

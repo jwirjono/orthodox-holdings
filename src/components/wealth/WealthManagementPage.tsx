@@ -164,6 +164,21 @@ export const WealthManagementPage: React.FC = () => {
               {t.wealth.flow.closing}
             </p>
           </div>
+
+          {/* Cross-sell into the business advisory arm */}
+          <div className="mt-16 pt-10 border-t border-white/10 text-center max-w-3xl mx-auto">
+            <p className="text-white/50 font-light text-sm leading-relaxed">
+              {t.wealth.flow.corporateNote}
+            </p>
+            <button
+              type="button"
+              onClick={() => navigateView('business')}
+              className="mt-6 inline-flex items-center gap-2 px-6 py-3 border border-white/50 text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition-all"
+            >
+              <span>{t.wealth.flow.corporateNoteCta}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </section>
 
@@ -347,24 +362,6 @@ export const WealthManagementPage: React.FC = () => {
           </div>
 
           <WealthConsultationForm />
-
-          {/* Cross-sell into the business advisory arm */}
-          <div className="mt-16 pt-10 border-t border-white/10 text-center">
-            <p className="text-white/50 font-light text-sm leading-relaxed">
-              {t.wealth.contact.corporateNote1}
-            </p>
-            <p className="text-white/50 font-light text-sm leading-relaxed mt-2">
-              {t.wealth.contact.corporateNote2}
-            </p>
-            <button
-              type="button"
-              onClick={() => navigateView('business')}
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 border border-white/50 text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition-all"
-            >
-              <span>{t.wealth.contact.corporateNoteCta}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
       </section>
     </div>

@@ -1109,6 +1109,9 @@ export const id: Dictionary = {
       steps: ['Income', 'Tax', 'Debt', 'Investment', 'Protection', 'Estate'],
       closing:
         'Ketika ditata dengan benar, setiap keputusan keuangan memperkuat keputusan berikutnya—menciptakan sistem kekayaan pribadi yang dirancang untuk efisiensi, perlindungan, dan warisan jangka panjang.',
+      corporateNote:
+        'Untuk pemilik bisnis yang membutuhkan Perencanaan Keuangan Korporat, Penataan Struktur Bisnis, Financial Modelling, Strategi Arus Kas, atau Perencanaan Pajak Korporat, Orthodox Business Solutions — bagian dari Orthodox Holding — dapat membantu Anda dengan layanan konsultasi keuangan perusahaan dan bisnis.',
+      corporateNoteCta: 'Jelajahi Orthodox Business Solutions',
     },
 
     about: {
@@ -1319,11 +1322,6 @@ export const id: Dictionary = {
         success: 'Terima kasih. Penasihat senior kami akan segera menghubungi Anda.',
         error: 'Terjadi kesalahan. Silakan coba lagi atau hubungi kami secara langsung.',
       },
-      corporateNote1:
-        'Mencari Perencanaan Keuangan Korporasi, Penataan Bisnis, Pemodelan Keuangan, Strategi Arus Kas, atau Advisori Bisnis Strategis?',
-      corporateNote2:
-        'Silakan hubungi Orthodox Business Solutions untuk layanan konsultasi keuangan korporasi dan bisnis.',
-      corporateNoteCta: 'Jelajahi Orthodox Business Solutions',
     },
 
     footer: {
