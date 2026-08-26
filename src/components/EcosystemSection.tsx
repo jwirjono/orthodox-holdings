@@ -12,7 +12,7 @@ import {
   Landmark,
   Lock,
 } from 'lucide-react';
-import AssetImage05 from '../assets/images/Imagery-05.png';
+import AssetImage05 from '../assets/images/Imagery-05.jpg';
 import { useTranslation } from '../i18n';
 import { useNavigation } from '../navigation';
 
@@ -57,6 +57,8 @@ export const EcosystemSection: React.FC = () => {
           alt=""
           className="w-full h-full object-cover object-center filter grayscale contrast-125"
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/80 to-[#080808]/60" />
       </div>

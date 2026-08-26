@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, Link2, ArrowRight } from 'lucide-react';
-import AssetImage03 from '../assets/images/Imagery-03.png';
+import AssetImage03 from '../assets/images/Imagery-03.jpg';
 import { useTranslation } from '../i18n';
 import { useNavigation } from '../navigation';
 
@@ -17,6 +17,8 @@ export const WhyOrthodox: React.FC = () => {
           alt=""
           className="w-full h-full object-cover object-center filter grayscale contrast-125"
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/80 to-[#080808]/60" />
       </div>

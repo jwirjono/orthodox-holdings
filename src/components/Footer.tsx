@@ -17,7 +17,15 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             {/* mainOrthodox.png already contains the ORTHODOX wordmark */}
             <a href="#" className="inline-flex items-center hover:opacity-75 transition-opacity">
-              <img src={mainLogo} alt={t.common.brandName} className="h-8 w-auto" />
+              <img
+                src={mainLogo}
+                alt={t.common.brandName}
+                className="h-8 w-auto"
+                width={1200}
+                height={209}
+                loading="lazy"
+                decoding="async"
+              />
             </a>
 
             <p className="text-xs text-neutral-400 font-light leading-relaxed max-w-sm">

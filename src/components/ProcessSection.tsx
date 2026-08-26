@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import AssetImage04 from '../assets/images/Imagery-04.png';
+import AssetImage04 from '../assets/images/Imagery-04.jpg';
 import { useTranslation, format } from '../i18n';
 
 interface ProcessSectionProps {
@@ -19,6 +19,8 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenConsultati
           alt=""
           className="w-full h-full object-cover object-center filter grayscale contrast-125"
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/80 to-[#080808]/60" />
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, HelpCircle, Building2, UserCheck } from 'lucide-react';
-import AssetImage01 from '../assets/images/Imagery-01.png';
+import AssetImage01 from '../assets/images/Imagery-01.jpg';
 import { useTranslation } from '../i18n';
 
 interface LandingPageProps {
@@ -21,11 +21,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-16 border-b border-neutral-800 overflow-hidden bg-[#0A0A0A]">
         {/* Subtle Architectural Background Image */}
         <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none">
+          {/* Above the fold and the LCP candidate for this view — fetched eagerly. */}
           <img
             src={AssetImage01}
             alt={t.hero.imageAlt}
             className="w-full h-full object-cover object-center filter grayscale contrast-125"
             referrerPolicy="no-referrer"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/75 to-[#0A0A0A]/60" />
         </div>

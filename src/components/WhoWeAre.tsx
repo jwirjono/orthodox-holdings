@@ -147,6 +147,8 @@ export const WhoWeAre: React.FC = () => {
                               isActive ? 'grayscale contrast-110' : 'grayscale opacity-75'
                             }`}
                             referrerPolicy="no-referrer"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
                           <div className="absolute bottom-3 left-3 bg-neutral-950/90 border border-neutral-800 px-2.5 py-1 text-[10px] font-mono text-neutral-300 uppercase">

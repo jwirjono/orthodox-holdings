@@ -65,8 +65,15 @@ export const Header: React.FC<HeaderProps> = ({
   // page, ORTHODOX BUSINESS SOLUTIONS on the business page and ORTHODOX WEALTH
   // MANAGEMENT on the wealth page. Every PNG already contains the wordmark, so
   // no separate brand text is rendered alongside them.
-  const brandLogo =
-    currentView === 'business' ? businessLogo : currentView === 'wealth' ? wealthLogo : mainLogo;
+  // Intrinsic dimensions travel with each lockup so the browser can reserve the
+  // right width before the file lands — the CSS only pins the height (`w-auto`),
+  // so without them the bar reflows on load.
+  const brandLockup =
+    currentView === 'business'
+      ? { src: businessLogo, width: 1200, height: 252 }
+      : currentView === 'wealth'
+        ? { src: wealthLogo, width: 1200, height: 258 }
+        : { src: mainLogo, width: 1200, height: 209 };
   const brandLogoSize = currentView === 'holding' ? 'h-7 sm:h-8' : 'h-9 sm:h-10';
 
   // The switcher pills carry their own panel only once the bar itself is solid;
@@ -109,9 +116,12 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center text-left"
             >
               <img
-                src={brandLogo}
+                src={brandLockup.src}
                 alt={t.common.brandName}
                 className={`${brandLogoSize} w-auto shrink-0`}
+                width={brandLockup.width}
+                height={brandLockup.height}
+                decoding="async"
               />
             </button>
             <button
@@ -265,9 +275,12 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center group text-left shrink-0"
           >
             <img
-              src={brandLogo}
+              src={brandLockup.src}
               alt={t.common.brandName}
               className={`${brandLogoSize} w-auto shrink-0 transition-opacity duration-300 group-hover:opacity-75`}
+              width={brandLockup.width}
+              height={brandLockup.height}
+              decoding="async"
             />
           </button>
 

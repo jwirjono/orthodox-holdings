@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import AssetImage02 from '../assets/images/Imagery-02.png';
+import AssetImage02 from '../assets/images/Imagery-02.jpg';
 import { useTranslation } from '../i18n';
 
 interface HeroSectionProps {
@@ -15,11 +15,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
     <section className="relative min-h-screen bg-[#0A0A0A] text-white flex flex-col justify-between pt-28 pb-12 overflow-hidden border-b border-neutral-800">
       {/* Background Architectural Backdrop with High Contrast Overlay */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none">
+        {/* Above the fold and the LCP candidate for this view — fetched eagerly. */}
         <img
           src={AssetImage02}
           alt={t.hero.imageAlt}
           className="w-full h-full object-cover object-center filter grayscale contrast-125"
           referrerPolicy="no-referrer"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-[#0A0A0A]/60" />
       </div>

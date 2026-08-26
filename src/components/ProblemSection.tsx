@@ -139,6 +139,8 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
                     alt={t.problems.diagnosticImageAlt}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover opacity-75 filter brightness-90 contrast-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/95 via-neutral-950/80 to-neutral-950/60" />
                 </div>

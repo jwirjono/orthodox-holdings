@@ -20,6 +20,7 @@ import { useNavigation } from '../../navigation';
 import { Counter, SectionHeading } from './WealthPrimitives';
 import { WealthConsultationForm } from './WealthConsultationForm';
 import aboutPhoto from '../../assets/images/wealth/owm-about.jpeg';
+import heroPhoto from '../../assets/images/wealth/owm-hero.jpg';
 
 /** Icons for `t.wealth.problem.cards`, in order. */
 const PROBLEM_ICONS = [BarChart3, ShieldCheck, Briefcase];
@@ -53,12 +54,15 @@ export const WealthManagementPage: React.FC = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
         <div className="absolute inset-0 z-0">
+          {/* Above the fold and the LCP candidate for this view — fetched eagerly. */}
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070"
+            src={heroPhoto}
             className="w-full h-full object-cover opacity-20 grayscale"
             alt={t.wealth.hero.imageAlt}
             referrerPolicy="no-referrer"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/70 to-[#0a0a0a]" />
         </div>
@@ -208,6 +212,7 @@ export const WealthManagementPage: React.FC = () => {
                 alt={t.wealth.about.imageAlt}
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                decoding="async"
               />
             </motion.div>
           </div>

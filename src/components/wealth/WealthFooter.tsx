@@ -19,7 +19,10 @@ export const WealthFooter: React.FC = () => {
             src={footerLogo}
             alt={t.wealth.footer.logoAlt}
             className="h-8 w-auto object-contain"
+            width={1200}
+            height={209}
             loading="lazy"
+            decoding="async"
           />
           <span className="text-[10px] tracking-[0.2em] text-white/40">
             {t.wealth.footer.legalName}
