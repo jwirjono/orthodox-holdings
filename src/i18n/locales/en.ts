@@ -1,7 +1,19 @@
 export const en = {
   meta: {
     htmlLang: 'en',
-    documentTitle: 'Orthodox Holdings | Integrated Solutions & Sustainable Growth',
+    /** Search-result headline. Google truncates around 60 characters. */
+    documentTitle: 'Orthodox Holding | Integrated Business & Wealth Advisory',
+    /**
+     * Search snippet and link-preview summary, 154 characters. Both member
+     * entities are named in full because they are the terms people search for;
+     * the cross-border practice is the differentiator worth the closing clause.
+     */
+    description:
+      'Orthodox Business Solutions and Orthodox Wealth Management in one ecosystem: corporate tax, accounting and private wealth advisory, Indonesia & Australia.',
+    /** Link-preview headline; names both divisions where there is room for them. */
+    ogTitle: 'Orthodox Holding — Business Solutions & Wealth Management',
+    /** Alt text for the Open Graph cover image. */
+    ogImageAlt: 'Orthodox Holding — integrated business and wealth advisory',
   },
 
   language: {
@@ -81,8 +93,7 @@ export const en = {
         'Managing multiple debts without a clear strategy?',
         "Worried your wealth won't transfer smoothly to the next generation?",
         'Concerned your assets could be exposed to lawsuits or business risks?',
-        'Unsure whether your personal finances and business finances are properly aligned?',
-        "Wondering if you're really on track for financial independence?",
+        'Unsure whether your personal finances and business finances are properly aligned?'
       ],
     },
   },
@@ -772,9 +783,8 @@ export const en = {
     regulatoryLabel: 'Regulatory & Entity Notice:',
     regulatoryBody:
       'Orthodox Business Solutions and Orthodox Wealth Management are member entities under Orthodox Holding. All advisory services, corporate tax consultations, and financial planning engagements are executed under licensed professional standards (CFP®, BKP, S.Ak, B.Bus) in compliance with relevant Indonesian and international jurisdictions.',
-    platformNoticePrefix:
-      'This platform serves as an integrated preview and client advisory portal inspired by BlackRock institutional design standards and directly connected to Orthodox Wealth Management (',
-    platformNoticeSuffix: ').',
+    platformNoticePrefix: 'This platform is the integrated client advisory portal for both member entities. ',
+    platformNoticeSuffix: ' is available from the navigation above.',
     copyright: '© {year} Orthodox Holding. All rights reserved.',
   },
 
@@ -1059,7 +1069,6 @@ export const en = {
   ],
 
   // Orthodox Wealth Management — the personal financial planning division.
-  // Merged in from the standalone orthodoxwm.com site.
   wealth: {
     nav: {
       about: 'About',

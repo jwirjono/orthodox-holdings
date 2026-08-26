@@ -30,9 +30,8 @@ header toggle (see `src/navigation.tsx`):
 | `business` | sections in `src/App.tsx` | Orthodox Business Solutions |
 | `wealth` | `src/components/wealth/` | Orthodox Wealth Management |
 
-Orthodox Wealth Management was previously a separate site (`orthodoxwm.com`,
-repo `orthodox-wealth-management`); it now lives in this repo and every former
-outbound link to it navigates in-app instead.
+All three views live in this repo and navigate in-app — there is no separate
+Wealth Management site or outbound link to one.
 
 ## Translations
 

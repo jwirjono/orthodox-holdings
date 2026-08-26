@@ -3,7 +3,11 @@ import type { Dictionary } from './en';
 export const id: Dictionary = {
   meta: {
     htmlLang: 'id',
-    documentTitle: 'Orthodox Holdings | Solusi Terintegrasi & Pertumbuhan Berkelanjutan',
+    documentTitle: 'Orthodox Holding | Solusi Bisnis & Manajemen Kekayaan',
+    description:
+      'Orthodox Business Solutions dan Orthodox Wealth Management dalam satu ekosistem: pajak korporat, akuntansi, dan manajemen kekayaan pribadi.',
+    ogTitle: 'Orthodox Holding — Solusi Bisnis & Manajemen Kekayaan',
+    ogImageAlt: 'Orthodox Holding — advisori bisnis dan kekayaan terintegrasi',
   },
 
   language: {
@@ -77,14 +81,13 @@ export const id: Dictionary = {
       ctaMobile: 'Wealth Mgmt',
       ctaDesktop: 'Jelajahi Orthodox Wealth Management',
       challenges: [
-        'Membayar pajak lebih besar dari seharusnya?',
+        'Membayar pajak pribadi lebih besar dari seharusnya?',
         'Tidak yakin ke mana atau bagaimana menginvestasikan uang Anda?',
         'Merasa perlindungan asuransi Anda kurang atau justru membayar premi berlebih?',
         'Memiliki beberapa utang sekaligus tanpa strategi yang jelas?',
         'Khawatir kekayaan Anda tidak dapat diwariskan ke generasi berikutnya?',
         'Khawatir aset Anda terekspos gugatan hukum atau risiko bisnis?',
-        'Tidak yakin apakah Anda sudah berada di jalur menuju financial freedom?',
-        'Bertanya-tanya apakah Anda benar-benar berada di jalur menuju kemandirian finansial?',
+        'Tidak yakin apakah Anda sudah berada di jalur menuju financial freedom?'
       ],
     },
   },
@@ -783,9 +786,8 @@ export const id: Dictionary = {
     regulatoryLabel: 'Pemberitahuan Regulasi & Entitas:',
     regulatoryBody:
       'Orthodox Business Solutions dan Orthodox Wealth Management adalah entitas anggota di bawah Orthodox Holding. Seluruh layanan advisori, konsultasi pajak badan, dan penugasan perencanaan keuangan dijalankan berdasarkan standar profesional berlisensi (CFP®, BKP, S.Ak, B.Bus) sesuai yurisdiksi Indonesia dan internasional yang berlaku.',
-    platformNoticePrefix:
-      'Platform ini berfungsi sebagai pratinjau terintegrasi dan portal advisori klien yang terinspirasi standar desain institusional BlackRock serta terhubung langsung dengan Orthodox Wealth Management (',
-    platformNoticeSuffix: ').',
+    platformNoticePrefix: 'Platform ini adalah portal advisori klien terintegrasi untuk kedua entitas anggota. ',
+    platformNoticeSuffix: ' dapat diakses melalui navigasi di atas.',
     copyright: '© {year} Orthodox Holding. Seluruh hak cipta dilindungi.',
   },
 

@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { en, type Dictionary } from './locales/en';
 import { id } from './locales/id';
+import { DEFAULT_LANGUAGE, LANGUAGE_QUERY_PARAM } from '../seo/siteConfig';
 
 export type Language = 'en' | 'id';
 
@@ -19,14 +20,48 @@ export const format = (
   vars: Record<string, string | number>
 ): string => template.replace(/\{(\w+)\}/g, (match, key) => (key in vars ? String(vars[key]) : match));
 
+const isLanguage = (value: string | null): value is Language => value === 'en' || value === 'id';
+
+/**
+ * Resolution order: the `?lang` query parameter, then a stored preference, then
+ * the browser's own language.
+ *
+ * The query parameter wins so that each language has a URL that can be linked,
+ * crawled and declared via hreflang. A visitor's stored preference must never
+ * override an explicit link — that is what makes the Indonesian version
+ * shareable and indexable rather than a per-browser toggle.
+ */
 const detectInitialLanguage = (): Language => {
-  if (typeof window === 'undefined') return 'en';
+  if (typeof window === 'undefined') return DEFAULT_LANGUAGE;
+
+  const fromUrl = new URLSearchParams(window.location.search).get(LANGUAGE_QUERY_PARAM);
+  if (isLanguage(fromUrl)) return fromUrl;
 
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === 'en' || stored === 'id') return stored;
+  if (isLanguage(stored)) return stored;
 
   const browserLang = window.navigator.language?.toLowerCase() ?? '';
-  return browserLang.startsWith('id') ? 'id' : 'en';
+  return browserLang.startsWith('id') ? 'id' : DEFAULT_LANGUAGE;
+};
+
+/**
+ * Keeps the address bar in step with the active language without adding a
+ * history entry — the default language drops the parameter so `/` stays the
+ * canonical English URL.
+ */
+const syncLanguageToUrl = (language: Language): void => {
+  if (typeof window === 'undefined') return;
+
+  const url = new URL(window.location.href);
+  if (language === DEFAULT_LANGUAGE) {
+    url.searchParams.delete(LANGUAGE_QUERY_PARAM);
+  } else {
+    url.searchParams.set(LANGUAGE_QUERY_PARAM, language);
+  }
+
+  if (url.toString() !== window.location.href) {
+    window.history.replaceState(window.history.state, '', url);
+  }
 };
 
 interface LanguageContextValue {
@@ -44,11 +79,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const t = DICTIONARIES[language];
 
-  // Keep the document in sync with the active language for a11y and SEO.
+  // Keep the document and the address bar in sync with the active language, for
+  // a11y and so the language always has a URL. `SeoHead` handles the rest of the
+  // head (canonical, hreflang, Open Graph).
   useEffect(() => {
     document.documentElement.lang = t.meta.htmlLang;
     document.title = t.meta.documentTitle;
-  }, [t]);
+    syncLanguageToUrl(language);
+  }, [t, language]);
 
   const setLanguage = useCallback((next: Language) => {
     setLanguageState(next);

@@ -6,6 +6,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["vite", "--port=3100", "--strictPort"],
       "port": 3100
+    },
+    {
+      "name": "orthodox-holdings-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--port=3200", "--strictPort"],
+      "port": 3200
     }
   ]
 }
