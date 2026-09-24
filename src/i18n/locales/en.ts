@@ -572,6 +572,8 @@ export const en = {
       ],
       omzet: 'Gross Revenue (Omzet):',
       taxableProfit: 'Taxable Net Profit:',
+      netLoss: 'Net Loss:',
+      lossNote: 'Expenses exceed revenue, so the business made a loss. Corporate income tax is charged on profit, so no tax is due.',
       omzetTier: 'Revenue Bracket:',
       tiers: {
         small: '≤ Rp 4.8 B — 11%',

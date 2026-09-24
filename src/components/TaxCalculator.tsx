@@ -116,7 +116,9 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
   const corpCalculations = useMemo(() => {
     const gross = Math.max(0, corpGrossRevenue);
     const expenses = Math.max(0, corpDeductibleExpenses);
-    const taxableProfit = Math.max(0, gross - expenses);
+    const netProfit = gross - expenses; // negative when expenses exceed revenue
+    const isLoss = netProfit < 0;
+    const taxableProfit = Math.max(0, netProfit); // no tax is due on a loss
 
     let tier: CorporateTier;
     let facilityProfit: number; // PKP taxed at 11%
@@ -136,11 +138,13 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
     const standardTax = standardProfit * CORP_STANDARD_RATE;
     const estimatedTax = facilityTax + standardTax;
     const effectiveRate = taxableProfit > 0 ? estimatedTax / taxableProfit : 0;
-    const netProfitAfterTax = taxableProfit - estimatedTax;
+    const netProfitAfterTax = netProfit - estimatedTax;
 
     return {
       gross,
       expenses,
+      netProfit,
+      isLoss,
       taxableProfit,
       tier,
       facilityProfit,
@@ -352,7 +356,8 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <input
                       type="number"
                       step={100000000}
-                      value={corpGrossRevenue}
+                      value={corpGrossRevenue || ''}
+                      placeholder="0"
                       onChange={(e) => setCorpGrossRevenue(Number(e.target.value))}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
@@ -368,7 +373,8 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <input
                       type="number"
                       step={50000000}
-                      value={corpDeductibleExpenses}
+                      value={corpDeductibleExpenses || ''}
+                      placeholder="0"
                       onChange={(e) => setCorpDeductibleExpenses(Number(e.target.value))}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
@@ -403,7 +409,8 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <input
                       type="number"
                       step={25000000}
-                      value={personalAnnualIncome}
+                      value={personalAnnualIncome || ''}
+                      placeholder="0"
                       onChange={(e) => setPersonalAnnualIncome(Number(e.target.value))}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
@@ -436,7 +443,8 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <input
                       type="number"
                       step={50000}
-                      value={monthlyPensionContribution}
+                      value={monthlyPensionContribution || ''}
+                      placeholder="0"
                       onChange={(e) => setMonthlyPensionContribution(Number(e.target.value))}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
@@ -470,7 +478,8 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <input
                       type="number"
                       step={100000000}
-                      value={dividendAmount}
+                      value={dividendAmount || ''}
+                      placeholder="0"
                       onChange={(e) => setDividendAmount(Number(e.target.value))}
                       className="w-full bg-neutral-950 border border-neutral-800 p-3 text-sm text-white font-mono focus:outline-none focus:border-white"
                     />
@@ -508,9 +517,13 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     <CalcRow label={t.taxCalculator.corporate.omzet} value={formatIDR(corpCalculations.gross)} />
 
                     <CalcRow
-                      label={t.taxCalculator.corporate.taxableProfit}
+                      label={
+                        corpCalculations.isLoss
+                          ? t.taxCalculator.corporate.netLoss
+                          : t.taxCalculator.corporate.taxableProfit
+                      }
                       formula={`${formatIDR(corpCalculations.gross)} − ${formatIDR(corpCalculations.expenses)}`}
-                      value={formatIDR(corpCalculations.taxableProfit)}
+                      value={formatIDR(corpCalculations.netProfit)}
                     />
 
                     <CalcRow
@@ -518,7 +531,13 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       value={t.taxCalculator.corporate.tiers[corpCalculations.tier]}
                     />
 
-                    {corpCalculations.tier === 'small' && (
+                    {corpCalculations.isLoss && (
+                      <div className="p-3 bg-neutral-900 border border-neutral-800 text-[11px] text-neutral-300 leading-relaxed">
+                        {t.taxCalculator.corporate.lossNote}
+                      </div>
+                    )}
+
+                    {!corpCalculations.isLoss && corpCalculations.tier === 'small' && (
                       <CalcRow
                         label={t.taxCalculator.corporate.flatTax11}
                         formula={`11% × ${formatIDR(corpCalculations.taxableProfit)}`}
@@ -526,7 +545,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       />
                     )}
 
-                    {corpCalculations.tier === 'facility' && (
+                    {!corpCalculations.isLoss && corpCalculations.tier === 'facility' && (
                       <>
                         <CalcRow
                           label={t.taxCalculator.corporate.facilityProfit}
@@ -551,7 +570,7 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       </>
                     )}
 
-                    {corpCalculations.tier === 'standard' && (
+                    {!corpCalculations.isLoss && corpCalculations.tier === 'standard' && (
                       <CalcRow
                         label={t.taxCalculator.corporate.flatTax22}
                         formula={`22% × ${formatIDR(corpCalculations.taxableProfit)}`}
@@ -580,9 +599,18 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       value={`${(corpCalculations.effectiveRate * 100).toFixed(2)}%`}
                     />
 
-                    <div className="flex justify-between gap-4 py-2 border-t border-neutral-800 text-sm text-white font-bold">
-                      <span>{t.taxCalculator.corporate.netProfit}</span>
-                      <span className="text-right">{formatIDR(corpCalculations.netProfitAfterTax)}</span>
+                    <div className="py-2 border-t border-neutral-800">
+                      <div
+                        className={`flex justify-between gap-4 text-sm font-bold ${
+                          corpCalculations.isLoss ? 'text-red-400' : 'text-white'
+                        }`}
+                      >
+                        <span>{t.taxCalculator.corporate.netProfit}</span>
+                        <span className="text-right">{formatIDR(corpCalculations.netProfitAfterTax)}</span>
+                      </div>
+                      <div className="mt-1 text-[11px] text-neutral-500 break-words">
+                        = {formatIDR(corpCalculations.netProfit)} − {formatIDR(corpCalculations.estimatedTax)}
+                      </div>
                     </div>
                   </div>
                 )}

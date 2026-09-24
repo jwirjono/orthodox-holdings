@@ -575,6 +575,8 @@ export const id: Dictionary = {
       ],
       omzet: 'Omzet Bruto:',
       taxableProfit: 'Laba Kena Pajak:',
+      netLoss: 'Rugi Bersih:',
+      lossNote: 'Beban melebihi omzet sehingga usaha mengalami rugi. PPh Badan dikenakan atas laba, jadi tidak ada pajak terutang.',
       omzetTier: 'Kelompok Omzet:',
       tiers: {
         small: '≤ Rp 4,8 M — 11%',
