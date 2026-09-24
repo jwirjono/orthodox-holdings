@@ -44,5 +44,6 @@ All copy lives in `src/i18n/locales/en.ts` and `src/i18n/locales/id.ts`
 The Wealth Management private consultation form posts to `POST /api/contact`,
 implemented in [api/contact.ts](api/contact.ts) and served during `npm run dev`
 by a Vite middleware in [vite.config.ts](vite.config.ts). It needs
-`EMAIL_USER`, `EMAIL_PASS`, and `EMAIL_RECIPIENT` in `.env.local` (see
-[.env.example](.env.example)); without them the form reports a send failure.
+the `SMTP_*` variables in `.env.local` (see [.env.example](.env.example));
+without them the form reports a send failure. Enquiries go to `SMTP_TO`, or to
+`SMTP_FROM` when that is unset.

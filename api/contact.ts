@@ -28,17 +28,24 @@ interface ContactResponse {
 export async function sendContactEnquiry(enquiry: ContactEnquiry): Promise<void> {
   const { firstName, email, phone, preferredMethod } = enquiry;
 
+  const port = Number(process.env.SMTP_PORT) || 587;
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: process.env.SMTP_HOST,
+    port,
+    // 465 is implicit TLS; 587 starts plain and upgrades with STARTTLS.
+    secure: port === 465,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   });
 
+  const from = process.env.SMTP_FROM || process.env.SMTP_USER;
+
   await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_RECIPIENT || process.env.EMAIL_USER,
+    from,
+    to: process.env.SMTP_TO || from,
+    replyTo: email,
     subject: `New Orthodox Wealth Management enquiry - ${firstName}`,
     text: `Name: ${firstName}\nEmail: ${email}\nPhone: ${phone}\nPreferred Method: ${preferredMethod}`,
   });

@@ -57,6 +57,14 @@ const getTERRate = (monthlyGross: number, table: TERBracket[]): number => {
   return (bracket ? bracket[1] : table[table.length - 1][1]) / 100;
 };
 
+// PPh Badan — Pasal 31E facility thresholds and rates.
+const CORP_FACILITY_OMZET = 4800000000; // Rp4,8 M
+const CORP_FACILITY_CAP = 50000000000; // Rp50 M
+const CORP_FACILITY_RATE = 0.11;
+const CORP_STANDARD_RATE = 0.22;
+
+type CorporateTier = 'small' | 'facility' | 'standard';
+
 export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation }) => {
   const t = useTranslation();
   const [taxType, setTaxType] = useState<TaxType>('corporate');
@@ -64,7 +72,6 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
   // Corporate Tax Inputs
   const [corpGrossRevenue, setCorpGrossRevenue] = useState<number>(12000000000); // 12 M
   const [corpDeductibleExpenses, setCorpDeductibleExpenses] = useState<number>(8500000000); // 8.5 M
-  const [isUMKM, setIsUMKM] = useState<boolean>(false); // Revenue <= 4.8B option
 
   // Personal Tax Inputs
   const [personalAnnualIncome, setPersonalAnnualIncome] = useState<number>(600000000); // 600M
@@ -86,38 +93,49 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
     'K/3': 72000000,
   };
 
-  // Corporate Tax Calculation
+  // Corporate Income Tax (PPh Badan) — tiered by omzet, with the Pasal 31E facility in the middle band.
+  //   Omzet ≤ Rp4,8 M        : 11% × net profit
+  //   Rp4,8 M < omzet ≤ Rp50 M: (Rp4,8 M / omzet × net profit) at 11%, remainder at 22%
+  //   Omzet > Rp50 M          : 22% × net profit
   const corpCalculations = useMemo(() => {
     const gross = Math.max(0, corpGrossRevenue);
     const expenses = Math.max(0, corpDeductibleExpenses);
     const taxableProfit = Math.max(0, gross - expenses);
 
-    let taxRate = 0.22; // 22% statutory corporate rate
-    let estimatedTax = 0;
-
-    if (gross <= 4800000000 && isUMKM) {
-      // Final PPh 0.5% gross option for UMKM
-      estimatedTax = gross * 0.005;
-      taxRate = 0.005;
+    let tier: CorporateTier;
+    let facilityProfit: number; // PKP taxed at 11%
+    if (gross <= CORP_FACILITY_OMZET) {
+      tier = 'small';
+      facilityProfit = taxableProfit;
+    } else if (gross <= CORP_FACILITY_CAP) {
+      tier = 'facility';
+      facilityProfit = (CORP_FACILITY_OMZET / gross) * taxableProfit;
     } else {
-      estimatedTax = taxableProfit * taxRate;
+      tier = 'standard';
+      facilityProfit = 0;
     }
+    const standardProfit = taxableProfit - facilityProfit; // PKP taxed at 22%
 
+    const facilityTax = facilityProfit * CORP_FACILITY_RATE;
+    const standardTax = standardProfit * CORP_STANDARD_RATE;
+    const estimatedTax = facilityTax + standardTax;
+    const effectiveRate = taxableProfit > 0 ? estimatedTax / taxableProfit : 0;
     const netProfitAfterTax = taxableProfit - estimatedTax;
-    // Orthodox Optimization Savings potential (e.g. 15-25% via proper expense & holding structuring)
-    const orthodoxOptimizedTax = estimatedTax * 0.78;
-    const potentialSavings = estimatedTax - orthodoxOptimizedTax;
 
     return {
       gross,
       expenses,
       taxableProfit,
-      taxRate,
+      tier,
+      facilityProfit,
+      facilityTax,
+      standardProfit,
+      standardTax,
       estimatedTax,
+      effectiveRate,
       netProfitAfterTax,
-      potentialSavings,
     };
-  }, [corpGrossRevenue, corpDeductibleExpenses, isUMKM]);
+  }, [corpGrossRevenue, corpDeductibleExpenses]);
 
   // Personal Tax (PPh 21) — TER Bulanan (PP 58/2023 & PMK 168/2023) with Masa Pajak Terakhir (December) reconciliation
   const personalCalculations = useMemo(() => {
@@ -343,17 +361,15 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                     </span>
                   </div>
 
-                  <div className="pt-2 flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      id="umkm-toggle"
-                      checked={isUMKM}
-                      onChange={(e) => setIsUMKM(e.target.checked)}
-                      className="w-4 h-4 bg-neutral-950 border-neutral-800 text-white focus:ring-0"
-                    />
-                    <label htmlFor="umkm-toggle" className="text-xs text-neutral-300 font-sans cursor-pointer">
-                      {t.taxCalculator.corporate.umkmToggle}
-                    </label>
+                  <div className="p-4 bg-neutral-950 border border-neutral-800 text-xs text-neutral-300 space-y-2">
+                    <span className="font-semibold text-white font-sans block">
+                      {t.taxCalculator.corporate.tierNoteTitle}
+                    </span>
+                    <ul className="font-light leading-relaxed space-y-1">
+                      {t.taxCalculator.corporate.tierNoteLines.map((line) => (
+                        <li key={line}>{line}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}
@@ -478,22 +494,47 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
                       <span className="text-white font-semibold">{formatIDR(corpCalculations.taxableProfit)}</span>
                     </div>
 
-                    <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">{t.taxCalculator.corporate.appliedRate}</span>
-                      <span className="text-white font-semibold">{(corpCalculations.taxRate * 100).toFixed(1)}%</span>
+                    <div className="flex justify-between gap-4 py-1.5 border-b border-neutral-900">
+                      <span className="text-neutral-400">{t.taxCalculator.corporate.omzetTier}</span>
+                      <span className="text-white font-semibold text-right">
+                        {t.taxCalculator.corporate.tiers[corpCalculations.tier]}
+                      </span>
                     </div>
+
+                    {corpCalculations.tier !== 'standard' && (
+                      <>
+                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
+                          <span className="text-neutral-400">{t.taxCalculator.corporate.facilityProfit}</span>
+                          <span className="text-white font-semibold">{formatIDR(corpCalculations.facilityProfit)}</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
+                          <span className="text-neutral-400">{t.taxCalculator.corporate.facilityTax}</span>
+                          <span className="text-white font-semibold">{formatIDR(corpCalculations.facilityTax)}</span>
+                        </div>
+                      </>
+                    )}
+
+                    {corpCalculations.tier !== 'small' && (
+                      <>
+                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
+                          <span className="text-neutral-400">{t.taxCalculator.corporate.standardProfit}</span>
+                          <span className="text-white font-semibold">{formatIDR(corpCalculations.standardProfit)}</span>
+                        </div>
+                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
+                          <span className="text-neutral-400">{t.taxCalculator.corporate.standardRateTax}</span>
+                          <span className="text-white font-semibold">{formatIDR(corpCalculations.standardTax)}</span>
+                        </div>
+                      </>
+                    )}
 
                     <div className="flex justify-between py-1.5 border-b border-neutral-900 text-amber-400">
                       <span>{t.taxCalculator.corporate.standardTax}</span>
                       <span className="font-semibold">{formatIDR(corpCalculations.estimatedTax)}</span>
                     </div>
 
-                    <div className="flex justify-between py-1.5 border-b border-neutral-900 text-emerald-400 bg-emerald-950/30 px-2">
-                      <span>{t.taxCalculator.corporate.optimizationPotential}</span>
-                      <span className="font-semibold">
-                        ~ {formatIDR(corpCalculations.potentialSavings)}{' '}
-                        {t.taxCalculator.corporate.savingsSuffix}
-                      </span>
+                    <div className="flex justify-between py-1.5 border-b border-neutral-900">
+                      <span className="text-neutral-400">{t.taxCalculator.corporate.effectiveRate}</span>
+                      <span className="text-white font-semibold">{(corpCalculations.effectiveRate * 100).toFixed(2)}%</span>
                     </div>
 
                     <div className="flex justify-between py-2 border-t border-neutral-800 text-sm text-white font-bold">

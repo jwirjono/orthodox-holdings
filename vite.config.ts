@@ -148,7 +148,7 @@ const contactApiDevServer = (): Plugin => ({
 
 export default defineConfig(({mode}) => {
   // Vite only exposes VITE_-prefixed variables to the client. The contact
-  // middleware runs in this Node process, so read the unprefixed EMAIL_*
+  // middleware runs in this Node process, so read the unprefixed SMTP_*
   // credentials from .env.local into process.env. These are never bundled.
   Object.assign(process.env, loadEnv(mode, process.cwd(), ''));
 
