@@ -507,6 +507,8 @@ export const id: Dictionary = {
     successBody:
       'Seorang Partner Advisori Orthodox (Adriel Louis, Dominicus Richardo, atau Brigitta Bunga) akan meninjau profil perusahaan Anda dan menghubungi Anda dalam 24 jam.',
     alsoSendWhatsapp: 'Kirim Juga via Jalur Instan WhatsApp',
+    submitError:
+      'Permintaan Anda gagal terkirim. Silakan coba lagi, gunakan jalur WhatsApp, atau kirim email langsung kepada kami.',
 
     formTitle: 'Formulir Permintaan Klien (Rahasia)',
     formPrivileged: 'Rahasia & Terbatas',

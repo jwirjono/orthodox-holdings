@@ -4,7 +4,8 @@ import nodemailer from 'nodemailer';
  * Private consultation enquiry submitted from the Orthodox Wealth Management
  * page (`src/components/wealth/WealthConsultationForm.tsx`).
  */
-export interface ContactEnquiry {
+export interface WealthEnquiry {
+  source: 'wealth';
   firstName: string;
   email: string;
   phone: string;
@@ -12,22 +13,88 @@ export interface ContactEnquiry {
 }
 
 /**
+ * Advisory engagement enquiry submitted from the main site's consultation
+ * section (`src/components/ConsultationSection.tsx`).
+ */
+export interface ConsultationEnquiry {
+  source: 'consultation';
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  areaOfInterest: string;
+  message: string;
+}
+
+export type ContactEnquiry = WealthEnquiry | ConsultationEnquiry;
+
+/**
  * Minimal structural types so this handler compiles without pulling in a
  * platform-specific SDK. They match both `@vercel/node` and Express handlers.
  */
 interface ContactRequest {
   method?: string;
-  body?: Partial<ContactEnquiry>;
+  body?: unknown;
 }
 
 interface ContactResponse {
   status: (code: number) => { json: (body: unknown) => unknown };
 }
 
-/** Emails a consultation enquiry to the advisory inbox. Throws if sending fails. */
-export async function sendContactEnquiry(enquiry: ContactEnquiry): Promise<void> {
-  const { firstName, email, phone, preferredMethod } = enquiry;
+const field = (body: Record<string, unknown>, key: string): string =>
+  typeof body[key] === 'string' ? (body[key] as string).trim() : '';
 
+/**
+ * Validates a request body into an enquiry, or returns null when a required
+ * field is missing. Bodies without `source` come from the Wealth Management form.
+ */
+export function parseEnquiry(body: unknown): ContactEnquiry | null {
+  if (!body || typeof body !== 'object') return null;
+  const data = body as Record<string, unknown>;
+
+  if (data.source === 'consultation') {
+    const enquiry: ConsultationEnquiry = {
+      source: 'consultation',
+      name: field(data, 'name'),
+      company: field(data, 'company'),
+      email: field(data, 'email'),
+      phone: field(data, 'phone'),
+      areaOfInterest: field(data, 'areaOfInterest'),
+      message: field(data, 'message'),
+    };
+    return enquiry.name && enquiry.email && enquiry.phone ? enquiry : null;
+  }
+
+  const enquiry: WealthEnquiry = {
+    source: 'wealth',
+    firstName: field(data, 'firstName'),
+    email: field(data, 'email'),
+    phone: field(data, 'phone'),
+    preferredMethod: field(data, 'preferredMethod') || 'Email',
+  };
+  return enquiry.firstName && enquiry.email && enquiry.phone ? enquiry : null;
+}
+
+const composeMessage = (enquiry: ContactEnquiry): { subject: string; text: string } => {
+  if (enquiry.source === 'consultation') {
+    const { name, company, email, phone, areaOfInterest, message } = enquiry;
+    return {
+      subject: `New Orthodox private consultation request - ${name}${company ? ` (${company})` : ''}`,
+      text:
+        `Name: ${name}\nCompany: ${company || '-'}\nEmail: ${email}\nPhone: ${phone}\n` +
+        `Area of Interest: ${areaOfInterest || '-'}\n\nNotes:\n${message || '-'}`,
+    };
+  }
+
+  const { firstName, email, phone, preferredMethod } = enquiry;
+  return {
+    subject: `New Orthodox Wealth Management enquiry - ${firstName}`,
+    text: `Name: ${firstName}\nEmail: ${email}\nPhone: ${phone}\nPreferred Method: ${preferredMethod}`,
+  };
+};
+
+/** Emails an enquiry to the advisory inbox. Throws if sending fails. */
+export async function sendContactEnquiry(enquiry: ContactEnquiry): Promise<void> {
   const port = Number(process.env.SMTP_PORT) || 587;
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -45,9 +112,8 @@ export async function sendContactEnquiry(enquiry: ContactEnquiry): Promise<void>
   await transporter.sendMail({
     from,
     to: process.env.SMTP_TO || from,
-    replyTo: email,
-    subject: `New Orthodox Wealth Management enquiry - ${firstName}`,
-    text: `Name: ${firstName}\nEmail: ${email}\nPhone: ${phone}\nPreferred Method: ${preferredMethod}`,
+    replyTo: enquiry.email,
+    ...composeMessage(enquiry),
   });
 }
 
@@ -56,18 +122,13 @@ export default async function handler(req: ContactRequest, res: ContactResponse)
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  const { firstName, email, phone, preferredMethod } = req.body ?? {};
-  if (!firstName || !email || !phone) {
+  const enquiry = parseEnquiry(req.body);
+  if (!enquiry) {
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
   try {
-    await sendContactEnquiry({
-      firstName,
-      email,
-      phone,
-      preferredMethod: preferredMethod || 'Email',
-    });
+    await sendContactEnquiry(enquiry);
     return res.status(200).json({ message: 'Inquiry sent successfully' });
   } catch (error) {
     console.error(error);

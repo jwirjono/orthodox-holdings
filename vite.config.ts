@@ -114,9 +114,9 @@ const seoAssets = (): Plugin => {
 };
 
 /**
- * Serves POST /api/contact during `npm run dev` so the Orthodox Wealth
- * Management consultation form works locally. In production the same logic runs
- * as the serverless function in `api/contact.ts`.
+ * Serves POST /api/contact during `npm run dev` so the consultation and Orthodox
+ * Wealth Management forms work locally. It runs the same handler that Vercel
+ * deploys from `api/contact.ts`, so validation and responses match production.
  */
 const contactApiDevServer = (): Plugin => ({
   name: 'orthodox-contact-api',
@@ -132,10 +132,18 @@ const contactApiDevServer = (): Plugin => ({
       req.on('end', async () => {
         res.setHeader('Content-Type', 'application/json');
         try {
-          const {sendContactEnquiry} = await server.ssrLoadModule('/api/contact.ts');
-          await sendContactEnquiry(JSON.parse(raw || '{}'));
-          res.statusCode = 200;
-          res.end(JSON.stringify({message: 'Inquiry sent successfully'}));
+          const {default: handler} = await server.ssrLoadModule('/api/contact.ts');
+          await handler(
+            {method: 'POST', body: JSON.parse(raw || '{}')},
+            {
+              status: (code: number) => ({
+                json: (body: unknown) => {
+                  res.statusCode = code;
+                  res.end(JSON.stringify(body));
+                },
+              }),
+            }
+          );
         } catch (error) {
           console.error(error);
           res.statusCode = 500;

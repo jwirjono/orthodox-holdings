@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageSquare, Send, Phone, Mail, Building } from 'lucide-react';
 import { useTranslation } from '../i18n';
+import { en } from '../i18n/locales/en';
 import { useNavigation } from '../navigation';
 
 interface ConsultationSectionProps {
@@ -21,10 +22,42 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'consultation',
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          // Sent as the English label so the emailed enquiry reads the same
+          // regardless of the language the visitor used.
+          areaOfInterest:
+            en.consultation.interestOptions.find((option) => option.value === formData.challenge)?.label ??
+            formData.challenge,
+          message: formData.message,
+        }),
+      });
+      if (response.ok) {
+        // formData is kept so the WhatsApp button on the success screen can reuse it.
+        setSubmitted(true);
+      } else {
+        setSubmitError(true);
+      }
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleSendWhatsApp = () => {
@@ -220,10 +253,17 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 py-3 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="flex-1 py-3 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>{t.common.requestConsultation}</span>
+                    {isSubmitting ? (
+                      <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>{t.common.requestConsultation}</span>
+                      </>
+                    )}
                   </button>
 
                   <button
@@ -235,6 +275,12 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
                     <span>{t.consultation.instantWhatsapp}</span>
                   </button>
                 </div>
+
+                {submitError && (
+                  <p role="alert" className="p-3 bg-red-500/10 border border-red-500/50 text-red-400 text-xs">
+                    {t.consultation.submitError}
+                  </p>
+                )}
               </form>
             )}
           </div>

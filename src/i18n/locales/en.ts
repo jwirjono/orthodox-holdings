@@ -504,6 +504,8 @@ export const en = {
     successBody:
       'An Orthodox Advisory Partner (Adriel Louis, Dominicus Richardo, or Brigitta Bunga) will review your corporate profile and contact you within 24 hours.',
     alsoSendWhatsapp: 'Also Send via WhatsApp Instant Route',
+    submitError:
+      'Your request could not be sent. Please try again, use the WhatsApp route, or email us directly.',
 
     formTitle: 'Confidential Client Enquiry Form',
     formPrivileged: 'Privileged & Confidential',
