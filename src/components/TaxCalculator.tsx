@@ -65,6 +65,22 @@ const CORP_STANDARD_RATE = 0.22;
 
 type CorporateTier = 'small' | 'facility' | 'standard';
 
+/** A breakdown line: label and result, with the worked calculation underneath when given. */
+const CalcRow: React.FC<{ label: string; value: string; formula?: string; accent?: boolean }> = ({
+  label,
+  value,
+  formula,
+  accent,
+}) => (
+  <div className="py-1.5 border-b border-neutral-900">
+    <div className={`flex justify-between gap-4 ${accent ? 'text-amber-400' : ''}`}>
+      <span className={accent ? '' : 'text-neutral-400'}>{label}</span>
+      <span className={`font-semibold text-right ${accent ? '' : 'text-white'}`}>{value}</span>
+    </div>
+    {formula && <div className="mt-1 text-[11px] text-neutral-500 break-words">= {formula}</div>}
+  </div>
+);
+
 export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation }) => {
   const t = useTranslation();
   const [taxType, setTaxType] = useState<TaxType>('corporate');
@@ -489,57 +505,84 @@ export const TaxCalculator: React.FC<TaxCalculatorProps> = ({ onOpenConsultation
 
                 {taxType === 'corporate' && (
                   <div className="space-y-3 font-mono text-xs">
-                    <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">{t.taxCalculator.corporate.taxableProfit}</span>
-                      <span className="text-white font-semibold">{formatIDR(corpCalculations.taxableProfit)}</span>
-                    </div>
+                    <CalcRow label={t.taxCalculator.corporate.omzet} value={formatIDR(corpCalculations.gross)} />
 
-                    <div className="flex justify-between gap-4 py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">{t.taxCalculator.corporate.omzetTier}</span>
-                      <span className="text-white font-semibold text-right">
-                        {t.taxCalculator.corporate.tiers[corpCalculations.tier]}
-                      </span>
-                    </div>
+                    <CalcRow
+                      label={t.taxCalculator.corporate.taxableProfit}
+                      formula={`${formatIDR(corpCalculations.gross)} − ${formatIDR(corpCalculations.expenses)}`}
+                      value={formatIDR(corpCalculations.taxableProfit)}
+                    />
 
-                    {corpCalculations.tier !== 'standard' && (
+                    <CalcRow
+                      label={t.taxCalculator.corporate.omzetTier}
+                      value={t.taxCalculator.corporate.tiers[corpCalculations.tier]}
+                    />
+
+                    {corpCalculations.tier === 'small' && (
+                      <CalcRow
+                        label={t.taxCalculator.corporate.flatTax11}
+                        formula={`11% × ${formatIDR(corpCalculations.taxableProfit)}`}
+                        value={formatIDR(corpCalculations.estimatedTax)}
+                      />
+                    )}
+
+                    {corpCalculations.tier === 'facility' && (
                       <>
-                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                          <span className="text-neutral-400">{t.taxCalculator.corporate.facilityProfit}</span>
-                          <span className="text-white font-semibold">{formatIDR(corpCalculations.facilityProfit)}</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                          <span className="text-neutral-400">{t.taxCalculator.corporate.facilityTax}</span>
-                          <span className="text-white font-semibold">{formatIDR(corpCalculations.facilityTax)}</span>
-                        </div>
+                        <CalcRow
+                          label={t.taxCalculator.corporate.facilityProfit}
+                          formula={`(${formatIDR(CORP_FACILITY_OMZET)} ÷ ${formatIDR(corpCalculations.gross)}) × ${formatIDR(corpCalculations.taxableProfit)}`}
+                          value={formatIDR(corpCalculations.facilityProfit)}
+                        />
+                        <CalcRow
+                          label={t.taxCalculator.corporate.facilityTax}
+                          formula={`${formatIDR(corpCalculations.facilityProfit)} × 11%`}
+                          value={formatIDR(corpCalculations.facilityTax)}
+                        />
+                        <CalcRow
+                          label={t.taxCalculator.corporate.standardProfit}
+                          formula={`${formatIDR(corpCalculations.taxableProfit)} − ${formatIDR(corpCalculations.facilityProfit)}`}
+                          value={formatIDR(corpCalculations.standardProfit)}
+                        />
+                        <CalcRow
+                          label={t.taxCalculator.corporate.standardRateTax}
+                          formula={`${formatIDR(corpCalculations.standardProfit)} × 22%`}
+                          value={formatIDR(corpCalculations.standardTax)}
+                        />
                       </>
                     )}
 
-                    {corpCalculations.tier !== 'small' && (
-                      <>
-                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                          <span className="text-neutral-400">{t.taxCalculator.corporate.standardProfit}</span>
-                          <span className="text-white font-semibold">{formatIDR(corpCalculations.standardProfit)}</span>
-                        </div>
-                        <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                          <span className="text-neutral-400">{t.taxCalculator.corporate.standardRateTax}</span>
-                          <span className="text-white font-semibold">{formatIDR(corpCalculations.standardTax)}</span>
-                        </div>
-                      </>
+                    {corpCalculations.tier === 'standard' && (
+                      <CalcRow
+                        label={t.taxCalculator.corporate.flatTax22}
+                        formula={`22% × ${formatIDR(corpCalculations.taxableProfit)}`}
+                        value={formatIDR(corpCalculations.estimatedTax)}
+                      />
                     )}
 
-                    <div className="flex justify-between py-1.5 border-b border-neutral-900 text-amber-400">
-                      <span>{t.taxCalculator.corporate.standardTax}</span>
-                      <span className="font-semibold">{formatIDR(corpCalculations.estimatedTax)}</span>
-                    </div>
+                    <CalcRow
+                      label={t.taxCalculator.corporate.standardTax}
+                      formula={
+                        corpCalculations.tier === 'facility'
+                          ? `${formatIDR(corpCalculations.facilityTax)} + ${formatIDR(corpCalculations.standardTax)}`
+                          : undefined
+                      }
+                      value={formatIDR(corpCalculations.estimatedTax)}
+                      accent
+                    />
 
-                    <div className="flex justify-between py-1.5 border-b border-neutral-900">
-                      <span className="text-neutral-400">{t.taxCalculator.corporate.effectiveRate}</span>
-                      <span className="text-white font-semibold">{(corpCalculations.effectiveRate * 100).toFixed(2)}%</span>
-                    </div>
+                    <CalcRow
+                      label={t.taxCalculator.corporate.effectiveRate}
+                      formula={
+                        corpCalculations.taxableProfit > 0
+                          ? `${formatIDR(corpCalculations.estimatedTax)} ÷ ${formatIDR(corpCalculations.taxableProfit)}`
+                          : undefined
+                      }
+                      value={`${(corpCalculations.effectiveRate * 100).toFixed(2)}%`}
+                    />
 
-                    <div className="flex justify-between py-2 border-t border-neutral-800 text-sm text-white font-bold">
+                    <div className="flex justify-between gap-4 py-2 border-t border-neutral-800 text-sm text-white font-bold">
                       <span>{t.taxCalculator.corporate.netProfit}</span>
-                      <span>{formatIDR(corpCalculations.netProfitAfterTax)}</span>
+                      <span className="text-right">{formatIDR(corpCalculations.netProfitAfterTax)}</span>
                     </div>
                   </div>
                 )}

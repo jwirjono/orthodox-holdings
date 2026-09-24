@@ -573,6 +573,7 @@ export const id: Dictionary = {
         'Omzet Rp 4,8 M – Rp 50 M — porsi PKP (Rp 4,8 M ÷ omzet × laba bersih) dikenai 11%, sisanya 22%.',
         'Omzet di atas Rp 50 M — 22% × laba bersih.',
       ],
+      omzet: 'Omzet Bruto:',
       taxableProfit: 'Laba Kena Pajak:',
       omzetTier: 'Kelompok Omzet:',
       tiers: {
@@ -580,6 +581,8 @@ export const id: Dictionary = {
         facility: 'Rp 4,8 M – Rp 50 M — 11% / 22%',
         standard: '> Rp 50 M — 22%',
       },
+      flatTax11: 'Pajak (11% × Laba Bersih):',
+      flatTax22: 'Pajak (22% × Laba Bersih):',
       facilityProfit: 'Porsi PKP 11%:',
       facilityTax: 'Pajak atas Porsi 11%:',
       standardProfit: 'Porsi PKP 22%:',

@@ -570,6 +570,7 @@ export const en = {
         'Revenue Rp 4.8 B – Rp 50 B — the (Rp 4.8 B ÷ revenue) share of net profit at 11%, the remainder at 22%.',
         'Revenue above Rp 50 B — 22% × net profit.',
       ],
+      omzet: 'Gross Revenue (Omzet):',
       taxableProfit: 'Taxable Net Profit:',
       omzetTier: 'Revenue Bracket:',
       tiers: {
@@ -577,6 +578,8 @@ export const en = {
         facility: 'Rp 4.8 B – Rp 50 B — 11% / 22%',
         standard: '> Rp 50 B — 22%',
       },
+      flatTax11: 'Tax (11% × Net Profit):',
+      flatTax22: 'Tax (22% × Net Profit):',
       facilityProfit: 'Taxable Profit at 11%:',
       facilityTax: 'Tax at 11%:',
       standardProfit: 'Taxable Profit at 22%:',
