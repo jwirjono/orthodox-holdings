@@ -41,9 +41,17 @@ All copy lives in `src/i18n/locales/en.ts` and `src/i18n/locales/id.ts`
 
 ## Contact form
 
-The Wealth Management private consultation form posts to `POST /api/contact`,
-implemented in [api/contact.ts](api/contact.ts) and served during `npm run dev`
-by a Vite middleware in [vite.config.ts](vite.config.ts). It needs
-the `SMTP_*` variables in `.env.local` (see [.env.example](.env.example));
-without them the form reports a send failure. Enquiries go to `SMTP_TO`, or to
-`SMTP_FROM` when that is unset.
+Both consultation forms post to `POST /api/contact`, implemented in
+[api/contact.ts](api/contact.ts) and served during `npm run dev` by a Vite
+middleware in [vite.config.ts](vite.config.ts). One Gmail account sends every
+enquiry (`SMTP_USER`, with its App Password in `SMTP_PASS`), and each form
+delivers to its own inbox:
+
+| Form | Inbox |
+| --- | --- |
+| Main site consultation (Orthodox Business Solutions) | `BUSINESS_SMTP_TO` |
+| Orthodox Wealth Management | `WEALTH_SMTP_TO` |
+
+`SMTP_HOST` and `SMTP_PORT` default to `smtp.gmail.com:587`; `SMTP_FROM`
+defaults to `SMTP_USER`. Set them in `.env.local` (see [.env.example](.env.example))
+and in Vercel; a form whose settings are missing reports a send failure.

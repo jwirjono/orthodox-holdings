@@ -93,25 +93,46 @@ const composeMessage = (enquiry: ContactEnquiry): { subject: string; text: strin
   };
 };
 
-/** Emails an enquiry to the advisory inbox. Throws if sending fails. */
+/**
+ * One Gmail account (SMTP_USER) sends every enquiry; each brand delivers to its
+ * own inbox: BUSINESS_SMTP_TO for the main site's consultation form and
+ * WEALTH_SMTP_TO for the Wealth Management form.
+ */
+const INBOX_ENV: Record<ContactEnquiry['source'], string> = {
+  consultation: 'BUSINESS_SMTP_TO',
+  wealth: 'WEALTH_SMTP_TO',
+};
+
+const env = (key: string) => process.env[key]?.trim() || undefined;
+
+const mailboxFor = (source: ContactEnquiry['source']) => {
+  const user = env('SMTP_USER');
+  const pass = env('SMTP_PASS');
+  const to = env(INBOX_ENV[source]);
+  if (!user || !pass || !to) {
+    throw new Error(`SMTP_USER, SMTP_PASS and ${INBOX_ENV[source]} must be set to send ${source} enquiries`);
+  }
+  return { user, pass, from: env('SMTP_FROM') || user, to };
+};
+
+/** Emails an enquiry to its brand's advisory inbox. Throws if sending fails. */
 export async function sendContactEnquiry(enquiry: ContactEnquiry): Promise<void> {
+  const mailbox = mailboxFor(enquiry.source);
   const port = Number(process.env.SMTP_PORT) || 587;
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: env('SMTP_HOST') || 'smtp.gmail.com',
     port,
     // 465 is implicit TLS; 587 starts plain and upgrades with STARTTLS.
     secure: port === 465,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: mailbox.user,
+      pass: mailbox.pass,
     },
   });
 
-  const from = process.env.SMTP_FROM || process.env.SMTP_USER;
-
   await transporter.sendMail({
-    from,
-    to: process.env.SMTP_TO || from,
+    from: mailbox.from,
+    to: mailbox.to,
     replyTo: enquiry.email,
     ...composeMessage(enquiry),
   });

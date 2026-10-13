@@ -3,6 +3,7 @@ import { MessageSquare, Send, Phone, Mail, Building } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import { en } from '../i18n/locales/en';
 import { useNavigation } from '../navigation';
+import { businessWhatsappUrl } from '../lib/businessContact';
 
 interface ConsultationSectionProps {
   initialMessage?: string;
@@ -67,7 +68,7 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
     }: ${formData.company || '-'}\n${wa.emailLabel}: ${formData.email || '-'}\n${
       wa.phoneLabel
     }: ${formData.phone || '-'}\n\n${wa.messageLabel}:\n${formData.message || wa.defaultMessage}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(businessWhatsappUrl(text), '_blank');
   };
 
   return (

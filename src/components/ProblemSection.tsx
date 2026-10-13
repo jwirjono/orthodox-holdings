@@ -14,6 +14,7 @@ import {
   AlertOctagon,
 } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
+import { businessWhatsappUrl } from '../lib/businessContact';
 
 interface ProblemSectionProps {
   onOpenConsultation: (msg?: string) => void;
@@ -73,8 +74,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
   };
 
   const handleWhatsAppRedirect = (problem: ProblemItem) => {
-    const encoded = encodeURIComponent(problem.whatsappMessage);
-    window.open(`https://wa.me/?text=${encoded}`, '_blank');
+    window.open(businessWhatsappUrl(problem.whatsappMessage), '_blank');
   };
 
   return (
@@ -310,7 +310,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
         </div>
 
         {/* OUR SERVICE: Side-by-Side Featured Plans */}
-        <div className="mb-20">
+        <div id="our-service" className="mb-20 scroll-mt-24">
           <div className="mb-8">
             <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest block mb-1">
               {t.problems.plans.eyebrow}
@@ -322,7 +322,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Plan 1: Tax Efficiency Plan */}
-            <div className="bg-neutral-900 border border-neutral-800 p-8 flex flex-col justify-between rounded-xs hover:border-neutral-600 transition-all">
+            <div id="tax-efficiency-plan" className="scroll-mt-28 bg-neutral-900 border border-neutral-800 p-8 flex flex-col justify-between rounded-xs hover:border-neutral-600 transition-all">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
@@ -370,7 +370,7 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
             </div>
 
             {/* Plan 2: Fraud Detection Plan */}
-            <div className="bg-neutral-900 border border-neutral-800 p-8 flex flex-col justify-between rounded-xs hover:border-neutral-600 transition-all">
+            <div id="fraud-detection-plan" className="scroll-mt-28 bg-neutral-900 border border-neutral-800 p-8 flex flex-col justify-between rounded-xs hover:border-neutral-600 transition-all">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
@@ -436,7 +436,8 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
             return (
               <div
                 key={card.id}
-                className="bg-neutral-900 border border-neutral-800 p-6 flex flex-col justify-between hover:border-neutral-600 transition-all group rounded-xs"
+                id={card.id}
+                className="scroll-mt-28 bg-neutral-900 border border-neutral-800 p-6 flex flex-col justify-between hover:border-neutral-600 transition-all group rounded-xs"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

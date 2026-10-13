@@ -23,6 +23,7 @@ export const id: Dictionary = {
     brandName: 'Orthodox Holdings',
     businessSolutions: 'Business Solutions',
     wealthManagement: 'Wealth Management',
+    orthodoxBusinessSolutions: 'Orthodox Business Solutions',
     orthodoxWealthManagement: 'Orthodox Wealth Management',
     requestConsultation: 'Ajukan Konsultasi',
     consultation: 'Konsultasi',
@@ -97,7 +98,7 @@ export const id: Dictionary = {
     headlineLine2: 'Pertumbuhan Berkelanjutan.',
     heading: 'Semua Terselesaikan dalam Satu Atap.',
     paragraph1:
-      'Orthodox Business Solutions membantu pemilik bisnis menyederhanakan compliance, meningkatkan visibilitas keuangan, dan membangun bisnis yang lebih kuat melalui layanan pajak, akuntansi, dan advisory strategis yang terintegrasi.',
+      'Kami membantu bisnis menyederhanakan perpajakan dan akuntansi, meningkatkan transparansi keuangan, serta membangun fondasi yang lebih kuat untuk pertumbuhan yang berkelanjutan.',
     paragraph2:
       'Sebagai bagian dari Orthodox Holding, kami bekerja bersama Orthodox Wealth Management untuk membantu pemilik bisnis membangun bukan hanya bisnis yang lebih baik—tetapi juga kekayaan pribadi yang bertahan lama.',
     trustIndicatorsLabel: 'Indikator Kepercayaan & Rekam Jejak',
@@ -785,30 +786,52 @@ export const id: Dictionary = {
   footer: {
     tagline:
       'Menghubungkan kesuksesan bisnis dengan kekayaan pribadi jangka panjang melalui ekosistem advisori yang terintegrasi.',
-    ecosystemTitle: 'Ekosistem',
-    ecosystemLinks: {
-      problem: 'Masalah yang Kami Selesaikan',
-      system: 'Sistem Terintegrasi',
-      leadership: 'Tim Kepemimpinan',
+    businessTitle: 'Business Solutions',
+    businessLinks: {
+      help: 'Bagaimana Kami Dapat Membantu',
+      services: 'Layanan Kami',
       expertise: 'Keahlian Kami',
-    },
-    governanceTitle: 'Tata Kelola',
-    governanceLinks: {
-      diagram: 'Diagram Ekosistem',
-      process: 'Proses Strategis',
-      principles: 'Prinsip Orthodox',
       taxCalculator: 'Kalkulator Pajak',
     },
-    hqTitle: 'Kantor Pusat',
-    hqLine1: 'Meja Advisori Privat Orthodox Holding',
-    hqLine2: 'Praktik Lintas Negara Indonesia & Australia',
-    email: 'advisory@orthodoxwm.com',
+    wealthTitle: 'Wealth Management',
+    wealthLinks: {
+      problem: 'Masalah yang Kami Selesaikan',
+      whoWeAre: 'Siapa Kami',
+      expertise: 'Keahlian Kami',
+      whyOrthodox: 'Mengapa Orthodox',
+    },
     regulatoryLabel: 'Pemberitahuan Regulasi & Entitas:',
     regulatoryBody:
-      'Orthodox Business Solutions dan Orthodox Wealth Management adalah entitas anggota di bawah Orthodox Holding. Seluruh layanan advisori, konsultasi pajak badan, dan penugasan perencanaan keuangan dijalankan berdasarkan standar profesional berlisensi (CFP®, BKP, S.Ak, B.Bus) sesuai yurisdiksi Indonesia dan internasional yang berlaku.',
-    platformNoticePrefix: 'Platform ini adalah portal advisori klien terintegrasi untuk kedua entitas anggota. ',
-    platformNoticeSuffix: ' dapat diakses melalui navigasi di atas.',
+      'Orthodox Business Solutions dan Orthodox Wealth Management adalah entitas anggota di bawah Orthodox Holding. Seluruh layanan advisori, konsultasi pajak badan, dan penugasan perencanaan keuangan dijalankan berdasarkan standar profesional berlisensi sesuai yurisdiksi Indonesia dan internasional yang berlaku.',
+    platformNotice: 'Platform ini adalah portal advisori klien terintegrasi untuk kedua entitas anggota.',
     copyright: '© {year} Orthodox Holding. Seluruh hak cipta dilindungi.',
+  },
+
+  businessFooter: {
+    logoAlt: 'Orthodox Business Solutions',
+    legalName: 'Nama dagang dari PT Orthodox Solusi Bisnis, entitas anggota di bawah Orthodox Holding.',
+    solutionsTitle: 'Solusi Kami',
+    solutionsLinks: {
+      taxEfficiency: 'Tax Efficiency Plan',
+      fraudDetection: 'Fraud Detection Plan',
+      cfoAdvisory: 'CFO & Financial Advisory',
+      corporateStructuring: 'Corporate Structuring',
+    },
+    approachTitle: 'Pendekatan Kami',
+    approachLinks: {
+      problems: 'Masalah yang Kami Selesaikan',
+      integratedSystem: 'Sistem Terintegrasi Kami',
+      expertise: 'Keahlian Kami',
+      strategicProcess: 'Proses Strategis Kami',
+    },
+    regulatoryLabel: 'Pemberitahuan Regulasi & Entitas:',
+    regulatoryBody:
+      'Orthodox Business Solutions adalah nama dagang dari PT Orthodox Solusi Bisnis, entitas anggota di bawah Orthodox Holding. Layanan diberikan oleh entitas operasional terkait dan tenaga profesional yang kompeten sesuai dengan peraturan perundang-undangan yang berlaku.',
+    scopeNoticePrefix:
+      'Orthodox Business Solutions berfokus pada advisori bisnis, pembukuan, pelaporan keuangan, dan layanan pajak badan. Untuk perencanaan keuangan pribadi, perencanaan investasi, asuransi, pensiun, perencanaan waris, dan perlindungan aset, kunjungi perusahaan saudara kami, ',
+    scopeNoticeSuffix: '.',
+    copyright: '© {year} Orthodox Business Solutions. Seluruh hak cipta dilindungi.',
+    whatsappLabel: 'WhatsApp Orthodox Business Solutions',
   },
 
   expertise: {
@@ -1171,41 +1194,49 @@ export const id: Dictionary = {
         'Setiap komponen dirancang secara individual—namun ditata agar bekerja sebagai satu sistem keuangan pribadi yang terintegrasi.',
       items: [
         {
+          id: 'estate-planning',
           title: 'Perencanaan Warisan/Estate Planning (Keahilan Utama)',
           description:
             'Menata strategi untuk memastikan pengalihan kekayaan Yang efisien, berkesinambungan dan pelestarian warisan lintas generasi.',
         },
         {
+          id: 'asset-protection',
           title: 'Perlindungan Aset/Asset Protection (Keahilan Utama)',
           description:
             'Melindungi kekayaan pribadi dari risiko hukum, finansial, dan hal-hal tak terduga melalui perencanaan proaktif dan penataan yang strategis.',
         },
         {
+          id: 'personal-tax-planning',
           title: 'Perencanaan & Optimalisasi Pajak',
           description:
             'Mengurangi kebocoran pajak yang tidak perlu melalui perencanaan strategis yang dirancang untuk meningkatkan efisiensi keuangan jangka panjang.',
         },
         {
+          id: 'insurance-planning',
           title: 'Perencanaan Asuransi',
           description:
             'Menyelaraskan solusi asuransi dengan strategi keuangan Anda secara menyeluruh untuk memastikan perlindungan yang tepat tanpa biaya yang tidak perlu.',
         },
         {
+          id: 'retirement-planning',
           title: 'Perencanaan Pensiun',
           description:
             'Merancang strategi penghasilan yang berkelanjutan untuk mendukung gaya hidup pensiun yang Anda inginkan dan kemandirian finansial jangka panjang.',
         },
         {
+          id: 'debt-management',
           title: 'Pengelolaan & Penataan Utang',
           description:
             'Mengoptimalkan strategi utang dan pinjaman untuk memperbaiki arus kas, memperkuat fleksibilitas keuangan, dan mendukung penciptaan kekayaan.',
         },
         {
+          id: 'personal-loan-broking',
           title: 'Broker Pinjaman Pribadi',
           description:
             'Mengakses solusi pembiayaan yang selaras dengan tujuan keuangan Anda secara menyeluruh, baik untuk investasi, pembelian properti, maupun restrukturisasi utang.',
         },
         {
+          id: 'investment-planning',
           title: 'Perencanaan Investasi',
           description:
             'Membangun portofolio investasi terdiversifikasi yang selaras dengan tujuan, profil risiko, kebutuhan arus kas, dan sasaran kekayaan jangka panjang Anda.',
@@ -1364,10 +1395,39 @@ export const id: Dictionary = {
 
     footer: {
       logoAlt: 'Orthodox Wealth Management',
-      legalName: 'Nama dagang dari PT. Orthodox Strategi Finansial',
-      copyright: '© {year} PT. Orthodox Strategi Finansial',
-      email: 'info@orthodoxwm.com',
-      whatsappLabel: 'WhatsApp',
+      tagline: 'Membangun Kekayaan yang Bertahan Lintas Generasi.',
+      description:
+        'Kami membantu individu, keluarga, profesional, dan pemilik usaha membangun, melindungi, dan menjaga kekayaan pribadi melalui perencanaan keuangan yang terintegrasi.',
+      legalName: 'Nama dagang dari PT Orthodox Strategi Finansial, entitas anggota di bawah Orthodox Holding.',
+      servicesTitle: 'Layanan Kami',
+      servicesLinks: {
+        investment: 'Perencanaan Investasi',
+        insurance: 'Perencanaan Asuransi',
+        personalTax: 'Perencanaan Pajak Pribadi',
+        debt: 'Pengelolaan Utang',
+        personalLoan: 'Broker Pinjaman Pribadi',
+        retirement: 'Perencanaan Pensiun',
+        estate: 'Perencanaan Warisan',
+        assetProtection: 'Perlindungan Aset',
+      },
+      approachTitle: 'Pendekatan Kami',
+      approachLinks: {
+        problems: 'Masalah yang Kami Selesaikan',
+        financialSystem: 'Sistem Keuangan Terintegrasi Kami',
+        expertise: 'Keahlian Kami',
+        strategicProcess: 'Proses Strategis Kami',
+      },
+      regulatoryLabel: 'Pemberitahuan Regulasi & Entitas:',
+      regulatoryBody:
+        'Orthodox Wealth Management adalah nama dagang dari PT Orthodox Strategi Finansial, entitas anggota di bawah Orthodox Holding. Layanan diberikan oleh entitas operasional terkait dan tenaga profesional yang kompeten sesuai dengan peraturan perundang-undangan yang berlaku.',
+      focusNotice:
+        'Orthodox Wealth Management berfokus pada perencanaan keuangan pribadi, termasuk perencanaan investasi, perencanaan asuransi, perencanaan pajak pribadi, pengelolaan utang, perencanaan pensiun, perencanaan warisan, perlindungan aset, dan broker pinjaman pribadi.',
+      crossSellPrefix:
+        'Untuk layanan keuangan bisnis dan korporat, termasuk pembukuan, pelaporan keuangan, advisori pajak badan, strukturisasi perusahaan, dan advisori CFO, kunjungi perusahaan saudara kami, ',
+      crossSellSuffix: '.',
+      copyright: '© {year} Orthodox Holding. Seluruh hak cipta dilindungi.',
+      email: 'wealthmanagement@orthodoxholding.com',
+      whatsappLabel: 'WhatsApp Orthodox Wealth Management',
     },
   },
 };

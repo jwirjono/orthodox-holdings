@@ -99,7 +99,7 @@ export const WealthManagementPage: React.FC = () => {
       </section>
 
       {/* The problem we solve */}
-      <section className="py-24 bg-[#0f0f0f] border-y border-white/5">
+      <section id="problem" className="py-24 bg-[#0f0f0f] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-10 md:px-20 lg:px-32">
           <SectionHeading subtitle={t.wealth.problem.eyebrow}>
             {t.wealth.problem.headingLine1} <br />
@@ -140,7 +140,7 @@ export const WealthManagementPage: React.FC = () => {
       </section>
 
       {/* How it should work — structured financial flow */}
-      <section className="py-28 bg-[#0f0f0f] border-y border-white/5">
+      <section id="financial-system" className="py-28 bg-[#0f0f0f] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-10 md:px-20 lg:px-32">
           <div className="text-center mb-20">
             <SectionHeading subtitle={t.wealth.flow.eyebrow}>{t.wealth.flow.heading}</SectionHeading>
@@ -231,7 +231,7 @@ export const WealthManagementPage: React.FC = () => {
             {t.wealth.services.items.map((item, i) => {
               const Icon = SERVICE_ICONS[i];
               return (
-                <div key={i} className="flex flex-col items-center text-center h-full">
+                <div key={item.id} id={item.id} className="scroll-mt-28 flex flex-col items-center text-center h-full">
                   <div className="w-16 h-16 border border-gold/30 flex items-center justify-center mb-6 rotate-45 group hover:bg-gold transition-all">
                     <Icon className="w-8 h-8 rotate-[-45deg] group-hover:text-black transition-colors" />
                   </div>
@@ -255,7 +255,7 @@ export const WealthManagementPage: React.FC = () => {
       </section>
 
       {/* Why Orthodox */}
-      <section className="py-28 bg-[#0f0f0f] border-y border-white/5">
+      <section id="why-orthodox" className="py-28 bg-[#0f0f0f] border-y border-white/5">
         <div className="max-w-7xl mx-auto px-10 md:px-20 lg:px-32">
           <div className="text-center mb-20">
             <SectionHeading subtitle={t.wealth.why.eyebrow}>

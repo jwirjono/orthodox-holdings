@@ -12,6 +12,7 @@ import { ConsultationSection } from './components/ConsultationSection';
 import { TaxCalculator } from './components/TaxCalculator';
 import { ClientDashboard } from './components/ClientDashboard';
 import { Footer } from './components/Footer';
+import { BusinessFooter } from './components/BusinessFooter';
 import { WealthManagementPage } from './components/wealth/WealthManagementPage';
 import { WealthFooter } from './components/wealth/WealthFooter';
 import { NavigationProvider, type View } from './navigation';
@@ -124,8 +125,8 @@ export default function App() {
           {currentView === 'wealth' && <WealthManagementPage />}
         </main>
 
-        {/* Footer — Wealth Management carries its own entity details */}
-        {currentView === 'wealth' ? <WealthFooter /> : <Footer />}
+        {/* Footer — each brand carries its own entity details */}
+        {currentView === 'wealth' ? <WealthFooter /> : currentView === 'business' ? <BusinessFooter /> : <Footer />}
 
         {/* Client Portfolio Dashboard Modal */}
         <ClientDashboard

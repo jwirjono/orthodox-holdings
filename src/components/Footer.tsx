@@ -1,18 +1,42 @@
 import React from 'react';
 import { Linkedin, Instagram } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
-import { useNavigation } from '../navigation';
+import { useNavigation, type View } from '../navigation';
 import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
 
 export const Footer: React.FC = () => {
   const t = useTranslation();
   const { navigateView } = useNavigation();
 
+  // Each column links into its own view; navigateView switches view first when needed.
+  const footerColumns: { view: View; title: string; links: { anchor: string; label: string }[] }[] = [
+    {
+      view: 'business',
+      title: t.footer.businessTitle,
+      links: [
+        { anchor: 'services', label: t.footer.businessLinks.help },
+        { anchor: 'our-service', label: t.footer.businessLinks.services },
+        { anchor: 'why-us', label: t.footer.businessLinks.expertise },
+        { anchor: 'tax-calculator', label: t.footer.businessLinks.taxCalculator },
+      ],
+    },
+    {
+      view: 'wealth',
+      title: t.footer.wealthTitle,
+      links: [
+        { anchor: 'problem', label: t.footer.wealthLinks.problem },
+        { anchor: 'about', label: t.footer.wealthLinks.whoWeAre },
+        { anchor: 'services', label: t.footer.wealthLinks.expertise },
+        { anchor: 'why-orthodox', label: t.footer.wealthLinks.whyOrthodox },
+      ],
+    },
+  ];
+
   return (
     <footer className="bg-[#050505] text-neutral-400 text-xs font-sans border-t border-neutral-800 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Top Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-neutral-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-neutral-800">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             {/* mainOrthodox.png already contains the ORTHODOX wordmark */}
@@ -34,45 +58,29 @@ export const Footer: React.FC = () => {
 
           </div>
 
-          {/* Nav Col 1 */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-white font-semibold tracking-wider">
-              {t.footer.ecosystemTitle}
-            </h4>
-            <ul className="space-y-2 text-neutral-400 font-light">
-              <li><a href="#problem" className="hover:text-white">{t.footer.ecosystemLinks.problem}</a></li>
-              <li><a href="#system" className="hover:text-white">{t.footer.ecosystemLinks.system}</a></li>
-              <li><a href="#leadership" className="hover:text-white">{t.footer.ecosystemLinks.leadership}</a></li>
-              <li><a href="#expertise" className="hover:text-white">{t.footer.ecosystemLinks.expertise}</a></li>
-            </ul>
-          </div>
-
-          {/* Nav Col 2 */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-white font-semibold tracking-wider">
-              {t.footer.governanceTitle}
-            </h4>
-            <ul className="space-y-2 text-neutral-400 font-light">
-              <li><a href="#ecosystem" className="hover:text-white">{t.footer.governanceLinks.diagram}</a></li>
-              <li><a href="#process" className="hover:text-white">{t.footer.governanceLinks.process}</a></li>
-              <li><a href="#principles" className="hover:text-white">{t.footer.governanceLinks.principles}</a></li>
-              <li><a href="#tax-calculator" className="hover:text-white">{t.footer.governanceLinks.taxCalculator}</a></li>
-            </ul>
-          </div>
-
-          {/* Contact Col */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono uppercase text-white font-semibold tracking-wider">
-              {t.footer.hqTitle}
-            </h4>
-            <p className="text-neutral-400 font-light leading-relaxed">
-              {t.footer.hqLine1}<br />
-              {t.footer.hqLine2}
-            </p>
-            <p className="text-neutral-400 font-mono text-[11px]">
-              {t.footer.email}
-            </p>
-          </div>
+          {footerColumns.map((column) => (
+            <div key={column.view} className="space-y-3">
+              <h4 className="text-xs font-mono uppercase text-white font-semibold tracking-wider">
+                {column.title}
+              </h4>
+              <ul className="space-y-2 text-neutral-400 font-light">
+                {column.links.map((link) => (
+                  <li key={link.anchor}>
+                    <a
+                      href={`#${link.anchor}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateView(column.view, link.anchor);
+                      }}
+                      className="hover:text-white"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Disclosures & Fine Print */}
@@ -80,13 +88,7 @@ export const Footer: React.FC = () => {
           <p>
             <strong>{t.footer.regulatoryLabel}</strong> {t.footer.regulatoryBody}
           </p>
-          <p>
-            {t.footer.platformNoticePrefix}
-            <button type="button" onClick={() => navigateView('wealth')} className="underline hover:text-white">
-              {t.common.orthodoxWealthManagement}
-            </button>
-            {t.footer.platformNoticeSuffix}
-          </p>
+          <p>{t.footer.platformNotice}</p>
         </div>
 
         {/* Bottom Bar */}

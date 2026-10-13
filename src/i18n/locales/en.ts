@@ -29,6 +29,7 @@ export const en = {
     brandName: 'Orthodox Holdings',
     businessSolutions: 'Business Solutions',
     wealthManagement: 'Wealth Management',
+    orthodoxBusinessSolutions: 'Orthodox Business Solutions',
     orthodoxWealthManagement: 'Orthodox Wealth Management',
     requestConsultation: 'Request Consultation',
     consultation: 'Consultation',
@@ -103,7 +104,7 @@ export const en = {
     headlineLine2: 'Sustainable Growth.',
     heading: 'All Solved Under One Roof.',
     paragraph1:
-      'Orthodox Business Solutions helps business owners simplify compliance, improve financial visibility, and build stronger businesses through integrated tax, accounting, and strategic advisory.',
+      'We help businesses simplify tax and accounting, improve financial visibility, and build stronger foundations for sustainable growth.',
     paragraph2:
       'As part of Orthodox Holding, we work alongside Orthodox Wealth Management to help business owners build not only better businesses—but lasting personal wealth.',
     trustIndicatorsLabel: 'Trust Indicators & Track Record',
@@ -782,30 +783,52 @@ export const en = {
   footer: {
     tagline:
       'Connecting business success with long-term personal wealth through an integrated advisory ecosystem.',
-    ecosystemTitle: 'Ecosystem',
-    ecosystemLinks: {
-      problem: 'The Problem We Solve',
-      system: 'Integrated System',
-      leadership: 'Leadership Team',
+    businessTitle: 'Business Solutions',
+    businessLinks: {
+      help: 'How Can We Help You',
+      services: 'Services',
       expertise: 'Our Expertise',
-    },
-    governanceTitle: 'Governance',
-    governanceLinks: {
-      diagram: 'Ecosystem Diagram',
-      process: 'Strategic Process',
-      principles: 'Orthodox Principles',
       taxCalculator: 'Tax Calculator',
     },
-    hqTitle: 'Headquarters',
-    hqLine1: 'Orthodox Holding Private Advisory Desk',
-    hqLine2: 'Indonesia & Australia Cross-Border Practice',
-    email: 'advisory@orthodoxwm.com',
+    wealthTitle: 'Wealth Management',
+    wealthLinks: {
+      problem: 'The Problem We Solve',
+      whoWeAre: 'Who We Are',
+      expertise: 'Our Expertise',
+      whyOrthodox: 'Why Orthodox',
+    },
     regulatoryLabel: 'Regulatory & Entity Notice:',
     regulatoryBody:
-      'Orthodox Business Solutions and Orthodox Wealth Management are member entities under Orthodox Holding. All advisory services, corporate tax consultations, and financial planning engagements are executed under licensed professional standards (CFP®, BKP, S.Ak, B.Bus) in compliance with relevant Indonesian and international jurisdictions.',
-    platformNoticePrefix: 'This platform is the integrated client advisory portal for both member entities. ',
-    platformNoticeSuffix: ' is available from the navigation above.',
+      'Orthodox Business Solutions and Orthodox Wealth Management are member entities under Orthodox Holding. All advisory services, corporate tax consultations, and financial planning engagements are executed under licensed professional standards in compliance with relevant Indonesian and international jurisdictions.',
+    platformNotice: 'This platform is the integrated client advisory portal for both member entities.',
     copyright: '© {year} Orthodox Holding. All rights reserved.',
+  },
+
+  businessFooter: {
+    logoAlt: 'Orthodox Business Solutions',
+    legalName: 'A trading name of PT Orthodox Solusi Bisnis, a member entity under Orthodox Holding.',
+    solutionsTitle: 'Our Solutions',
+    solutionsLinks: {
+      taxEfficiency: 'Tax Efficiency Plan',
+      fraudDetection: 'Fraud Detection Plan',
+      cfoAdvisory: 'CFO & Financial Advisory',
+      corporateStructuring: 'Corporate Structuring',
+    },
+    approachTitle: 'Our Approach',
+    approachLinks: {
+      problems: 'The Problems We Solve',
+      integratedSystem: 'Our Integrated System',
+      expertise: 'Our Expertise',
+      strategicProcess: 'Our Strategic Process',
+    },
+    regulatoryLabel: 'Regulatory & Entity Notice:',
+    regulatoryBody:
+      'Orthodox Business Solutions is the trading name of PT Orthodox Solusi Bisnis, a member entity under Orthodox Holding. Services are delivered by the relevant operating entity and qualified professionals in accordance with applicable laws and regulations.',
+    scopeNoticePrefix:
+      'Orthodox Business Solutions focuses on business advisory, bookkeeping, financial reporting, and corporate tax services. For personal financial planning, investment planning, insurance, retirement, estate planning, and asset protection, visit our sister company, ',
+    scopeNoticeSuffix: '.',
+    copyright: '© {year} Orthodox Business Solutions. All rights reserved.',
+    whatsappLabel: 'WhatsApp Orthodox Business Solutions',
   },
 
   expertise: {
@@ -1167,41 +1190,49 @@ export const en = {
         'Each component is designed individually—but structured to work as one integrated personal financial system.',
       items: [
         {
+          id: 'estate-planning',
           title: 'Estate Planning (Core Expertise)',
           description:
             'Structure strategies to ensure efficient wealth transfer, family continuity, and legacy preservation across generations.',
         },
         {
+          id: 'asset-protection',
           title: 'Asset Protection (Core Expertise)',
           description:
             'Protect personal wealth from legal, financial, and unforeseen risks through proactive planning and strategic structuring.',
         },
         {
+          id: 'personal-tax-planning',
           title: 'Tax Planning & Optimization',
           description:
             'Reduce unnecessary tax leakage through strategic planning designed to improve long-term financial efficiency.',
         },
         {
+          id: 'insurance-planning',
           title: 'Insurance Planning',
           description:
             'Align insurance solutions with your broader financial strategy to ensure appropriate protection while avoiding unnecessary costs.',
         },
         {
+          id: 'retirement-planning',
           title: 'Retirement Planning',
           description:
             'Design sustainable income strategies to support your desired retirement lifestyle and long-term financial independence.',
         },
         {
+          id: 'debt-management',
           title: 'Debt Management & Structuring',
           description:
             'Optimize debt and borrowing strategies to improve cash flow, strengthen financial flexibility, and support wealth creation.',
         },
         {
+          id: 'personal-loan-broking',
           title: 'Personal Loan Broking',
           description:
             'Access lending solutions that align with your broader financial objectives, whether for investment, property acquisition, or debt restructuring.',
         },
         {
+          id: 'investment-planning',
           title: 'Investment Planning',
           description:
             'Build diversified investment portfolios aligned with your goals, risk profile, cash flow needs, and long-term wealth objectives.',
@@ -1359,10 +1390,39 @@ export const en = {
 
     footer: {
       logoAlt: 'Orthodox Wealth Management',
-      legalName: 'A trading name of PT. Orthodox Strategi Finansial',
-      copyright: '© {year} PT. Orthodox Strategi Finansial',
-      email: 'info@orthodoxwm.com',
-      whatsappLabel: 'WhatsApp',
+      tagline: 'Building Wealth That Lasts Across Generations.',
+      description:
+        'We help individuals, families, professionals, and business owners build, protect, and preserve personal wealth through integrated financial planning.',
+      legalName: 'A trading name of PT Orthodox Strategi Finansial, a member entity under Orthodox Holding.',
+      servicesTitle: 'Our Services',
+      servicesLinks: {
+        investment: 'Investment Planning',
+        insurance: 'Insurance Planning',
+        personalTax: 'Personal Tax Planning',
+        debt: 'Debt Management',
+        personalLoan: 'Personal Loan Broking',
+        retirement: 'Retirement Planning',
+        estate: 'Estate Planning',
+        assetProtection: 'Asset Protection',
+      },
+      approachTitle: 'Our Approach',
+      approachLinks: {
+        problems: 'The Problems We Solve',
+        financialSystem: 'Our Integrated Financial System',
+        expertise: 'Our Expertise',
+        strategicProcess: 'Our Strategic Process',
+      },
+      regulatoryLabel: 'Regulatory & Entity Notice:',
+      regulatoryBody:
+        'Orthodox Wealth Management is the trading name of PT Orthodox Strategi Finansial, a member entity under Orthodox Holding. Services are delivered by the relevant operating entity and qualified professionals in accordance with applicable laws and regulations.',
+      focusNotice:
+        'Orthodox Wealth Management focuses on personal financial planning, including investment planning, insurance planning, personal tax planning, debt management, retirement planning, estate planning, asset protection, and personal loan broking.',
+      crossSellPrefix:
+        'For business and corporate financial services, including bookkeeping, financial reporting, corporate tax advisory, corporate structuring, and CFO advisory, visit our sister company, ',
+      crossSellSuffix: '.',
+      copyright: '© {year} Orthodox Holding. All rights reserved.',
+      email: 'wealthmanagement@orthodoxholding.com',
+      whatsappLabel: 'WhatsApp Orthodox Wealth Management',
     },
   },
 };
