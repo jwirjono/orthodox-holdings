@@ -3,6 +3,7 @@ import { Mail } from 'lucide-react';
 import { FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { useTranslation, format } from '../../i18n';
 import { useNavigation } from '../../navigation';
+import { wealthWhatsappUrl } from '../../lib/wealthContact';
 import wealthLogo from '../../assets/images/wealth/owm-main-logo.png';
 
 /**
@@ -129,7 +130,7 @@ export const WealthFooter: React.FC = () => {
               <span>{t.common.instagram}</span>
             </a>
             <a
-              href="https://wa.me/6285111218413"
+              href={wealthWhatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={f.whatsappLabel}

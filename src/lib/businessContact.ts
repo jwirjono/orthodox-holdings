@@ -1,8 +1,9 @@
 /**
- * Orthodox Business Solutions contact channels. Every WhatsApp entry point on
- * the business page goes to this one number.
+ * Orthodox Business Solutions contact channels. WhatsApp entry points on the
+ * business page go to this number, except wealth-related conversation starters.
  */
-export const BUSINESS_WHATSAPP_NUMBER = '62881081708505'; // (+62) 881 081 708 505
+export const BUSINESS_WHATSAPP_NUMBER = '62881081708505';
+export const BUSINESS_WHATSAPP_DISPLAY = '(+62) 881 081 708 505';
 export const BUSINESS_EMAIL = 'businesssolutions@orthodoxholding.com';
 export const BUSINESS_LINKEDIN_URL = 'https://www.linkedin.com/company/orthodox-business-solutions/';
 export const BUSINESS_INSTAGRAM_URL = 'https://www.instagram.com/orthodoxbusinesssolutions/';

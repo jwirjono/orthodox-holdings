@@ -1,5 +1,4 @@
 import React from 'react';
-import { Linkedin, Instagram } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
 import { useNavigation, type View } from '../navigation';
 import mainLogo from '../assets/images/logo/mainOrthodox-trimmed.png';
@@ -52,10 +51,13 @@ export const Footer: React.FC = () => {
               />
             </a>
 
+            <p className="text-sm text-white font-light">{t.footer.tagline}</p>
             <p className="text-xs text-neutral-400 font-light leading-relaxed max-w-sm">
-              {t.footer.tagline}
+              {t.footer.description}
             </p>
-
+            <p className="text-[11px] text-neutral-500 font-light leading-relaxed max-w-sm">
+              {t.footer.legalName}
+            </p>
           </div>
 
           {footerColumns.map((column) => (
@@ -95,30 +97,6 @@ export const Footer: React.FC = () => {
         <div className="pt-6 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-neutral-500">
           <div>
             {format(t.footer.copyright, { year: new Date().getFullYear() })}
-          </div>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <a
-              href="https://www.linkedin.com/company/orthodox-holding"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Linkedin className="w-3.5 h-3.5 text-neutral-400" />
-              <span>{t.common.linkedin}</span>
-            </a>
-            <a
-              href="https://www.instagram.com/orthodoxholding"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Instagram className="w-3.5 h-3.5 text-neutral-400" />
-              <span>{t.common.instagram}</span>
-            </a>
-            <span>•</span>
-            <button type="button" onClick={() => navigateView('wealth')} className="hover:text-white">
-              {t.common.wealthManagement}
-            </button>
           </div>
         </div>
       </div>

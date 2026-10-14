@@ -15,6 +15,10 @@ import {
 } from 'lucide-react';
 import { useTranslation, format } from '../i18n';
 import { businessWhatsappUrl } from '../lib/businessContact';
+import { wealthWhatsappUrl } from '../lib/wealthContact';
+
+// Problems handled by Orthodox Wealth Management rather than Business Solutions.
+const WEALTH_PROBLEM_IDS = new Set(['protecting-wealth']);
 
 interface ProblemSectionProps {
   onOpenConsultation: (msg?: string) => void;
@@ -74,7 +78,8 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenConsultati
   };
 
   const handleWhatsAppRedirect = (problem: ProblemItem) => {
-    window.open(businessWhatsappUrl(problem.whatsappMessage), '_blank');
+    const toUrl = WEALTH_PROBLEM_IDS.has(problem.id) ? wealthWhatsappUrl : businessWhatsappUrl;
+    window.open(toUrl(problem.whatsappMessage), '_blank');
   };
 
   return (

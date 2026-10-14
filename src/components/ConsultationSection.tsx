@@ -3,7 +3,7 @@ import { MessageSquare, Send, Phone, Mail, Building } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import { en } from '../i18n/locales/en';
 import { useNavigation } from '../navigation';
-import { businessWhatsappUrl } from '../lib/businessContact';
+import { BUSINESS_EMAIL, BUSINESS_WHATSAPP_DISPLAY, businessWhatsappUrl } from '../lib/businessContact';
 
 interface ConsultationSectionProps {
   initialMessage?: string;
@@ -121,11 +121,23 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
               </div>
               <div className="flex items-center gap-3 text-xs font-mono text-neutral-300">
                 <Mail className="w-4 h-4 text-neutral-500" />
-                <span>{t.consultation.email}</span>
+                <a href={`mailto:${BUSINESS_EMAIL}`} className="hover:text-white transition-colors">
+                  {BUSINESS_EMAIL}
+                </a>
               </div>
               <div className="flex items-center gap-3 text-xs font-mono text-neutral-300">
                 <Phone className="w-4 h-4 text-neutral-500" />
-                <span>{t.consultation.phoneLine}</span>
+                <span>
+                  {t.consultation.phoneLine}:{' '}
+                  <a
+                    href={businessWhatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    {BUSINESS_WHATSAPP_DISPLAY}
+                  </a>
+                </span>
               </div>
             </div>
           </div>

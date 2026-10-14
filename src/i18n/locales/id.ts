@@ -140,7 +140,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Mengandalkan feeling meningkatkan risiko operasional strategis dan mempersulit upaya pendanaan utang maupun ekuitas.',
         whatsappMessage:
-          'Halo Orthodox Holdings, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat.',
+          'Halo Orthodox Business Solutions, saya membutuhkan bantuan penyusunan laporan keuangan dan dashboard KPI manajemen yang akurat.',
       },
       {
         id: 'money-leakage',
@@ -151,7 +151,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Kebocoran yang tidak terdeteksi terus menggerus margin laba dan merusak integritas keuangan perusahaan secara keseluruhan.',
         whatsappMessage:
-          'Halo Orthodox Holdings, saya ingin melakukan kaji ulang pengendalian internal dan penelusuran kebocoran keuangan/fraud pada bisnis saya.',
+          'Halo Orthodox Business Solutions, saya ingin melakukan kaji ulang pengendalian internal dan penelusuran kebocoran keuangan/fraud pada bisnis saya.',
       },
       {
         id: 'cashflow-crunch',
@@ -161,7 +161,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Bisnis yang tumbuh cepat kerap terjebak insolvensi bila siklus arus kas dan syarat utang tidak dipantau.',
         whatsappMessage:
-          'Halo Orthodox Holdings, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya.',
+          'Halo Orthodox Business Solutions, saya ingin berkonsultasi mengenai manajemen arus kas (cash flow) dan modal kerja bisnis saya.',
       },
       {
         id: 'tax-reduction',
@@ -172,7 +172,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Beban pajak yang tidak perlu menguras modal kerja penting yang dibutuhkan untuk reinvestasi dan pertumbuhan.',
         whatsappMessage:
-          'Halo Orthodox Holdings, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien.',
+          'Halo Orthodox Business Solutions, saya ingin berkonsultasi mengenai cara mengoptimalkan beban pajak bisnis saya secara legal dan efisien.',
       },
       {
         id: 'tax-audit-dispute',
@@ -183,7 +183,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Sengketa pajak yang tidak terselesaikan berujung pada sanksi berat, likuiditas yang tertahan, dan ketidakpastian operasional berkepanjangan.',
         whatsappMessage:
-          'Halo Orthodox Holdings, kami membutuhkan pendampingan profesional untuk penanganan pemeriksaan dan sengketa pajak (Tax Audit & Dispute).',
+          'Halo Orthodox Business Solutions, kami membutuhkan pendampingan profesional untuk penanganan pemeriksaan dan sengketa pajak (Tax Audit & Dispute).',
       },
       {
         id: 'protecting-wealth',
@@ -194,7 +194,7 @@ export const id: Dictionary = {
         rippleEffect:
           'Tanpa perencanaan waris dan perlindungan aset yang terintegrasi, gejolak bisnis dapat mengguncang kesejahteraan keluarga.',
         whatsappMessage:
-          'Halo Orthodox Holdings, saya ingin berkonsultasi mengenai perlindungan aset dan suksesi kekayaan pribadi melalui Orthodox Wealth Management.',
+          'Halo Orthodox Wealth Management, saya ingin berkonsultasi mengenai perlindungan aset dan suksesi kekayaan pribadi.',
       },
     ],
 
@@ -501,8 +501,7 @@ export const id: Dictionary = {
     body2Suffix:
       ', Strategi bisnis Anda akan terhubung dengan keuangan pribadi Anda—memastikan perusahaan maupun kekayaan Anda dibangun untuk bertahan.',
     hqLine: 'Kantor Pusat Orthodox Holding // Kantor Advisori Privat',
-    email: 'advisory@orthodoxwm.com',
-    phoneLine: 'Meja Partner Langsung (Indonesia & Australia)',
+    phoneLine: 'Meja Partner Langsung',
 
     successTitle: 'Permintaan Konsultasi Terkirim',
     successBody:
@@ -784,8 +783,10 @@ export const id: Dictionary = {
   },
 
   footer: {
-    tagline:
-      'Menghubungkan kesuksesan bisnis dengan kekayaan pribadi jangka panjang melalui ekosistem advisori yang terintegrasi.',
+    tagline: 'Solusi Terintegrasi. Pertumbuhan Berkelanjutan.',
+    description:
+      'Kami membantu bisnis menyederhanakan pajak dan akuntansi, meningkatkan visibilitas keuangan, dan membangun fondasi yang lebih kuat untuk pertumbuhan berkelanjutan.',
+    legalName: 'Nama dagang dari PT Orthodox Solusi Bisnis, entitas anggota di bawah Orthodox Holding.',
     businessTitle: 'Business Solutions',
     businessLinks: {
       help: 'Bagaimana Kami Dapat Membantu',

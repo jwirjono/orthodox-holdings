@@ -146,7 +146,7 @@ export const en = {
         rippleEffect:
           'Relying on gut feeling increases strategic operational risk and complicates debt or equity financing efforts.',
         whatsappMessage:
-          'Hello Orthodox Holdings, I need help preparing accurate financial statements and a management KPI dashboard.',
+          'Hello Orthodox Business Solutions, I need help preparing accurate financial statements and a management KPI dashboard.',
       },
       {
         id: 'money-leakage',
@@ -156,7 +156,7 @@ export const en = {
         rippleEffect:
           'Undetected leakages continuously erode profit margins and compromise overall enterprise financial integrity.',
         whatsappMessage:
-          'Hello Orthodox Holdings, I would like an internal control review and a financial leakage/fraud investigation for my business.',
+          'Hello Orthodox Business Solutions, I would like an internal control review and a financial leakage/fraud investigation for my business.',
       },
       {
         id: 'cashflow-crunch',
@@ -166,7 +166,7 @@ export const en = {
         rippleEffect:
           'Rapidly scaling businesses frequently face insolvency traps if cash flow cycles and debt terms are left unmonitored.',
         whatsappMessage:
-          'Hello Orthodox Holdings, I would like to consult about cash flow and working capital management for my business.',
+          'Hello Orthodox Business Solutions, I would like to consult about cash flow and working capital management for my business.',
       },
       {
         id: 'tax-reduction',
@@ -176,7 +176,7 @@ export const en = {
         rippleEffect:
           'Unnecessary tax drag deprives your business of essential working capital needed for reinvestment and growth.',
         whatsappMessage:
-          'Hello Orthodox Holdings, I would like to consult about optimising my business tax burden legally and efficiently.',
+          'Hello Orthodox Business Solutions, I would like to consult about optimising my business tax burden legally and efficiently.',
       },
       {
         id: 'tax-audit-dispute',
@@ -186,7 +186,7 @@ export const en = {
         rippleEffect:
           'Unresolved tax disputes result in heavy penalties, frozen liquidity, and prolonged operational uncertainty.',
         whatsappMessage:
-          'Hello Orthodox Holdings, we need professional representation for a tax audit and dispute (Tax Audit & Dispute).',
+          'Hello Orthodox Business Solutions, we need professional representation for a tax audit and dispute (Tax Audit & Dispute).',
       },
       {
         id: 'protecting-wealth',
@@ -197,7 +197,7 @@ export const en = {
         rippleEffect:
           'Without integrated estate planning and asset protection, business volatility can destabilize personal family prosperity.',
         whatsappMessage:
-          'Hello Orthodox Holdings, I would like to consult about asset protection and personal wealth succession through Orthodox Wealth Management.',
+          'Hello Orthodox Wealth Management, I would like to consult about asset protection and personal wealth succession.',
       },
     ],
 
@@ -498,8 +498,7 @@ export const en = {
     body2Suffix:
       ', your business strategy naturally extends into your personal financial future—ensuring both your company and your wealth are built to last.',
     hqLine: 'Orthodox Holding HQ // Private Advisory Office',
-    email: 'advisory@orthodoxwm.com',
-    phoneLine: 'Direct Partner Desk (Indonesia & Australia)',
+    phoneLine: 'Direct Partner Desk',
 
     successTitle: 'Consultation Request Dispatched',
     successBody:
@@ -781,8 +780,10 @@ export const en = {
   },
 
   footer: {
-    tagline:
-      'Connecting business success with long-term personal wealth through an integrated advisory ecosystem.',
+    tagline: 'Integrated Solutions. Sustainable Growth.',
+    description:
+      'We help businesses simplify tax and accounting, improve financial visibility, and build stronger foundations for sustainable growth.',
+    legalName: 'A trading name of PT Orthodox Solusi Bisnis, a member entity under Orthodox Holding.',
     businessTitle: 'Business Solutions',
     businessLinks: {
       help: 'How Can We Help You',
