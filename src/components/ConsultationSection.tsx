@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageSquare, Send, Phone, Mail, Building } from 'lucide-react';
+import { MessageSquare, Send, Phone, Mail } from 'lucide-react';
 import { useTranslation } from '../i18n';
 import { en } from '../i18n/locales/en';
 import { useNavigation } from '../navigation';
@@ -115,10 +115,6 @@ export const ConsultationSection: React.FC<ConsultationSectionProps> = ({ initia
             </p>
 
             <div className="pt-6 space-y-4 border-t border-neutral-800">
-              <div className="flex items-center gap-3 text-xs font-mono text-neutral-300">
-                <Building className="w-4 h-4 text-neutral-500" />
-                <span>{t.consultation.hqLine}</span>
-              </div>
               <div className="flex items-center gap-3 text-xs font-mono text-neutral-300">
                 <Mail className="w-4 h-4 text-neutral-500" />
                 <a href={`mailto:${BUSINESS_EMAIL}`} className="hover:text-white transition-colors">

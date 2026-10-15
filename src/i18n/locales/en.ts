@@ -497,7 +497,6 @@ export const en = {
     body2Prefix: 'Through our ecosystem with ',
     body2Suffix:
       ', your business strategy naturally extends into your personal financial future—ensuring both your company and your wealth are built to last.',
-    hqLine: 'Orthodox Holding HQ // Private Advisory Office',
     phoneLine: 'Direct Partner Desk',
 
     successTitle: 'Consultation Request Dispatched',
@@ -807,6 +806,9 @@ export const en = {
 
   businessFooter: {
     logoAlt: 'Orthodox Business Solutions',
+    tagline: 'Integrated Solutions. Sustainable Growth.',
+    description:
+      'We help businesses simplify tax and accounting, improve financial visibility, and build stronger foundations for sustainable growth.',
     legalName: 'A trading name of PT Orthodox Solusi Bisnis, a member entity under Orthodox Holding.',
     solutionsTitle: 'Our Solutions',
     solutionsLinks: {

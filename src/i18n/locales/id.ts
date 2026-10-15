@@ -500,7 +500,6 @@ export const id: Dictionary = {
     body2Prefix: 'Melalui ekosistem kami bersama ',
     body2Suffix:
       ', Strategi bisnis Anda akan terhubung dengan keuangan pribadi Anda—memastikan perusahaan maupun kekayaan Anda dibangun untuk bertahan.',
-    hqLine: 'Kantor Pusat Orthodox Holding // Kantor Advisori Privat',
     phoneLine: 'Meja Partner Langsung',
 
     successTitle: 'Permintaan Konsultasi Terkirim',
@@ -810,6 +809,9 @@ export const id: Dictionary = {
 
   businessFooter: {
     logoAlt: 'Orthodox Business Solutions',
+    tagline: 'Solusi Terintegrasi. Pertumbuhan Berkelanjutan.',
+    description:
+      'Kami membantu bisnis menyederhanakan pajak dan akuntansi, meningkatkan visibilitas keuangan, dan membangun fondasi yang lebih kuat untuk pertumbuhan berkelanjutan.',
     legalName: 'Nama dagang dari PT Orthodox Solusi Bisnis, entitas anggota di bawah Orthodox Holding.',
     solutionsTitle: 'Solusi Kami',
     solutionsLinks: {

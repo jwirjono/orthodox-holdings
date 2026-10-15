@@ -63,6 +63,8 @@ export const BusinessFooter: React.FC = () => {
                 decoding="async"
               />
             </button>
+            <p className="text-sm text-white font-light">{f.tagline}</p>
+            <p className="text-xs text-neutral-400 font-light leading-relaxed max-w-sm">{f.description}</p>
             <p className="text-[11px] text-neutral-500 font-light leading-relaxed max-w-sm">
               {f.legalName}
             </p>
